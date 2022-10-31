@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-Bold';
+  src: url('./assets/fonts/TitilliumWeb-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-SemiBold';
+  src: url('./assets/fonts/TitilliumWeb-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'TitilliumWeb-Regular';
+  src: url('./assets/fonts/TitilliumWeb-Regular.ttf');
+}
+
+@layer components {
+  .gray-button {
+    @apply w-full py-4 px-[45px] shadow-sm bg-gray-100 text-medium sm:w-auto;
+  }
+
+  body {
+    @apply font-titillium;
+  }
+
+  .yellow-button {
+    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow-500 sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit;
+  }
+
+  .title {
+    @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl pb-10;
+  }
+
+  .subtitle {
+    @apply font-titilliumBold sm:text-xl lg:text-2xl text-lg;
+  }
+
+  .body-text {
+    @apply sm:text-xl text-sm sm:!leading-9 !leading-6;
+  }
+
+  .article {
+    @apply sm:text-base text-sm text-gray-500;
+  }
+
+  .card-text-overflow {
+    @apply text-ellipsis overflow-hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.content {
+  /* Give the content enought white space so the footer is at the bottom */
+  min-height: calc(100vh - 6rem - 18rem);
+}
+
+a {
+  @apply text-purple;
+}

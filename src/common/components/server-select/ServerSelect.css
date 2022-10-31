@@ -1,0 +1,98 @@
+.reactserverselect__control {
+  /* border-radius: 6px !important; */
+  border: 1px solid #6B7280!important;
+  border-radius: 0!important;
+  padding: 8px;
+  height: 56px;
+  font-family: 'TitilliumWeb-Regular'!important;
+}
+
+.reactserverselect__option--is-selected {
+  background-color: #6543C8 !important;
+}
+
+.reactserverselect__value-container--is-multi {
+ flex-direction: row!important;
+ flex-wrap: nowrap!important;
+}
+
+.reactserverselect__multi-value {
+  background-color: #6543C8 !important;
+  padding: 6px 12px !important;
+  /* border-radius: 100px !important; */
+  display: flex!important;
+  color: white;
+  align-items: center;
+}
+
+.reactserverselect__single-value {
+  font-family: 'TitilliumWeb-Regular';
+}
+
+.reactserverselect__multi-value__label {
+  font-family: 'TitilliumWeb-Regular';
+  padding: 0 !important;
+  color: white!important;
+  font-weight: bold !important;
+  max-width: 7rem;
+}
+
+.reactserverselect__input-container input[type='text']:focus {
+  box-shadow: none !important;
+}
+
+.reactserverselect__multi-value__remove {
+  border-radius: 25px !important;
+  background: white;
+  padding: 4px !important;
+  margin-left: 6px;
+}
+
+.reactserverselect__multi-value__remove:hover {
+  background-color: white !important;
+}
+
+.reactserverselect__input-container {
+  margin: 0!important;
+  padding: 0!important;
+}
+
+
+.reactserverselect__multi-value__remove > svg {
+  color: #6543C8;
+  font-size: 1rem;
+  width: 16px;
+  height: 16px;
+}
+
+.reactserverselect__menu {
+  border: 1px solid #6B7280;
+  border-radius: 0px!important;
+}
+
+.reactserverselect__option:hover {
+  background-color: #6543C8;
+  color: white;
+}
+
+@media only screen and (min-width: 675px) {
+  .reactselect__control { 
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__single-value {
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__multi-value__label {
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__placeholder {
+    font-size: 1.25rem!important;
+  }
+
+  .reactserverselect__input-container {
+    font-size: 1.25rem!important;
+  }
+}
