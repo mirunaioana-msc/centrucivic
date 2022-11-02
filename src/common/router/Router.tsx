@@ -6,6 +6,7 @@ import Programs from '../../pages/programs/Programs';
 import Layout from '../containers/Layout';
 import About from '../../pages/about/About';
 import NGOList from '../../pages/ngo-list/NGOList';
+import Contact from '../../pages/contact/Contact';
 
 const Router = () => {
   return (
@@ -20,6 +21,9 @@ const Router = () => {
 
           {/* NGO list page */}
           <Route path="organizations" element={<Organizations />}></Route>
+
+          {/* Contact page */}
+          <Route path="contact" element={<Contact />}></Route>
 
           {/* About page */}
           <Route path="about" element={<About />}></Route>
