@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { PaginatedEntity } from "../../common/interfaces/PaginatedEntity.interface";
-import { searchPracticePrograms } from "./PracticePrograms.service";
+import { useQuery } from '@tanstack/react-query';
+import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
+import { countActive, searchPracticePrograms } from './PracticePrograms.service';
 
 export const usePracticeProgramsQuery = (
   limit: number,
@@ -14,8 +14,30 @@ export const usePracticeProgramsQuery = (
   end?: string,
 ) => {
   return useQuery(
-    ['practice-programs', limit, page, search, locationId, faculties, workingHours, domains, start, end],
-    () => searchPracticePrograms(limit, page, search, locationId, faculties, workingHours, domains, start, end),
+    [
+      'practice-programs',
+      limit,
+      page,
+      search,
+      locationId,
+      faculties,
+      workingHours,
+      domains,
+      start,
+      end,
+    ],
+    () =>
+      searchPracticePrograms(
+        limit,
+        page,
+        search,
+        locationId,
+        faculties,
+        workingHours,
+        domains,
+        start,
+        end,
+      ),
     {
       onSuccess: (data: PaginatedEntity<any>) => {
         console.log(data);
@@ -23,4 +45,8 @@ export const usePracticeProgramsQuery = (
       enabled: false,
     },
   );
-}
+};
+
+export const useCountActiveQuery = () => {
+  return useQuery(['landing-counters'], () => countActive(), { enabled: false });
+};

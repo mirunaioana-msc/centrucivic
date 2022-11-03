@@ -1,6 +1,7 @@
-import useStore from "../Store";
+import useStore from '../Store';
 
 export const usePracticePrograms = () => {
   const practicePrograms = useStore((state) => state.practicePrograms);
-  return { practicePrograms };
+  const landingCounters = useStore((state) => state.landingCounters);
+  return { practicePrograms, landingCounters };
 };
