@@ -1,5 +1,10 @@
 {
-  "common": { "greeting": "buna" },
+  "common": {
+    "greeting": "buna",
+    "send": "Trimite",
+    "contact_message_1": "Feedback trimis cu succes!",
+    "contact_message_2": "Te vom contacta cât de curând."
+  },
   "menu": {
     "home": "Acasa",
     "about": "Despre Practice for Good",
@@ -110,12 +115,9 @@
         "label": "Mesajul tău"
       }
     },
-    "action": "Trimite",
     "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România.",
     "paragraph_2": "În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
-    "title": "Contactează-ne",
-    "contact_message_1": "Feedback trimis cu succes!",
-    "contact_message_2": "Te vom contacta cât de curând."
+    "title": "Contactează-ne"
   },
   "about": {
     "p4g": {
@@ -129,5 +131,35 @@
       "paragraph_1": "Lorem ipsum. Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România. În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
       "action": "Creează cont"
     }
+  },
+  "feedback_form": {
+    "config": {
+      "name": {
+        "required": "Numele este obligatoriu",
+        "max": "Numele poate să abiă maxim 100 de caractere",
+        "min": "Numele trebuie să aibă minim 3 caractere",
+        "invalid": "Numele are un format invalid",
+        "label": "Nume și prenume"
+      },
+      "interaction_date": {
+        "required": "Data interactionarii este obligatorie",
+        "max": "Data interactionarii poate să aibă maxim 30 de caractere",
+        "label": "Cand ai interactionat cu serviciul?"
+      },
+      "message": {
+        "required": "Mesajul tău este obligatoriu",
+        "max": "Mesajul tău poate să aibă maxim 250 de caractere",
+        "min": "Mesajul tău trebuie să aibă minim 50 de caractere",
+        "label": "Cum a fost interactiunea ta cu acest serviciu?",
+        "placeholder": "Scrie cateva detalii..."
+      },
+      "rating": {
+        "required": "Rating-ul este obligatoriu",
+        "label": "Acorda un rating acestui serviciu",
+        "helper": "1 - foarte slab, 2 - nesatisfacator, 3 - neutru, 4 - bun, 5 - foarte bun"
+      }
+    },
+    "title": "Ai interactionat cu acest serviciu?",
+    "subtitle": "Ofera-ne un feedback cu privire la interactiunea ta cu acest serviciu"
   }
 }
