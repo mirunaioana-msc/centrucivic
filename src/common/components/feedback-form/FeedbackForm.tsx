@@ -31,7 +31,7 @@ const FeedbackForm = () => {
     <div className="w-full lg:px-60 px-10 py-10">
       {showForm && (
         <div className="flex flex-col xl:gap-x-36 gap-x-20 gap-y-8 border-2 border-yellow-500 rounded-3xl shadow-card bg-white">
-          <div className="pt-8 px-8 mt-10">
+          <div className="px-8 mt-10">
             <p className="subtitle mb-8">{t('title')}</p>
             <p className="article mt-8">{t('subtitle')}</p>
           </div>
