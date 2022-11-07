@@ -11,7 +11,7 @@ export const LANDING_DOMAINS = [
 ];
 
 export const LANDING_COUNTER_ITEMS = [
-  { value: '3500+', type: COUNTER_TYPE.PROGRAMS },
+  { value: '3500+', type: COUNTER_TYPE.SERVICES },
   { value: '500+', type: COUNTER_TYPE.NGOS },
 ];
 

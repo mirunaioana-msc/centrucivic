@@ -7,7 +7,8 @@ import { LANDING_COUNTER_ITEMS } from '../../common/constants/nomenclature.const
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
 import { useTranslation } from 'react-i18next';
-import p4g from '../../assets/images/p4g.svg';
+import aboutCC from '../../assets/images/landing-about-image.svg';
+import LandingCta from '../../common/components/landing-cta/LandingCta';
 
 const Landing = () => {
   const { t } = useTranslation('landing');
@@ -22,7 +23,7 @@ const Landing = () => {
           title={t('about.title')}
           content={t('about.paragraph_1')}
           cta={{ label: t('about.action'), link: '' }}
-          image={p4g}
+          image={aboutCC}
           isTextRight={true}
         ></Description>
       </div>
@@ -31,6 +32,7 @@ const Landing = () => {
         {' '}
         <Domains domains={LANDING_DOMAINS}></Domains>
       </ShapeWrapper>
+      <LandingCta />
     </section>
   );
 };
