@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { ContactConfig } from './configs/Contact.config';
 import { Controller, useForm } from 'react-hook-form';
 import Textarea from '../../common/components/textarea/Textarea';
-import confirmLogo from '../../assets/icons/confirm-icon.svg';
 import ContactInputField from '../../common/components/contact-input-field/ContactInputField';
+import { CheckCircleIcon } from '@heroicons/react/outline';
 
 const Contact = () => {
-  const [showForm, setShowForm] = useState(true);
+  const [showSuccess, setShowSuccess] = useState(false);
   const { t } = useTranslation(['contact', 'common']);
 
   const {
@@ -23,7 +23,7 @@ const Contact = () => {
   const onSendMail = () => {
     console.log('Not yet implemented');
     reset();
-    setShowForm(false);
+    setShowSuccess(false);
   };
 
   return (
@@ -35,7 +35,7 @@ const Contact = () => {
           <br />
           <p className="body-text">{t('paragraph_2')}</p>
         </div>
-        {showForm && (
+        {!showSuccess && (
           <div className="flex flex-1 flex-col sm:gap-y-6 gap-y-3">
             <form className="flex flex-col sm:gap-y-6 gap-y-3">
               <Controller
@@ -101,9 +101,9 @@ const Contact = () => {
             </button>
           </div>
         )}
-        {!showForm && (
+        {showSuccess && (
           <div className="flex-1 flex flex-col items-center justify-center">
-            <img src={confirmLogo} alt="Green Checkmark" className="sm:w-24 w-12 mb-6" />
+            <CheckCircleIcon className="sm:w-24 w-12 mb-6" />
             <p className="subtitle">{t('contact_message_1', { ns: 'common' })}</p>
             <p className="body-text">{t('contact_message_2', { ns: 'common' })}</p>
           </div>

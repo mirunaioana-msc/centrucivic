@@ -5,10 +5,10 @@ import ChipSelection from '../chip-selection/ChipSelection';
 import ContactInputField from '../contact-input-field/ContactInputField';
 import Textarea from '../textarea/Textarea';
 import { FeedbackFormConfig } from './configs/FeedbackForm.config';
-import confirmLogo from '../../../assets/icons/confirm-icon.svg';
+import { CheckCircleIcon } from '@heroicons/react/outline';
 
 const FeedbackForm = () => {
-  const [showForm, setShowForm] = useState<boolean>(true);
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const { t } = useTranslation(['feedback_form', 'common']);
 
   const {
@@ -24,12 +24,12 @@ const FeedbackForm = () => {
   const onSaveFeedback = () => {
     console.log('Not yet implemented');
     reset();
-    setShowForm(false);
+    setShowSuccess(true);
   };
 
   return (
     <div className="w-full lg:px-60 px-10 py-10">
-      {showForm && (
+      {!showSuccess && (
         <div className="flex flex-col xl:gap-x-36 gap-x-20 gap-y-8 border-2 border-yellow-500 rounded-3xl shadow-card bg-white">
           <div className="px-8 mt-10">
             <p className="subtitle mb-8">{t('title')}</p>
@@ -119,9 +119,9 @@ const FeedbackForm = () => {
           </div>
         </div>
       )}
-      {!showForm && (
+      {showSuccess && (
         <div className="flex-1 flex flex-col items-center justify-center mb-10">
-          <img src={confirmLogo} alt="Green Checkmark" className="sm:w-24 w-12 mb-6" />
+          <CheckCircleIcon className="sm:w-24 w-12 mb-6" />
           <p className="subtitle">{t('contact_message_1', { ns: 'common' })}</p>
           <p className="body-text">{t('contact_message_2', { ns: 'common' })}</p>
         </div>
