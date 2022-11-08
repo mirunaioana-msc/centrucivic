@@ -12,7 +12,11 @@ import { usePracticePrograms } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
-import { useCitiesQuery, useDomainsQuery, useFacultiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
+import {
+  useCitiesQuery,
+  useDomainsQuery,
+  useFacultiesQuery,
+} from '../../../services/nomenclature/Nomeclature.queries';
 import PracticeProgramFilterModal from '../practice-program-filter-modal/PracticeProgramFilterModal';
 
 const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
@@ -74,7 +78,7 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
     setWorkingHours(data.workingHours);
     setStart(data.start);
     setEnd(data.end);
-  }
+  };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
@@ -96,10 +100,12 @@ const PracticeProgramsSearch = (props: { showFilters: boolean }) => {
   }, [locationId, selectedFaculties, workingHours, selectedDomains, start, end]);
 
   return (
-    <div className='bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8'>
-      <p className='font-titilliumBold sm:text-4xl text-xl  text-black'>{t('practice-programs-search:title')}</p>
-      <div className='flex flex-col gap-4 max-w-5xl w-full justify-items-center'>
-        <div className='flex w-full items-center h-14'>
+    <div className="bg-search w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
+      <p className="font-titilliumBold sm:text-4xl text-xl  text-black">
+        {t('practice-programs-search:title')}
+      </p>
+      <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
+        <div className="flex w-full items-center h-14">
           <Controller
             key={PracticeProgramsSearchConfig.search.key}
             name={PracticeProgramsSearchConfig.search.key}
