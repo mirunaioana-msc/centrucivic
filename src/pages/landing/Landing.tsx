@@ -1,5 +1,5 @@
 import React from 'react';
-import PracticeProgramsSearch from '../../common/components/practice-programs-search/PracticeProgramsSearch';
+import PracticeProgramsSearch from '../../common/components/service-search/ServiceSearch';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { LANDING_DOMAINS } from '../../common/constants/nomenclature.constants';
 import Domains from './components/domains/Domains';

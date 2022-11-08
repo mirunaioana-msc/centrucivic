@@ -22,7 +22,7 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
             </div>
             <div className="flex sm:hidden items-center">
               <button
-                className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-150 focus:ring-indigo-500"
                 onClick={() => openSlidingMenu(true)}
               >
                 <MenuIcon className="w-5 h-5" />

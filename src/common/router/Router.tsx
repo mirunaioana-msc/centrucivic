@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Landing from '../../pages/landing/Landing';
 import Organizations from '../../pages/organizations/Organizations';
-import Programs from '../../pages/programs/Programs';
+import Programs from '../../pages/services/Services';
 import Layout from '../containers/Layout';
 import About from '../../pages/about/About';
 import NGOList from '../../pages/ngo-list/NGOList';

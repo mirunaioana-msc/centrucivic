@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
 import { Controller, useForm } from 'react-hook-form';
-import { PracticeProgramsSearchConfig } from '../practice-programs-search/configs/PracticeProgramsSearch.config';
+import { ServiceSearchConfig } from '../service-search/configs/ServiceSearch.config';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
@@ -88,9 +88,9 @@ const NGOFilterModal = ({
                   <div className='flex  flex-col w-full justify-between'>
                     <div className='flex flex-col w-full gap-4'>
                       <Controller
-                        key={PracticeProgramsSearchConfig.locationId.key}
-                        name={PracticeProgramsSearchConfig.locationId.key}
-                        rules={PracticeProgramsSearchConfig.locationId.rules}
+                        key={ServiceSearchConfig.locationId.key}
+                        name={ServiceSearchConfig.locationId.key}
+                        rules={ServiceSearchConfig.locationId.rules}
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (
@@ -99,18 +99,18 @@ const NGOFilterModal = ({
                               value={value}
                               isMulti={false}
                               isClearable={false}
-                              placeholder={PracticeProgramsSearchConfig.locationId.placeholder}
+                              placeholder={ServiceSearchConfig.locationId.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
-                              addOn={PracticeProgramsSearchConfig.locationId.addOn}
+                              addOn={ServiceSearchConfig.locationId.addOn}
                             />
                           );
                         }}
                       />
                       <Controller
-                        key={PracticeProgramsSearchConfig.domains.key}
-                        name={PracticeProgramsSearchConfig.domains.key}
-                        rules={PracticeProgramsSearchConfig.domains.rules}
+                        key={ServiceSearchConfig.domains.key}
+                        name={ServiceSearchConfig.domains.key}
+                        rules={ServiceSearchConfig.domains.rules}
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (
@@ -120,7 +120,7 @@ const NGOFilterModal = ({
                               isClearable={false}
                               isMulti={true}
                               onChange={onChange}
-                              placeholder={PracticeProgramsSearchConfig.domains.config.placeholder}
+                              placeholder={ServiceSearchConfig.domains.config.placeholder}
                               options={domains.map(mapItemToSelect)}
                             />
                           );

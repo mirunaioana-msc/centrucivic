@@ -5,7 +5,7 @@ import SearchField from '../search-field/SearchField';
 import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
-import { usePracticePrograms } from '../../../store/Selectors';
+import { useServices } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { mapItemToSelect, mapSelectToValue } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +28,7 @@ const NGOSearch = (props: { showFilters: boolean }) => {
   const [page, setPage] = useState<number>();
   const [rowsPerPage, setRowsPerPage] = useState<number>();
 
-  const { practicePrograms } = usePracticePrograms();
+  const { meta } = useServices();
   const { cities, domains } = useNomenclature();
 
   useOrganizationQuery(
@@ -56,8 +56,8 @@ const NGOSearch = (props: { showFilters: boolean }) => {
 
   const search = (data: any) => {
     setFilters(data);
-    setPage(practicePrograms.meta.currentPage);
-    setRowsPerPage(practicePrograms.meta.itemsPerPage);
+    setPage(meta.currentPage);
+    setRowsPerPage(meta.itemsPerPage);
     setSearchTerm(data.search);
     setLocationId(data.locationId?.value);
     setSelectedDomains(data.domains?.map(mapSelectToValue));

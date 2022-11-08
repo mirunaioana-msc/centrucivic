@@ -1,15 +1,15 @@
 import React from 'react';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { PRACTICE_PROGRAMS } from '../../common/constants/nomenclature.constants';
-import ProgramsList from './components/ProgramsList';
+import ServicesList from './components/ServiceList';
 
 const Programs = () => {
   return (
     <ShapeWrapper>
-      <ProgramsList
-        programs={PRACTICE_PROGRAMS.items}
+      <ServicesList
+        services={[]}
         total={PRACTICE_PROGRAMS.meta.itemCount}
-      ></ProgramsList>
+      ></ServicesList>
     </ShapeWrapper>
   );
 };
