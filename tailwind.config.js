@@ -15,6 +15,19 @@ module.exports = {
       transparent: 'transparent',
       black: '#000000',
       white: '#FFFFFF',
+      green: {
+        DEFAULT: '#0DB683',
+        50: '#ECFDF5',
+        100: '#D1FAE5',
+        200: '#A7F3D0',
+        300: '#6EE7B7',
+        400: '#34D399',
+        500: '#10B981',
+        600: '#059669',
+        700: '#047857',
+        800: '#065F46',
+        900: '#064E3B',
+      },
       yellow: {
         DEFAULT: '#FFF649',
         50: '#FFFDE7',
@@ -34,6 +47,7 @@ module.exports = {
         200: '#E5E7EB',
         400: '#828282',
         500: '#6B7280',
+        600: '#333333',
       },
       purple: {
         DEFAULT: '#6543C8',
@@ -90,6 +104,7 @@ module.exports = {
       },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
+        search: 'url(./assets/images/search.png)',
       },
     },
   },

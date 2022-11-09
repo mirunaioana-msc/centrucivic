@@ -46,11 +46,10 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
     updateServicesFilters(
       filters.search || '',
       data.locationId,
-      data.faculties,
-      data.workingHours,
       data.domains,
       data.start,
       data.end,
+      data.ageCategories
     );
     onClose();
   };
@@ -162,22 +161,22 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
                         }}
                       />
                       <Controller
-                        key={ServiceSearchConfig.ageCategory.key}
-                        name={ServiceSearchConfig.ageCategory.key}
-                        rules={ServiceSearchConfig.ageCategory.rules}
+                        key={ServiceSearchConfig.ageCategories.key}
+                        name={ServiceSearchConfig.ageCategories.key}
+                        rules={ServiceSearchConfig.ageCategories.rules}
                         control={control}
                         render={({ field: { onChange, value } }) => {
                           return (
                             <MultiSelect
-                              id="create-organization-ageCategory"
+                              id="create-organization-ageCategories"
                               value={value}
                               isClearable={false}
                               isMulti={false}
                               onChange={onChange}
                               placeholder={
-                                ServiceSearchConfig.ageCategory.config.placeholder
+                                ServiceSearchConfig.ageCategories.config.placeholder
                               }
-                              options={ServiceSearchConfig.ageCategory.config.collection}
+                              options={ServiceSearchConfig.ageCategories.config.collection}
                             />
                           );
                         }}

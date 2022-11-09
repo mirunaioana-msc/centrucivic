@@ -17,12 +17,11 @@ interface ServicesState {
   nextPageServices: () => void;
   updateServicesFilters: (
     search: string,
-    organizationId: ISelectData,
     locationId: ISelectData,
     domains: ISelectData[],
-    ageCategories: ISelectData[],
     start: string,
     end: string,
+    ageCategories: ISelectData[],
   ) => void;
 }
 

@@ -19,11 +19,10 @@ export const servicesSlice = (set: any) => ({
     filters: {
       search: '',
       locationId: undefined,
-      faculties: [],
-      workingHours: undefined,
       domains: [],
       start: undefined,
       end: undefined,
+      ageCategories: undefined,
     },
   },
   setServices: (services: PaginatedEntity<IService>) => {
@@ -48,12 +47,11 @@ export const servicesSlice = (set: any) => ({
   },
   updateServicesFilters: (
     search?: string,
-    organizationId?: ISelectData,
     locationId?: ISelectData,
     domains?: ISelectData[],
-    ageCategories?: ISelectData[],
     start?: string,
     end?: string,
+    ageCategories?: ISelectData[],
   ) => {
     set((state: { services: PaginatedEntity<IService> }) => ({
       services: {
@@ -65,11 +63,10 @@ export const servicesSlice = (set: any) => ({
         filters: {
           search,
           locationId,
-          organizationId,
-          ageCategories,
           domains,
           start,
           end,
+          ageCategories,
         },
       },
     }));

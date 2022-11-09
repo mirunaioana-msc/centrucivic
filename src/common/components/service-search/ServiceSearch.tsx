@@ -27,12 +27,12 @@ interface ServiceSearchProps {
   onSearchCallback?: () => void;
 }
 
-const PracticeProgramsSearch = (props: ServiceSearchProps) => {
+const ServiceSearch = (props: ServiceSearchProps) => {
   const { t } = useTranslation('service_search');
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
-  const { cities, domains, faculties } = useNomenclature();
+  const { cities, domains } = useNomenclature();
   const { updateServicesFilters } = useStore();
   const { filters: activeFilters } = useServices();
 
@@ -56,14 +56,14 @@ const PracticeProgramsSearch = (props: ServiceSearchProps) => {
   }, []);
 
   const search = (data: any) => {
+    console.log(data);
     updateServicesFilters(
       data.search,
       data.locationId,
-      data.faculties,
-      data.workingHours,
       data.domains,
       data.start,
       data.end,
+      data.ageCategories
     );
     props.onSearchCallback && props.onSearchCallback();
   };
@@ -86,7 +86,7 @@ const PracticeProgramsSearch = (props: ServiceSearchProps) => {
 
   return (
     <>
-      <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8">
+      <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <div className='flex flex-col w-full items-center gap-2'>
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
           <p className="font-titillium sm:text-2xl sm:text-xl text-black">{t('subtitle')}<a className='text-black underline cursor-pointer' href="/services">{t('subtitle_link')}</a></p>
@@ -221,20 +221,20 @@ const PracticeProgramsSearch = (props: ServiceSearchProps) => {
               }}
             />
             <Controller
-              key={ServiceSearchConfig.ageCategory.key}
-              name={ServiceSearchConfig.ageCategory.key}
-              rules={ServiceSearchConfig.ageCategory.rules}
+              key={ServiceSearchConfig.ageCategories.key}
+              name={ServiceSearchConfig.ageCategories.key}
+              rules={ServiceSearchConfig.ageCategories.rules}
               control={control}
               render={({ field: { onChange, value } }) => {
                 return (
                   <MultiSelect
-                    id="search-services-ageCategory"
+                    id="search-services-ageCategories"
                     value={value}
                     isClearable={false}
-                    isMulti={false}
+                    isMulti={true}
                     onChange={onChange}
-                    placeholder={ServiceSearchConfig.ageCategory.config.placeholder}
-                    options={ServiceSearchConfig.ageCategory.config.collection}
+                    placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
+                    options={ServiceSearchConfig.ageCategories.config.collection}
                   />
                 );
               }}
@@ -263,4 +263,4 @@ const PracticeProgramsSearch = (props: ServiceSearchProps) => {
   );
 };
 
-export default PracticeProgramsSearch;
+export default ServiceSearch;

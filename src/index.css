@@ -57,6 +57,14 @@
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
   }
+
+  .virtuso-grid-item {
+    @apply w-[22.75rem]
+  }
+
+  .virtuso-grid-list {
+    @apply flex flex-wrap gap-8;
+  }
 }
 
 .content {

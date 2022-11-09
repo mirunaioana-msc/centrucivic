@@ -37,12 +37,12 @@ export const ServiceSearchConfig: Record<string, any> = {
     },
     placeholder: i18n.t('service_search:config.end.placeholder'),
   },
-  ageCategory: {
-    key: 'ageCategory',
+  ageCategories: {
+    key: 'ageCategories',
     rules: {},
     config: {
       collection: [...AgeCategories],
-      placeholder: i18n.t('service_search:config.ageCategory.placeholder')
+      placeholder: i18n.t('service_search:config.ageCategories.placeholder')
     },
   },
   domains: {
