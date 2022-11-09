@@ -17,7 +17,6 @@ const translations = {
   message: {
     required: i18n.t('feedback_form:config.message.required'),
     max: i18n.t('feedback_form:config.message.max'),
-    min: i18n.t('feedback_form:config.message.min'),
     label: i18n.t('feedback_form:config.message.label'),
     placeholder: i18n.t('feedback_form:config.message.placeholder'),
   },
@@ -85,10 +84,6 @@ export const FeedbackFormConfig: Record<string, any> = {
       maxLength: {
         value: 500,
         message: translations.message.max,
-      },
-      minLength: {
-        value: 50,
-        message: translations.message.min,
       },
     },
     config: {
