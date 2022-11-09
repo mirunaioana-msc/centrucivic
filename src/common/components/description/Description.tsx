@@ -7,8 +7,8 @@ interface DescriptionProps {
   image: string;
   isTextRight?: boolean;
   cta?: {
-    label: string;
-    link: string;
+    label?: string;
+    link?: string;
   };
 }
 

@@ -7,7 +7,7 @@
   },
   "menu": {
     "home": "Acasa",
-    "about": "Despre Practice for Good",
+    "about": "Despre Centru Civic",
     "practice_programs": "Stagii practica",
     "organizations": "ONG-uri",
     "contact": "Contact"
@@ -120,8 +120,8 @@
     "title": "Contactează-ne"
   },
   "about": {
-    "p4g": {
-      "title": "Despre Practice for Good",
+    "civic_center": {
+      "title": "Despre Centru Civic",
       "paragraph_1": "Lorem ipsum. Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România. În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
       "paragraph_2": "Lorem ipsum. Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România. În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
       "paragraph_3": "Lorem ipsum. Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România. În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească."
