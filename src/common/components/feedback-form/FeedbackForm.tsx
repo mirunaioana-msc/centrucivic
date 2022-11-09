@@ -121,7 +121,7 @@ const FeedbackForm = () => {
       )}
       {showSuccess && (
         <div className="flex-1 flex flex-col items-center justify-center mb-10">
-          <CheckCircleIcon className="sm:w-24 w-12 mb-6" />
+          <CheckCircleIcon className="sm:w-24 w-12 mb-6 text-green" />
           <p className="subtitle">{t('contact_message_1', { ns: 'common' })}</p>
           <p className="body-text">{t('contact_message_2', { ns: 'common' })}</p>
         </div>

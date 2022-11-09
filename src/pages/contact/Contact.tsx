@@ -21,9 +21,9 @@ const Contact = () => {
   });
 
   const onSendMail = () => {
-    console.log('Not yet implemented');
+    alert('Not yet implemented');
     reset();
-    setShowSuccess(false);
+    setShowSuccess(true);
   };
 
   return (
@@ -103,7 +103,7 @@ const Contact = () => {
         )}
         {showSuccess && (
           <div className="flex-1 flex flex-col items-center justify-center">
-            <CheckCircleIcon className="sm:w-24 w-12 mb-6" />
+            <CheckCircleIcon className="sm:w-24 w-12 mb-6 text-green" />
             <p className="subtitle">{t('contact_message_1', { ns: 'common' })}</p>
             <p className="body-text">{t('contact_message_2', { ns: 'common' })}</p>
           </div>
