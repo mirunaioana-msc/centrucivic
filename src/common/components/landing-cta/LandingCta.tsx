@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { openInNewTab } from '../../helpers/Format.helper';
 import LandingCtaItem from './components/LandingCtaItem';
 
 const LandingCta = () => {
@@ -14,21 +15,15 @@ const LandingCta = () => {
         title={t('cta.title_1')}
         description={t('cta.description_1')}
         buttonText={t('cta.register')}
-        buttonClasses="yellow-button bg-black text-white my-8"
-        onClick={() =>
-          window.open(
-            process.env.REACT_APP_CREATE_ONG_PROFILE_LINK,
-            '_blank',
-            'noopener,noreferrer',
-          )
-        }
+        buttonClasses="yellow-button bg-black text-white my-8 xs:w-2/6 w-1/2"
+        onClick={() => openInNewTab(process.env.REACT_APP_CREATE_ONG_PROFILE_LINK!)}
       />
       <LandingCtaItem
         backgroundColor="bg-gray-100"
         title={t('cta.title_2')}
         description={t('cta.description_2')}
         buttonText={t('cta.discover_ongs')}
-        buttonClasses="yellow-button my-8"
+        buttonClasses="yellow-button my-8 xs:w-2/6 w-1/2"
         onClick={() => navigate('/organizations')}
         anchorLinkText={t('cta.p4g_link')}
       />

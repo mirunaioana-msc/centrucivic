@@ -15,7 +15,7 @@ const LandingCtaItem = (props: LandingCtaItemProps) => {
     <div className={props.backgroundColor}>
       <div className="flex flex-col mx-10 my-8 pl-10 xl:pl-24">
         <p className="title h-28">{props.title}</p>
-        <p className="text-base w-1/2">
+        <p className="text-base">
           {props.description}
           {props.anchorLinkText && (
             <a href={process.env.REACT_APP_P4G_LINK} target="_blank" rel="noreferrer noopener">
