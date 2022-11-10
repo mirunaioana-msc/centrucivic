@@ -29,7 +29,7 @@ const ContactInputField = (props: {
                 ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
                 : '',
               props.config.addOn ? 'pl-14' : 'pl-4',
-              'block rounded-md w-full border border-gray-300 shadow-sm body-text disabled:bg-gray-100 py-2 px-3',
+              'block rounded-md w-full border border-gray-300 shadow-sm body-text disabled:bg-gray-150 py-2 px-3',
             )}
             placeholder={props.config.placeholder}
             defaultValue={props.config.defaultValue}

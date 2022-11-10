@@ -24,7 +24,7 @@
 
 @layer components {
   .gray-button {
-    @apply w-full py-4 px-[45px] shadow-sm bg-gray-100 text-medium sm:w-auto;
+    @apply w-full py-4 px-[45px] shadow-sm bg-gray-150 text-medium sm:w-auto;
   }
 
   body {
@@ -32,7 +32,7 @@
   }
 
   .yellow-button {
-    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow-500 sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit;
+    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow-500 sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple;
   }
 
   .title {
@@ -56,6 +56,14 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+  }
+
+  .virtuso-grid-item {
+    @apply w-[22.75rem]
+  }
+
+  .virtuso-grid-list {
+    @apply flex flex-wrap gap-8;
   }
 }
 
