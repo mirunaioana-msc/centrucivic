@@ -12,7 +12,7 @@ export const NGOSearchConfig: Record<string, any> = {
       type: 'text',
       label: '',
       helperText: '',
-      placeholder: i18n.t("ngo-search:config.search.placeholder"),
+      placeholder: i18n.t("ngo_search:config.search.placeholder"),
       addOn: () => IconAddon({ icon: SearchIcon })
     },
   },
@@ -21,7 +21,7 @@ export const NGOSearchConfig: Record<string, any> = {
     label: '',
     rules: {
     },
-    placeholder: i18n.t('ngo-search:config.location.placeholder'),
+    placeholder: i18n.t('ngo_search:config.location.placeholder'),
     addOn: () => IconAddon({ icon: LocationMarkerIcon })
   },
   domains: {
@@ -29,7 +29,7 @@ export const NGOSearchConfig: Record<string, any> = {
     rules: {
     },
     config: {
-      placeholder: i18n.t('ngo-search:config.domains.placeholder')
+      placeholder: i18n.t('ngo_search:config.domains.placeholder')
     },
   },
 }

@@ -3,6 +3,7 @@ import { ISelectData } from '../common/helpers/Nomenclature.helper';
 import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
+import { OrganizationFilter } from '../common/interfaces/OrganizationFilter.interface';
 import { OrganizationFlat } from '../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../common/interfaces/PaginatedEntity.interface';
 import { IService } from '../common/interfaces/Service.interface';
@@ -26,8 +27,14 @@ interface ServicesState {
 }
 
 interface OrganizationsState {
-  organizations: PaginatedEntity<OrganizationFlat>;
+  organizations: PaginatedEntity<OrganizationFlat> & { filters: OrganizationFilter };
   setOrganizations: (organizations: PaginatedEntity<OrganizationFlat>) => void;
+  nextPageOrganizations: () => void;
+  updateOrganizationFilters: (
+    search: string,
+    locationId: ISelectData,
+    selectedDomains: ISelectData[],
+  ) => void;
 }
 
 interface NomenclatureState {
