@@ -1,4 +1,4 @@
 export enum COUNTER_TYPE {
-  PROGRAMS = 'programs',
+  SERVICES = 'services',
   NGOS = 'ngos',
 }

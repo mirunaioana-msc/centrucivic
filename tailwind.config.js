@@ -117,7 +117,7 @@ module.exports = {
       },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
-        search: 'url(./assets/images/search.png)',
+        search: 'url(./assets/images/background-search-image.svg)',
       },
     },
   },

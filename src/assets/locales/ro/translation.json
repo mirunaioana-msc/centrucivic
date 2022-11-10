@@ -89,16 +89,25 @@
   },
   "landing": {
     "about": {
-      "title": "Despre Practice4Good",
-      "paragraph_1": "Deși organizațiile neguvernamentale sunt poate cel mai dinamic loc de muncă în care un student sau un proaspăt absolvent ar putea activa pentru a câștiga experientă, mediul ONG nu este o destinație obișnuită pentru acesta. Vreem să schimbăm acest lucru! Practice4Good este o platformă cu  anunțuri de practică și internship în ONG-urile care ne fac viața de zi cu zi mai bună.",
+      "title": "Despre Centrul Civic",
+      "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Această platformă este locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
       "action": "Susține proiectul"
     },
     "counter": {
-      "programs": "Programe și activități adăugate pe platformă",
-      "ngos": "ONG-uri din România active pe platformă"
+      "services": "Servicii adăugate pe platformă",
+      "ngos": "ONG-uri active pe platformă"
     },
     "domains": {
       "title": "Domenii"
+    },
+    "cta": {
+      "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
+      "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în ONG Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
+      "register": "Inscrie-te in ONG Hub",
+      "title_2": "Vrei sa te implici ca voluntar?",
+      "description_2": "Poți contacta ONG-urile din Centru Civic pentru a descoperi cum poți deveni voluntar. Dacă ești student, vezi programele de practică disponibile în sectorul non-profit pe ",
+      "p4g_link": "Practice for Good.",
+      "discover_ongs": "Descopera ONG-urile"
     }
   },
   "organizations": {
