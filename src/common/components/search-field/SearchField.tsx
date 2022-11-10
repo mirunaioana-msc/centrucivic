@@ -19,7 +19,7 @@ const SearchField = (props: {
             props.config.error
               ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : '',
             props.config.addOn ? 'pl-10' : 'pl-4',
-            'block h-14 w-full border border-gray-500 shadow-md sm:text-xl text-gray-500 text-base disabled:bg-gray-100 p-4 font-titillium',
+            'block h-14 w-full border border-gray-100 shadow-md sm:text-xl text-gray-500 text-base disabled:bg-gray-150 p-4 font-titillium',
           )}
           placeholder={props.config.placeholder}
           defaultValue={props.config.defaultValue}

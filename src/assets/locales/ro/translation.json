@@ -1,6 +1,9 @@
 {
   "common": {
     "greeting": "buna",
+    "loading": "Se incarca...",
+    "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
+    "end_of_list": "Nu mai sunt date de afisat",
     "send": "Trimite",
     "contact_message_1": "Feedback trimis cu succes!",
     "contact_message_2": "Te vom contacta cât de curând."
@@ -8,20 +11,22 @@
   "menu": {
     "home": "Acasa",
     "about": "Despre Centru Civic",
-    "practice_programs": "Stagii practica",
+    "services": "Servicii",
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
-  "practice-programs-search": {
-    "title": "Programe de practica la ONG-uri din România",
+  "service_search": {
+    "title": "Caută servicii în funcție de nevoile tale",
+    "subtitle": "Caută un serviciu specific în funcție de nevoile tale, sau ",
+    "subtitle_link": "Descoperă toate serviciile.",
     "filters": "Filtre",
     "selected": "selectate",
-    "searchWord": "Cauta",
+    "searchWord": "Caută",
     "config": {
       "search": {
         "max": "Cautarea nu poate avea mai mult de 50 de caractere",
         "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau program..."
+        "placeholder": "Cauta ong sau serviciu..."
       },
       "location": {
         "placeholder": "Toata Romania"
@@ -35,13 +40,30 @@
       "end": {
         "placeholder": "Data Sfarsit"
       },
-      "workingHours": {
-        "placeholder": "Numar ore"
+      "ageCategories": {
+        "placeholder": "Orice Varsta"
       },
       "domains": {
         "placeholder": "Orice domeniu"
       }
     }
+  },
+  "services": {
+    "one_service_title": "Serviciu",
+    "many_services_title": "Servicii",
+    "no_service": "Nu au fost găsite servicii.",
+    "action": "Detalii",
+    "errors": {
+      "search": "Eroare la incarcarea serviciilor"
+    }
+  },
+  "service_card": {
+    "available": "Disponibil",
+    "access": "Cum poate fi accesat serviciul",
+    "online": "Online",
+    "email": "Email sau telefon",
+    "location": "La locatie",
+    "details": "Detalii"
   },
   "ngo-search": {
     "title": "Caută organizații",
