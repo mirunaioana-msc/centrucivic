@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
+import { VirtuosoGrid } from 'react-virtuoso';
 import useStore from '../../store/Store';
 import { useServicesQuery } from '../../services/service/Services.queries';
 import NoData from '../../common/components/no-data/NoData';
@@ -30,7 +30,7 @@ const Services = () => {
         {error && !isLoading ? (
           <NoData retry={refetch}>{t('errors.search')}</NoData>
         ) : (
-          <div className="flex flex-col w-full px-4 sm:px-8 md:px-20 lg:px-48 pt-10">
+          <div className="flex flex-col w-full px-4 sm:px-8 md:px-16 lg:px-40 pt-10">
             {services.length !== 0 && !isLoading && (
               <p className="title text-center">{`${total} ${total > 1 ? t('many_services_title') : t('one_service_title')
                 }`}</p>

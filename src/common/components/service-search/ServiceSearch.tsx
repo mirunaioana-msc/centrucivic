@@ -56,7 +56,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   }, []);
 
   const search = (data: any) => {
-    console.log(data);
     updateServicesFilters(
       data.search,
       data.locationId,
