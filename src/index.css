@@ -24,7 +24,7 @@
 
 @layer components {
   .gray-button {
-    @apply w-full py-4 px-[45px] shadow-sm bg-gray-100 text-medium sm:w-auto;
+    @apply w-full py-4 px-[45px] shadow-sm bg-gray-150 text-medium sm:w-auto;
   }
 
   body {
@@ -56,6 +56,14 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+  }
+
+  .virtuso-grid-item {
+    @apply w-[22.75rem]
+  }
+
+  .virtuso-grid-list {
+    @apply flex flex-wrap gap-8;
   }
 }
 

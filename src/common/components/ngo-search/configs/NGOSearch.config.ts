@@ -1,6 +1,5 @@
 import { LocationMarkerIcon, SearchIcon } from "@heroicons/react/solid";
 import i18n from "../../../configs/i18n";
-import { WorkingHours } from "../../../enums/WorkingHours.enum";
 import IconAddon from "../../icon-addon/IconAddon";
 
 
