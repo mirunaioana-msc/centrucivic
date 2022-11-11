@@ -35,7 +35,7 @@ const Organizations = () => {
               <p className="title text-center">{`${total} ${total > 1 ? t('many_organizations_title') : t('one_organization_title')
                 }`}</p>
             )}
-            <div className="">
+            <div className="mb-[10rem]">
               <VirtuosoGrid
                 useWindowScroll
                 style={{ height: '100vw' }}

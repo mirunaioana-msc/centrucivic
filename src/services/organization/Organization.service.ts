@@ -11,7 +11,7 @@ export const searchOrganizations = async (
   locationId?: ISelectData,
   domains?: ISelectData[],
 ): Promise<PaginatedEntity<OrganizationFlat>> => {
-  return API.get('organization/civic-center', {
+  return API.get('api/civic-service/organization', {
     params: {
       limit,
       page,
