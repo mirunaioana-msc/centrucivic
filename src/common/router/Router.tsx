@@ -4,7 +4,6 @@ import Landing from '../../pages/landing/Landing';
 import Organizations from '../../pages/organizations/Organizations';
 import Layout from '../containers/Layout';
 import About from '../../pages/about/About';
-import NGOList from '../../pages/ngo-list/NGOList';
 import Contact from '../../pages/contact/Contact';
 import Services from '../../pages/services/Services';
 
@@ -27,7 +26,6 @@ const Router = () => {
 
           {/* About page */}
           <Route path="about" element={<About />}></Route>
-          <Route path="ongs" element={<NGOList />}></Route>
         </Route>
 
         {/* Wild Card */}
