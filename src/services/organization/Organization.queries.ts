@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { PaginatedEntity } from "../../common/interfaces/PaginatedEntity.interface";
-import { searchOrganizations } from "./Organization.service";
+import { getOrganizationWithCivicServices, searchOrganizations } from "./Organization.service";
 
 export const useOrganizationQuery = (
   limit: number,
@@ -20,3 +20,14 @@ export const useOrganizationQuery = (
     },
   );
 }
+
+export const useOrganization = (organizationId: string) => {
+  return useQuery(
+    ['organization', organizationId],
+    () => getOrganizationWithCivicServices(organizationId),
+    {
+      enabled: !!organizationId,
+      retry: 0,
+    },
+  );
+};

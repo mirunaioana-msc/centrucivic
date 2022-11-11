@@ -7,7 +7,7 @@ const Organizations = () => {
   return (
     <ShapeWrapper>
       <OrganizationsList
-        organizations={ORGANIZATIONS.items}
+        organizations={[]} // Throws errors -> there's an open PR for this page.
         total={ORGANIZATIONS.meta.itemCount}
       ></OrganizationsList>
     </ShapeWrapper>

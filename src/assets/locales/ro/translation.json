@@ -65,6 +65,15 @@
     "location": "La locatie",
     "details": "Detalii"
   },
+  "organization_details": {
+    "activity_domains": "Domenii activitate",
+    "contact": "Contact",
+    "social_media": "Social media",
+    "programs_title": "Serviciile organizației",
+    "errors": {
+      "get": "Eroare la incarcarea organizatiei"
+    }
+  },
   "ngo-search": {
     "title": "Caută organizații",
     "filters": "Filtre",

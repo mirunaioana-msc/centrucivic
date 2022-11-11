@@ -7,6 +7,7 @@ import About from '../../pages/about/About';
 import NGOList from '../../pages/ngo-list/NGOList';
 import Contact from '../../pages/contact/Contact';
 import Services from '../../pages/services/Services';
+import Organization from '../../pages/organizations/Organization';
 
 const Router = () => {
   return (
@@ -21,6 +22,9 @@ const Router = () => {
 
           {/* NGO list page */}
           <Route path="organizations" element={<Organizations />}></Route>
+
+          {/* NGO details page */}
+          <Route path="organizations/:id" element={<Organization />}></Route>
 
           {/* Contact page */}
           <Route path="contact" element={<Contact />}></Route>

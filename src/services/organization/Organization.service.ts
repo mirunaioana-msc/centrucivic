@@ -1,3 +1,4 @@
+import { Organization } from "../../common/interfaces/Organization.interface";
 import { PaginatedEntity } from "../../common/interfaces/PaginatedEntity.interface";
 import API from "../API";
 
@@ -17,4 +18,10 @@ export const searchOrganizations = async (
   if (domains) requestUrl = `${requestUrl}&${domains.map(f => `domains[]=${f}`).join('&')}`;
 
   return API.get(requestUrl).then((res) => res.data);
+};
+
+export const getOrganizationWithCivicServices = async (
+  organizationId: string,
+): Promise<Organization> => {
+  return API.get(`api/civic-service/organization/${organizationId}/`).then((res) => res.data);
 };
