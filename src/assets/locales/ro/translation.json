@@ -74,7 +74,7 @@
       "get": "Eroare la incarcarea organizatiei"
     }
   },
-  "ngo-search": {
+  "ngo_search": {
     "title": "Caută organizații",
     "filters": "Filtre",
     "selected": "selectate",
@@ -123,7 +123,10 @@
     "one_organization_title": "ONG",
     "many_organizations_title": "ONG-uri",
     "no_organizations": "Nu au fost găsite ONG-uri",
-    "action": "Vezi mai mult"
+    "action": "Vezi mai mult",
+    "errors": {
+      "search": "Eroare la incarcarea ONG-urilor"
+    }
   },
   "practice_programs": {
     "one_program_title": "program de practică",

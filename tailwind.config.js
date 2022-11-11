@@ -117,7 +117,7 @@ module.exports = {
       },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
-        search: 'url(./assets/images/background-search-image.svg)',
+        search: 'linear-gradient(0deg, rgba(255, 223, 112, 0.5), rgba(255, 223, 112, 0.5)), url(./assets/images/background-search-image.svg)',
       },
     },
   },
