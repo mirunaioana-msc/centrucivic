@@ -22,8 +22,8 @@ export const searchOrganizations = async (
   }).then((res) => res.data);
 };
 
-export const getOrganizationWithPracticePrograms = async (
+export const getOrganizationWithCivicServices = async (
   organizationId: string,
 ): Promise<Organization> => {
-  return API.get(`organization/${organizationId}/practice-program`).then((res) => res.data);
+  return API.get(`api/civic-service/organization/${organizationId}/`).then((res) => res.data);
 };
