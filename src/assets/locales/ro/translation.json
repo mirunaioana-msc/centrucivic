@@ -158,9 +158,13 @@
         "label": "Mesajul tău"
       }
     },
+    "action": "Trimite",
     "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România.",
     "paragraph_2": "În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
-    "title": "Contactează-ne"
+    "title": "Contactează-ne",
+    "contact_message_1": "Feedback trimis cu succes!",
+    "contact_message_2": "Te vom contacta cât de curând.",
+    "send_error": "Mesajul dumneavoastra nu s-a putut trimite"
   },
   "about": {
     "civic_center": {

@@ -5,9 +5,12 @@ import { Controller, useForm } from 'react-hook-form';
 import Textarea from '../../common/components/textarea/Textarea';
 import ContactInputField from '../../common/components/contact-input-field/ContactInputField';
 import { CheckCircleIcon } from '@heroicons/react/outline';
+import { useErrorToast } from '../../common/hooks/useToast';
+import { useSendContactMailMutation } from '../../services/public/PublicApi.queries';
 
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const sendContactMailMutation = useSendContactMailMutation();
   const { t } = useTranslation(['contact', 'common']);
 
   const {
@@ -20,10 +23,20 @@ const Contact = () => {
     reValidateMode: 'onChange',
   });
 
-  const onSendMail = () => {
-    alert('Not yet implemented');
-    reset();
-    setShowSuccess(true);
+  const onSendMail = async (data: any) => {
+    sendContactMailMutation.mutate(
+      { type: 'Civic Center', ...data },
+      {
+        onSuccess: () => {
+          reset();
+          setShowSuccess(true);
+        },
+        onError: () => {
+          console.log(data);
+          useErrorToast(t('send_error'));
+        },
+      },
+    );
   };
 
   return (
@@ -39,17 +52,17 @@ const Contact = () => {
           <div className="flex flex-1 flex-col sm:gap-y-6 gap-y-3">
             <form className="flex flex-col sm:gap-y-6 gap-y-3">
               <Controller
-                key={ContactConfig.name.key}
-                name={ContactConfig.name.key}
-                rules={ContactConfig.name.rules}
+                key={ContactConfig.sender.key}
+                name={ContactConfig.sender.key}
+                rules={ContactConfig.sender.rules}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                   return (
                     <ContactInputField
                       config={{
-                        ...ContactConfig.name.config,
-                        name: ContactConfig.name.key,
-                        error: errors[ContactConfig.name.key]?.message,
+                        ...ContactConfig.sender.config,
+                        name: ContactConfig.sender.key,
+                        error: errors[ContactConfig.sender.key]?.message,
                         defaultValue: value,
                         onChange: onChange,
                       }}
@@ -58,17 +71,17 @@ const Contact = () => {
                 }}
               />
               <Controller
-                key={ContactConfig.email.key}
-                name={ContactConfig.email.key}
-                rules={ContactConfig.email.rules}
+                key={ContactConfig.from.key}
+                name={ContactConfig.from.key}
+                rules={ContactConfig.from.rules}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                   return (
                     <ContactInputField
                       config={{
-                        ...ContactConfig.email.config,
-                        name: ContactConfig.email.key,
-                        error: errors[ContactConfig.email?.key]?.message,
+                        ...ContactConfig.from.config,
+                        name: ContactConfig.from.key,
+                        error: errors[ContactConfig.from?.key]?.message,
                         defaultValue: value,
                         onChange: onChange,
                       }}
@@ -77,17 +90,17 @@ const Contact = () => {
                 }}
               />
               <Controller
-                key={ContactConfig.message.key}
-                name={ContactConfig.message.key}
-                rules={ContactConfig.message.rules}
+                key={ContactConfig.text.key}
+                name={ContactConfig.text.key}
+                rules={ContactConfig.text.rules}
                 control={control}
                 render={({ field: { onChange, value } }) => {
                   return (
                     <Textarea
                       config={{
-                        ...ContactConfig.message.config,
-                        name: ContactConfig.message.key,
-                        error: errors[ContactConfig.message?.key]?.message,
+                        ...ContactConfig.text.config,
+                        name: ContactConfig.text.key,
+                        error: errors[ContactConfig.text?.key]?.message,
                         defaultValue: value,
                         onChange: onChange,
                       }}

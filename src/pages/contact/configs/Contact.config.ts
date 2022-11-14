@@ -2,21 +2,21 @@ import i18n from '../../../common/configs/i18n';
 import { EMAIL_REGEX, NAME_REGEX } from '../../../common/helpers/Format.helper';
 
 const translations = {
-  name: {
+  sender: {
     required: i18n.t('contact:form.name.required'),
     max: i18n.t('contact:form.name.max'),
     min: i18n.t('contact:form.name.min'),
     invalid: i18n.t('contact:form.name.invalid'),
     label: i18n.t('contact:form.name.label'),
   },
-  email: {
+  from: {
     required: i18n.t('contact:form.email.required'),
     max: i18n.t('contact:form.email.max'),
     min: i18n.t('contact:form.email.min'),
     invalid: i18n.t('contact:form.email.invalid'),
     label: i18n.t('contact:form.email.label'),
   },
-  message: {
+  text: {
     required: i18n.t('contact:form.message.required'),
     max: i18n.t('contact:form.message.max'),
     min: i18n.t('contact:form.message.min'),
@@ -25,79 +25,75 @@ const translations = {
 };
 
 export const ContactConfig: Record<string, any> = {
-  name: {
-    key: 'name',
+  sender: {
+    key: 'sender',
     rules: {
       required: {
         value: true,
-        message: translations.name.required,
+        message: translations.sender.required,
       },
       maxLength: {
         value: 100,
-        message: translations.name.max,
+        message: translations.sender.max,
       },
       minLength: {
         value: 3,
-        message: translations.name.min,
+        message: translations.sender.min,
       },
       pattern: {
         value: NAME_REGEX,
-        message: translations.name.invalid,
+        message: translations.sender.invalid,
       },
     },
     config: {
       type: 'text',
-      label: translations.name.label,
+      label: translations.sender.label,
       helperText: '',
       placeholder: '',
     },
   },
-  email: {
-    key: 'email',
+  from: {
+    key: 'from',
     rules: {
       required: {
         value: true,
-        message: translations.email.required,
+        message: translations.from.required,
       },
       maxLength: {
         value: 100,
-        message: translations.email.max,
+        message: translations.from.max,
       },
       minLength: {
         value: 3,
-        message: translations.email.min,
+        message: translations.from.min,
       },
       pattern: {
         value: EMAIL_REGEX,
-        message: translations.email.invalid,
+        message: translations.from.invalid,
       },
     },
     config: {
       type: 'text',
-      label: translations.email.label,
+      label: translations.from.label,
       helperText: '',
       placeholder: '',
     },
   },
-  message: {
-    key: 'message',
+  text: {
+    key: 'text',
     rules: {
       required: {
         value: true,
-        message: translations.message.required,
+        message: translations.text.required,
       },
       maxLength: {
         value: 250,
-        message: translations.message.max,
-      },
-      minLength: {
-        value: 50,
-        message: translations.message.min,
+        message: translations.text.max,
       },
     },
     config: {
       type: 'text',
-      label: translations.message.label,
+      label: translations.text.label,
       helperText: '',
       placeholder: '',
     },
