@@ -3,7 +3,6 @@ import ServicesSearch from '../../common/components/service-search/ServiceSearch
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { LANDING_DOMAINS } from '../../common/constants/nomenclature.constants';
 import Domains from './components/domains/Domains';
-import { LANDING_COUNTER_ITEMS } from '../../common/constants/nomenclature.constants';
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +27,7 @@ const Landing = () => {
           isTextRight={true}
         ></Description>
       </div>
-      <Counter counterItems={LANDING_COUNTER_ITEMS}></Counter>
+      <Counter />
       <ShapeWrapper>
         {' '}
         <Domains domains={LANDING_DOMAINS}></Domains>
