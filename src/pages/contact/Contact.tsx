@@ -7,6 +7,8 @@ import ContactInputField from '../../common/components/contact-input-field/Conta
 import { CheckCircleIcon } from '@heroicons/react/outline';
 import { useErrorToast } from '../../common/hooks/useToast';
 import { useSendContactMailMutation } from '../../services/public/PublicApi.queries';
+import { COUNTER_APP } from '../../common/constants/CounterApp.constants';
+import { MAIL_APP_TYPE } from '../../common/constants/MailAppType.constants';
 
 const Contact = () => {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -25,7 +27,7 @@ const Contact = () => {
 
   const onSendMail = async (data: any) => {
     sendContactMailMutation.mutate(
-      { type: 'Civic Center', ...data },
+      { type: MAIL_APP_TYPE.CIVIC_CENTER, ...data },
       {
         onSuccess: () => {
           reset();
