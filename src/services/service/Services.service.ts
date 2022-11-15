@@ -1,4 +1,3 @@
-import { AgeCategories } from '../../common/enums/AgeCategory.enum';
 import { ISelectData } from '../../common/helpers/Nomenclature.helper';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IService } from '../../common/interfaces/Service.interface';
