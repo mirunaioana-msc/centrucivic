@@ -24,7 +24,7 @@ API.interceptors.response.use(
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async (error: any) => {
-    if (error.response.status === 403) {
+    if (error?.response?.status === 403) {
       window.location.href = '/';
     }
 
