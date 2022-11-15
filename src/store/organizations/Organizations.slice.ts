@@ -1,5 +1,6 @@
 import { OrderDirection } from '../../common/enums/OrderDirection.enum';
 import { ISelectData } from '../../common/helpers/Nomenclature.helper';
+import { Organization } from '../../common/interfaces/Organization.interface';
 import { OrganizationFilter } from '../../common/interfaces/OrganizationFilter.interface';
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
@@ -22,6 +23,8 @@ export const organizationsSlice = (set: any) => ({
       domains: [],
     },
   },
+  selectedOrganization: null,
+  setSelectedOrganization: (selectedOrganization: Organization) => set({ selectedOrganization }),
   setOrganizations: (organizations: PaginatedEntity<OrganizationFlat>) => {
     set((state: { organizations: PaginatedEntity<OrganizationFlat> & OrganizationFilter }) => ({
       organizations: {

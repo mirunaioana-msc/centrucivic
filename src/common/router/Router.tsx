@@ -7,6 +7,7 @@ import About from '../../pages/about/About';
 import Contact from '../../pages/contact/Contact';
 import Services from '../../pages/services/Services';
 import Organization from '../../pages/organizations/Organization';
+import { MENU_ROUTES_HREF } from '../constants/Menu.constants';
 
 const Router = () => {
   return (
@@ -17,19 +18,20 @@ const Router = () => {
           <Route index element={<Landing />}></Route>
 
           {/* Services page */}
-          <Route path="services" element={<Services />}></Route>
+          {/* Practice programs page */}
+          <Route path={MENU_ROUTES_HREF.services} element={<Services />}></Route>
 
           {/* NGO list page */}
-          <Route path="organizations" element={<Organizations />}></Route>
+          <Route path={MENU_ROUTES_HREF.organizations} element={<Organizations />}></Route>
 
           {/* NGO details page */}
-          <Route path="organizations/:id" element={<Organization />}></Route>
+          <Route path={`${MENU_ROUTES_HREF.organizations}/:id`} element={<Organization />}></Route>
 
           {/* Contact page */}
-          <Route path="contact" element={<Contact />}></Route>
+          <Route path={MENU_ROUTES_HREF.contact} element={<Contact />}></Route>
 
           {/* About page */}
-          <Route path="about" element={<About />}></Route>
+          <Route path={MENU_ROUTES_HREF.about} element={<About />}></Route>
         </Route>
 
         {/* Wild Card */}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
 import SlidingMenu from '../components/sliding-menu/SlidingMenu';
@@ -12,7 +13,8 @@ const Layout = () => {
     <div className="w-screen h-screen max-w-full">
       <Header openSlidingMenu={setSlidingMenuOpen} />
       <SlidingMenu isOpen={isSlidingMenuOpen} setSlidingMenuOpen={setSlidingMenuOpen} />
-      <div className="content flex w-full">
+      <div className="content flex flex-col w-full">
+        <Breadcrumbs />
         <Outlet />
       </div>
       <Footer />

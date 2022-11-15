@@ -6,3 +6,8 @@ export const useOrganizations = () => {
   const meta = useStore((state) => state.organizations.meta);
   return { organizations, filters, meta };
 };
+
+export const useSelectedOrganization = () => {
+  const selectedOrganization = useStore((state) => state.selectedOrganization);
+  return { selectedOrganization };
+}

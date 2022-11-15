@@ -25,6 +25,8 @@ export const servicesSlice = (set: any) => ({
       ageCategories: undefined,
     },
   },
+  selectedService: null,
+  setSelectedService: (selectedService: IService) => set({ selectedService }),
   setServices: (services: PaginatedEntity<IService>) => {
     set((state: { services: PaginatedEntity<IService> }) => ({
       services: {
