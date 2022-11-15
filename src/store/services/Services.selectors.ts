@@ -6,3 +6,8 @@ export const useServices = () => {
   const meta = useStore((state) => state.services.meta);
   return { services, filters, meta };
 };
+
+export const useSelectedService = () => {
+  const selectedService = useStore((state) => state.selectedService);
+  return { selectedService }
+}

@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Organization } from '../../common/interfaces/Organization.interface';
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { useOrganizations } from '../../store/Selectors';
@@ -26,10 +27,15 @@ export const useOrganizationQuery = () => {
 }
 
 export const useOrganization = (organizationId: string) => {
+  const { setSelectedOrganization } = useStore();
+
   return useQuery(
     ['organization', organizationId],
     () => getOrganizationWithCivicServices(organizationId),
     {
+      onSuccess: (data: Organization) => {
+        setSelectedOrganization(data);
+      },
       enabled: !!organizationId,
       retry: 0,
     },
