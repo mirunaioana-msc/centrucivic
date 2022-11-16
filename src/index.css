@@ -65,6 +65,31 @@
   .virtuso-grid-list {
     @apply flex flex-wrap gap-8;
   }
+
+  .menu-title {
+    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3;
+  }
+
+  .side-menu-title {
+    @apply font-titilliumBold text-lg text-gray-900 leading-3;
+  }
+
+  .footer-title {
+    @apply font-titilliumBold text-base text-yellow-1000;
+  }
+
+  .footer-text {
+    @apply font-titillium text-base text-gray-300;
+  }
+
+  .footer-url {
+    @apply footer-text hover:underline cursor-pointer;
+  }
+
+  .show-more-text {
+    @apply text-blue cursor-pointer underline;
+  }
+
 }
 
 .content {
