@@ -1,10 +1,11 @@
 .reactselect__control {
   /* border-radius: 6px !important; */
-  border: 1px solid #F2F2F2!important;
+  border: unset!important;
   border-radius: 0!important;
   padding: 8px;
   height: 56px;
   line-height: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)!important;
  
   
 }
@@ -20,7 +21,7 @@
   }
 
   .reactselect__control { 
-    font-size: 1.25rem!important;
+    font-size: 1.125rem!important;
     font-family: 'TitilliumWeb-Regular'!important
   }
 }
@@ -77,9 +78,8 @@
 }
 
 .reactselect__menu {
-  border: 1px solid #6B7280;
-  border-radius: 0px!important;
   font-family: 'TitilliumWeb-Regular'!important;
+  z-index: 999!important;
 }
 
 .reactselect__option:hover {

@@ -3,13 +3,13 @@ import { CalendarIcon } from '@heroicons/react/outline';
 import { default as ReactDatePicker } from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { classNames } from '../../helpers/Tailwind.helper';
 
 interface DateRangePickerProps {
   defaultValue?: any;
   placeholder?: string;
   onChange?: (range: any) => void;
 }
-
 
 
 const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProps) => {
@@ -30,11 +30,11 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
   return (
     <div className="relative w-full">
       <div className="relative rounded-md">
-        <div className="absolute inset-y-0 right-0 pl-3 hidden items-center pointer-events-none z-10 md:flex">
-          <CalendarIcon className="-ml-1 mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
+        <div className="flex absolute inset-y-0 left-0 pl-3 items-center pointer-events-none z-10">
+          <CalendarIcon className={classNames(`-ml-1 mr-2 h-5 w-5`, defaultValue ? 'text-purple' : 'text-gray-500')} aria-hidden="true" />
         </div>
         <ReactDatePicker
-          className="block h-14 w-full p-4 shadow-sm sm:text-xl border border-gray-100 placeholder:text-gray-500"
+          className="block h-14 w-full p-4 pl-8 shadow-md sm:text-lg placeholder:text-gray-500"
           selectsRange={false}
           onChange={(update: Date) => {
             setDate(update);

@@ -162,6 +162,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                     onChange={onChange}
                     placeholder={NGOSearchConfig.domains.config.placeholder}
                     options={domains.map(mapItemToSelect)}
+                    icon={NGOSearchConfig.domains.icon}
                   />
                 );
               }}

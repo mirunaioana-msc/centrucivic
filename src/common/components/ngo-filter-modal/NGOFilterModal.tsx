@@ -117,6 +117,7 @@ const NGOFilterModal = ({ onClose }: PracticeProgramFilterModalProps) => {
                               onChange={onChange}
                               placeholder={ServiceSearchConfig.domains.config.placeholder}
                               options={domains.map(mapItemToSelect)}
+                              icon={ServiceSearchConfig.domains.icon}
                             />
                           );
                         }}
