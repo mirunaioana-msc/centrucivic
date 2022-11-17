@@ -3,7 +3,7 @@ import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interfa
 import { IService } from '../../common/interfaces/Service.interface';
 import { useServices } from '../../store/Selectors';
 import useStore from '../../store/Store';
-import { searchServices } from './Services.service';
+import { getServiceById, searchServices } from './Services.service';
 
 export const useServicesQuery = () => {
   const { setServices } = useStore();
@@ -44,3 +44,12 @@ export const useServicesQuery = () => {
     },
   );
 };
+
+export const useService = (id: string) => {
+  const { setSelectedService } = useStore();
+  return useQuery(['service', id], () => getServiceById(id), {
+    enabled: !!id, retry: 0, onSuccess: (data: IService) => {
+      setSelectedService(data);
+    },
+  });
+}

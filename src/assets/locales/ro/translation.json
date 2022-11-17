@@ -6,7 +6,9 @@
     "end_of_list": "Nu mai sunt date de afisat",
     "send": "Trimite",
     "contact_message_1": "Feedback trimis cu succes!",
-    "contact_message_2": "Te vom contacta cât de curând."
+    "contact_message_2": "Te vom contacta cât de curând.",
+    "share": "Distribuie",
+    "shared": "Link-ul a fost copiat"
   },
   "menu": {
     "home": "Acasa",
@@ -64,6 +66,33 @@
     "email": "Email sau telefon",
     "location": "La locatie",
     "details": "Detalii"
+  },
+  "service_details": {
+    "actions": {
+      "open": "Acceseaza online"
+    },
+    "details": {
+      "available": "Disponibil",
+        "age_category": "Categorie de varsta",
+        "domains": "Domenii",
+        "email": "E-mail",
+        "phone": "Telefon",
+        "address": "Adresa",
+        "access": {
+          "online": {
+            "title": "Online",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+          },
+          "email_or_phone": {
+            "title": "Prin e-mail sau telefon",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+          },
+          "physical": {
+            "title": "Prin prezentare la adresa",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+          }
+        }
+    }
   },
   "organization_details": {
     "activity_domains": "Domenii activitate",
