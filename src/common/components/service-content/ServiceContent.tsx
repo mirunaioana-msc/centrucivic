@@ -1,10 +1,11 @@
-import React from 'react';
-import { LocationMarkerIcon } from '@heroicons/react/outline';
+import React, { useState } from 'react';
+import { CheckIcon, LocationMarkerIcon, ShareIcon } from '@heroicons/react/solid';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
-
 import { IService } from '../../interfaces/Service.interface';
 import { calculatePeriod, formatAgeCategories, dataToCsv } from '../../helpers/CivicCenter.helper';
+import copy from 'copy-to-clipboard';
+import { windowOpener } from '../../helpers/Navigation.helper';
 
 interface CivicCenterServiceContentProps {
   service: IService;
@@ -38,19 +39,40 @@ const CivicCenterAccessDetailsRow = ({ label, value }: CivicCenterAccessDetailsR
 );
 
 const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) => {
-  const { t } = useTranslation(['civic_center_service']);
+  const { t } = useTranslation(['service_details']);
+  const [sharedUrl, setSharedUrl] = useState<string>();
+
+  const shareUrl = () => {
+    setSharedUrl(window.location.href);
+    copy(window.location.href);
+  };
 
   return (
     <section className="divide-y divide-gray-100">
       <div className="flex flex-col gap-2 pb-8">
-        <p className="flex font-titilliumSemiBold text-base items-center gap-2">
-          <LocationMarkerIcon className="h-4 w-4" />
-          <span>{service.location.name}</span>
-        </p>
+        <div className='flex justify-between w-full'>
+          <p className="flex font-titilliumSemiBold text-base items-center gap-2">
+            <LocationMarkerIcon className="h-4 w-4" />
+            <span>{service.location.name}</span>
+          </p>
+          <div>
+            {sharedUrl ? (
+              <div className="text-base flex flex-row items-center">
+                <CheckIcon className="w-5 h-5 text-green" />
+                <span className="text-gray-900 ml-1">{t('shared', { ns: 'common' })}</span>
+              </div>
+            ) : (
+              <div className="text-base flex flex-row items-center cursor-pointer" onClick={shareUrl}>
+                <ShareIcon className="w-5 h-5" />
+                <span className="text-gray-900 ml-1">{t('share', { ns: 'common' })}</span>
+              </div>
+            )}
+          </div>
+        </div>
         <h3 className="font-titilliumBold text-2xl">{service.name}</h3>
         <div className="flex flex-col gap-4 font-titillium text-base">
-          <p>{service?.shortDescription}</p>
-          <p>{service?.longDescription}</p>
+          <p className='text-gray-400'>{service?.shortDescription}</p>
+          <p className='text-gray-400'>{service?.longDescription}</p>
         </div>
         <div className="flex flex-col gap-2 md:gap-4 md:flex-row md:flex-wrap">
           <CivicCenterAccessDetailsRow
@@ -67,30 +89,34 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
           />
         </div>
       </div>
-      <div className="flex flex-col gap-4 py-8 xl:flex-row">
+      <div>
+
+      </div>
+      <div className="flex flex-col xl:justify-between divide-y divide-gray-100 xl:divide-none gap-4 py-8 xl:flex-row">
         {service?.hasOnlineAccess && (
-          <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%]">
+          <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%] py-2 xl:py-0">
             <CivicCenterAccessDetail
               title={t('details.access.online.title')}
-              description={t('details.access.online.description')}
+              description={service.onlineAccessDescription}
             />
+            <div className='flex gap-4 py-6'><button className='yellow-button text-base' onClick={() => windowOpener(service.onlineAccessLink)}>{t('actions.open')}</button></div>
           </div>
         )}
         {service?.hasEmailPhoneAccess && (
-          <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%]">
+          <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%] py-2 xl:py-0">
             <CivicCenterAccessDetail
               title={t('details.access.email_or_phone.title')}
-              description={t('details.access.email_or_phone.description')}
+              description={service.emailPhoneAccessDescription}
             />
             <CivicCenterAccessDetailsRow label={t('details.email')} value={service.emailAccess} />
             <CivicCenterAccessDetailsRow label={t('details.phone')} value={service.phoneAccess} />
           </div>
         )}
         {service?.hasPhysicalAccess && (
-          <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%]">
+          <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%] py-2 xl:py-0">
             <CivicCenterAccessDetail
               title={t('details.access.physical.title')}
-              description={t('details.access.physical.description')}
+              description={service.physicalAccessDescription}
             />
             <CivicCenterAccessDetailsRow
               label={t('details.address')}

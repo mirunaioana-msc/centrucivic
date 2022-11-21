@@ -8,6 +8,7 @@ import Contact from '../../pages/contact/Contact';
 import Services from '../../pages/services/Services';
 import Organization from '../../pages/organizations/Organization';
 import { MENU_ROUTES_HREF } from '../constants/Menu.constants';
+import Service from '../../pages/services/Service';
 
 const Router = () => {
   return (
@@ -20,6 +21,8 @@ const Router = () => {
           {/* Services page */}
           {/* Practice programs page */}
           <Route path={MENU_ROUTES_HREF.services} element={<Services />}></Route>
+
+          <Route path={`${MENU_ROUTES_HREF.services}/:id`} element={<Service />}></Route>
 
           {/* NGO list page */}
           <Route path={MENU_ROUTES_HREF.organizations} element={<Organizations />}></Route>
