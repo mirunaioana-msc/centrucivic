@@ -8,35 +8,49 @@ import Contact from '../../pages/contact/Contact';
 import Services from '../../pages/services/Services';
 import Organization from '../../pages/organizations/Organization';
 import { MENU_ROUTES_HREF } from '../constants/Menu.constants';
+import { QueryParamProvider } from 'use-query-params';
+import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
+import { parse, stringify } from 'query-string';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* Landing page */}
-          <Route index element={<Landing />}></Route>
+      <QueryParamProvider
+        adapter={ReactRouter6Adapter}
+        options={{
+          searchStringToObject: parse,
+          objectToSearchString: stringify,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            {/* Landing page */}
+            <Route index element={<Landing />}></Route>
 
-          {/* Services page */}
-          {/* Practice programs page */}
-          <Route path={MENU_ROUTES_HREF.services} element={<Services />}></Route>
+            {/* Services page */}
+            {/* Practice programs page */}
+            <Route path={MENU_ROUTES_HREF.services} element={<Services />}></Route>
 
-          {/* NGO list page */}
-          <Route path={MENU_ROUTES_HREF.organizations} element={<Organizations />}></Route>
+            {/* NGO list page */}
+            <Route path={MENU_ROUTES_HREF.organizations} element={<Organizations />}></Route>
 
-          {/* NGO details page */}
-          <Route path={`${MENU_ROUTES_HREF.organizations}/:id`} element={<Organization />}></Route>
+            {/* NGO details page */}
+            <Route
+              path={`${MENU_ROUTES_HREF.organizations}/:id`}
+              element={<Organization />}
+            ></Route>
 
-          {/* Contact page */}
-          <Route path={MENU_ROUTES_HREF.contact} element={<Contact />}></Route>
+            {/* Contact page */}
+            <Route path={MENU_ROUTES_HREF.contact} element={<Contact />}></Route>
 
-          {/* About page */}
-          <Route path={MENU_ROUTES_HREF.about} element={<About />}></Route>
-        </Route>
+            {/* About page */}
+            <Route path={MENU_ROUTES_HREF.about} element={<About />}></Route>
+          </Route>
 
-        {/* Wild Card */}
-        <Route path="*" element={<Navigate to={'/'}></Navigate>}></Route>
-      </Routes>
+          {/* Wild Card */}
+          <Route path="*" element={<Navigate to={'/'}></Navigate>}></Route>
+        </Routes>
+      </QueryParamProvider>
     </BrowserRouter>
   );
 };
