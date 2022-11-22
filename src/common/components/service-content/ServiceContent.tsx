@@ -27,7 +27,10 @@ const CivicCenterAccessDetail = ({ title, description }: CivicCenterAccessDetail
       <CheckCircleIcon className="w-5 h-5 text-green" />
       <span className="font-titilliumBold text-base text-gray-800">{title}</span>
     </h4>
-    <p className="font-normal text-sm text-gray-500">{description}</p>
+    <p
+      className="font-normal text-sm text-gray-500 richtext_html"
+      dangerouslySetInnerHTML={{ __html: description || '' }}
+    />
   </div>
 );
 
@@ -50,7 +53,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
   return (
     <section className="divide-y divide-gray-100">
       <div className="flex flex-col gap-2 pb-8">
-        <div className='flex justify-between w-full'>
+        <div className="flex justify-between w-full">
           <p className="flex font-titilliumSemiBold text-base items-center gap-2">
             <LocationMarkerIcon className="h-4 w-4" />
             <span>{service.location.name}</span>
@@ -62,7 +65,10 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
                 <span className="text-gray-900 ml-1">{t('shared', { ns: 'common' })}</span>
               </div>
             ) : (
-              <div className="text-base flex flex-row items-center cursor-pointer" onClick={shareUrl}>
+              <div
+                className="text-base flex flex-row items-center cursor-pointer"
+                onClick={shareUrl}
+              >
                 <ShareIcon className="w-5 h-5" />
                 <span className="text-gray-900 ml-1">{t('share', { ns: 'common' })}</span>
               </div>
@@ -71,8 +77,8 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
         </div>
         <h3 className="font-titilliumBold text-2xl">{service.name}</h3>
         <div className="flex flex-col gap-4 font-titillium text-base">
-          <p className='text-gray-400'>{service?.shortDescription}</p>
-          <p className='text-gray-400'>{service?.longDescription}</p>
+          <p className="text-gray-400">{service?.shortDescription}</p>
+          <p className="text-gray-400">{service?.longDescription}</p>
         </div>
         <div className="flex flex-col gap-2 md:gap-4 md:flex-row md:flex-wrap">
           <CivicCenterAccessDetailsRow
@@ -89,9 +95,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
           />
         </div>
       </div>
-      <div>
-
-      </div>
+      <div></div>
       <div className="flex flex-col xl:justify-between divide-y divide-gray-100 xl:divide-none gap-4 py-8 xl:flex-row">
         {service?.hasOnlineAccess && (
           <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%] py-2 xl:py-0">
@@ -99,7 +103,14 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
               title={t('details.access.online.title')}
               description={service.onlineAccessDescription}
             />
-            <div className='flex gap-4 py-6'><button className='yellow-button text-base' onClick={() => windowOpener(service.onlineAccessLink)}>{t('actions.open')}</button></div>
+            <div className="flex gap-4 py-6">
+              <button
+                className="yellow-button text-base"
+                onClick={() => windowOpener(service.onlineAccessLink)}
+              >
+                {t('actions.open')}
+              </button>
+            </div>
           </div>
         )}
         {service?.hasEmailPhoneAccess && (
@@ -116,7 +127,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
           <div className="flex-1 flex flex-col gap-2 xl:max-w-[30%] py-2 xl:py-0">
             <CivicCenterAccessDetail
               title={t('details.access.physical.title')}
-              description={service.physicalAccessDescription}
+              description={service?.physicalAccessDescription || ''}
             />
             <CivicCenterAccessDetailsRow
               label={t('details.address')}
