@@ -67,7 +67,7 @@
   }
 
   .menu-title {
-    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3;
+    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3 cursor-pointer;
   }
 
   .side-menu-title {
