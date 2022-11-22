@@ -14,7 +14,6 @@ interface CivicCenterServiceContentProps {
 interface CivicCenterAccessDetailProps {
   title: string;
   description: string;
-  containsHtml?: boolean;
 }
 
 interface CivicCenterAccessDetailsRowProps {
@@ -22,21 +21,16 @@ interface CivicCenterAccessDetailsRowProps {
   value?: string;
 }
 
-const CivicCenterAccessDetail = ({
-  title,
-  description,
-  containsHtml,
-}: CivicCenterAccessDetailProps) => (
+const CivicCenterAccessDetail = ({ title, description }: CivicCenterAccessDetailProps) => (
   <div className="pb-4">
     <h4 className="flex items-center  justify-start gap-2">
       <CheckCircleIcon className="w-5 h-5 text-green" />
       <span className="font-titilliumBold text-base text-gray-800">{title}</span>
     </h4>
-    {containsHtml ? (
-      <div dangerouslySetInnerHTML={{ __html: description || '' }} />
-    ) : (
-      <p className="font-normal text-sm text-gray-500">{description}</p>
-    )}
+    <p
+      className="font-normal text-sm text-gray-500 richtext_html"
+      dangerouslySetInnerHTML={{ __html: description || '' }}
+    />
   </div>
 );
 
@@ -134,7 +128,6 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
             <CivicCenterAccessDetail
               title={t('details.access.physical.title')}
               description={service?.physicalAccessDescription || ''}
-              containsHtml
             />
             <CivicCenterAccessDetailsRow
               label={t('details.address')}
