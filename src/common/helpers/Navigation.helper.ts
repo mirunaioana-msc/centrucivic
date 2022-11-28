@@ -1,3 +1,9 @@
+
+
 export const windowOpener = (url: string): void => {
-  window.open(url, '_blank');
+  if (!/(http|https):/.test(url)) {
+    url = 'https://' + url;
+  }
+
+  window.open(url, '_blank', 'noopener noreferrer');
 }

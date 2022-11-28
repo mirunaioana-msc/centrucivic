@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Select, { components } from 'react-select';
 import AsyncSelect from 'react-select/async';
-import debounce from 'debounce-promise'
+import debounce from 'debounce-promise';
 import './ServerSelect.css';
 import { LocationMarkerIcon } from '@heroicons/react/outline';
 import { classNames } from '../../helpers/Tailwind.helper';
@@ -44,19 +44,20 @@ const ServerSelect = ({
   id,
   addOn,
 }: ServerSelectConfig) => {
-
   const [defaultValue, setDefaultValue] = useState<any>();
 
-  const debouncedLoadOptions = debounce(loadOptions, 500, {
+  const onSearch = (inputValue: string) => (inputValue?.length >= 3 ? loadOptions(inputValue) : []);
+
+  const debouncedLoadOptions = debounce(onSearch as any, 500, {
     leading: false,
   });
 
   useEffect(() => {
     setDefaultValue(value);
-  }, [value])
+  }, [value]);
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <AsyncSelect
         id={`${id}__input`}
         cacheOptions

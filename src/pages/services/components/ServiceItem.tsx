@@ -5,9 +5,12 @@ import Card from '../../../common/components/card/Card';
 import { formatDateDot } from '../../../common/helpers/Format.helper';
 import { IService } from '../../../common/interfaces/Service.interface';
 import p4g_logo from '../../../assets/images/logo.svg';
+import { useNavigate } from 'react-router-dom';
+import { MENU_ROUTES_HREF } from '../../../common/constants/Menu.constants';
 
 const ServiceItem = ({ service }: { service: IService }) => {
   const { t } = useTranslation('service_card');
+  const navigate = useNavigate();
   return (
     <Card>
       <div className="flex flex-col gap-y-2 h-full">
@@ -42,7 +45,7 @@ const ServiceItem = ({ service }: { service: IService }) => {
         </div>
         <button
           className="yellow-button w-full mt-auto"
-          onClick={() => console.log('Not yet implemented')}
+          onClick={() => navigate(`/${MENU_ROUTES_HREF.services}/${service.id}`)}
         >
           {t('details')}
         </button>

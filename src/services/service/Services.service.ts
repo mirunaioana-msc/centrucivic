@@ -26,3 +26,7 @@ export const searchServices = async (
     },
   }).then((res) => res.data);
 };
+
+export const getServiceById = async (id: string): Promise<IService> => {
+  return API.get(`/api/civic-service/${id}`).then((res) => res.data);
+};
