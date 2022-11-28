@@ -1,10 +1,10 @@
 .reactserverselect__control {
-  /* border-radius: 6px !important; */
-  border: 1px solid #F2F2F2!important;
+  border: unset!important;
   border-radius: 0!important;
   padding: 8px;
   height: 56px;
   font-family: 'TitilliumWeb-Regular'!important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)!important;
 }
 
 .reactserverselect__option--is-selected {
@@ -66,8 +66,6 @@
 }
 
 .reactserverselect__menu {
-  border: 1px solid #6B7280;
-  border-radius: 0px!important;
 }
 
 .reactserverselect__option:hover {
@@ -77,22 +75,23 @@
 
 @media only screen and (min-width: 675px) {
   .reactselect__control { 
-    font-size: 1.25rem!important;
+    font-size: 1.125rem!important;
   }
 
   .reactserverselect__single-value {
-    font-size: 1.25rem!important;
+    font-size: 1.125rem!important;
   }
 
   .reactserverselect__multi-value__label {
-    font-size: 1.25rem!important;
+    font-size: 1.125rem!important;
   }
 
   .reactserverselect__placeholder {
-    font-size: 1.25rem!important;
+    font-size: 1.125rem!important;
+    line-height: 1rem
   }
 
   .reactserverselect__input-container {
-    font-size: 1.25rem!important;
+    font-size: 1.125rem!important;
   }
 }

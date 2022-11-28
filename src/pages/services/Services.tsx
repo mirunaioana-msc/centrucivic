@@ -46,15 +46,6 @@ const Services = () => {
                 itemContent={(index: any, service: any) => <ServiceItem key={index} service={service} />}
                 itemClassName='virtuso-grid-item'
                 listClassName='virtuso-grid-list'
-                components={{
-                  Footer: () => (
-                    <InfiniteScrollFooter
-                      isLoading={isLoading}
-                      hasNoData={services.length === 0}
-                      hasReachedTheEnd={services.length === total}
-                    />
-                  ),
-                }}
               />
             </div>
           </div>

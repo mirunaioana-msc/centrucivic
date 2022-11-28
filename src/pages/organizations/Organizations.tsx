@@ -46,15 +46,6 @@ const Organizations = () => {
                 itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
                 itemClassName='virtuso-grid-item'
                 listClassName='virtuso-grid-list'
-                components={{
-                  Footer: () => (
-                    <InfiniteScrollFooter
-                      isLoading={isLoading}
-                      hasNoData={organizations.length === 0}
-                      hasReachedTheEnd={organizations.length === total}
-                    />
-                  ),
-                }}
               />
             </div>
           </div>

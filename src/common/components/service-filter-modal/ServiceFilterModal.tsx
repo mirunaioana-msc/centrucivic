@@ -126,6 +126,7 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
                               onChange={onChange}
                               placeholder={ServiceSearchConfig.domains.config.placeholder}
                               options={domains.map(mapItemToSelect)}
+                              icon={ServiceSearchConfig.domains.icon}
                             />
                           );
                         }}
@@ -177,6 +178,7 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
                                 ServiceSearchConfig.ageCategories.config.placeholder
                               }
                               options={ServiceSearchConfig.ageCategories.config.collection}
+                              icon={ServiceSearchConfig.ageCategories.icon}
                             />
                           );
                         }}

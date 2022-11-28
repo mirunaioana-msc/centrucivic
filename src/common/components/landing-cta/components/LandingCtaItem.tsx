@@ -1,4 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MENU_ROUTES_HREF } from '../../../constants/Menu.constants';
+import { classNames } from '../../../helpers/Tailwind.helper';
 
 interface LandingCtaItemProps {
   backgroundColor: string;
@@ -11,14 +14,16 @@ interface LandingCtaItemProps {
 }
 
 const LandingCtaItem = (props: LandingCtaItemProps) => {
+  const navigate = useNavigate();
+
   return (
-    <div className={props.backgroundColor}>
-      <div className="flex flex-col mx-10 my-8 pl-10 xl:pl-24">
-        <p className="title h-28">{props.title}</p>
+    <div className={classNames(`${props.backgroundColor}`, 'pt-10 md:pt-16 md:pb-12 pb-8')}>
+      <div className="flex flex-col gap-8 h-full justify-between xl:px-40 lg:px-24 sm:px-20 sm:px-8 px-4">
+        <p className="title pb-0">{props.title}</p>
         <p className="text-base w-10/12">
           {props.description}
           {props.anchorLinkText && (
-            <a href={process.env.REACT_APP_P4G_LINK} target="_blank" rel="noreferrer noopener">
+            <a href={process.env.REACT_APP_P4G_LINK} className='cursor-pointer text-black underline'>
               {props.anchorLinkText}
             </a>
           )}

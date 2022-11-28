@@ -5,7 +5,7 @@ import { IDomain } from './Domains';
 
 const Domain = ({ name, icon }: IDomain) => {
   return (
-    <div className="bg-gray-150 hover:bg-yellow xs:aspect-square aspect-auto flex justify-center items-center flex-col gap-y-4 p-3 xs:h-auto h-full 2xl:w-7/12">
+    <div className="bg-gray-100 hover:bg-yellow xs:aspect-square aspect-auto flex justify-center items-center flex-col gap-y-4 p-3 xs:h-auto h-full cursor-pointer">
       {icon === IconTypes.USERS ? (
         <img
           alt="domain image"
