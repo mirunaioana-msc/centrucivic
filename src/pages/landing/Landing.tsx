@@ -1,7 +1,6 @@
 import React from 'react';
 import ServicesSearch from '../../common/components/service-search/ServiceSearch';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
-import { LANDING_DOMAINS } from '../../common/constants/nomenclature.constants';
 import Domains from './components/domains/Domains';
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
@@ -39,7 +38,7 @@ const Landing = () => {
       <Counter />
       <ShapeWrapper>
         {' '}
-        <Domains domains={LANDING_DOMAINS}></Domains>
+        <Domains />
       </ShapeWrapper>
       <LandingCta />
     </section>
