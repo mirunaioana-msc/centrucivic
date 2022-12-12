@@ -32,8 +32,9 @@ const Organizations = () => {
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {organizations.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${total > 1 ? t('many_organizations_title') : t('one_organization_title')
-                }`}</p>
+              <p className="title text-center">{`${total} ${
+                total > 1 ? t('many_organizations_title') : t('one_organization_title')
+              }`}</p>
             )}
             <div className="mb-[10rem]">
               <VirtuosoGrid
@@ -43,9 +44,11 @@ const Organizations = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={organizations}
-                itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-                itemClassName='virtuso-grid-item'
-                listClassName='virtuso-grid-list'
+                itemContent={(index, ong) =>
+                  ong && <OrganizationItem key={index} organization={ong} />
+                }
+                itemClassName="virtuso-grid-item"
+                listClassName="virtuso-grid-list"
               />
             </div>
           </div>

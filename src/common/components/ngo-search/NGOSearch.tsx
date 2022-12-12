@@ -17,6 +17,7 @@ import { NGOSearchConfig } from './configs/NGOSearch.config';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
 import useStore from '../../../store/Store';
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
+import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface NGOSearchProps {
   showFilters: boolean;
@@ -64,6 +65,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     reset({ ...activeFilters });
   }, [activeFilters.domains, activeFilters.locationId, activeFilters.search]);
 
+  handleEnterKey('organizations-search__term__input', 'organizations-search__button__submit');
+
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
@@ -84,7 +87,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       error: errors[NGOSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'ngo_search__term',
+                      id: 'organizations-search__term',
                     }}
                   />
                 );
@@ -168,7 +171,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
               }}
             />
             <button
-              id="create-organization-activity__button-back"
+              id="organizations-search__button__submit"
               type="button"
               className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-56 w-24"
               onClick={handleSubmit(search)}

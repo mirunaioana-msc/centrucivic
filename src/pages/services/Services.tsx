@@ -32,8 +32,9 @@ const Services = () => {
         ) : (
           <div className="flex flex-col w-full px-4 sm:px-8 md:px-16 lg:px-40 pt-10">
             {services.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${total > 1 ? t('many_services_title') : t('one_service_title')
-                }`}</p>
+              <p className="title text-center">{`${total} ${
+                total > 1 ? t('many_services_title') : t('one_service_title')
+              }`}</p>
             )}
             <div className="mb-[10rem]">
               <VirtuosoGrid
@@ -43,9 +44,11 @@ const Services = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={services}
-                itemContent={(index: any, service: any) => <ServiceItem key={index} service={service} />}
-                itemClassName='virtuso-grid-item'
-                listClassName='virtuso-grid-list'
+                itemContent={(index, service) =>
+                  service && <ServiceItem key={index} service={service} />
+                }
+                itemClassName="virtuso-grid-item"
+                listClassName="virtuso-grid-list"
               />
             </div>
           </div>

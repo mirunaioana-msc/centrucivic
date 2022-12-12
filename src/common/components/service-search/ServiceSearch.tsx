@@ -19,6 +19,7 @@ import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
 import useStore from '../../../store/Store';
 import { useServices } from '../../../store/Selectors';
 import ServiceFilterModal from '../service-filter-modal/ServiceFilterModal';
+import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface ServiceSearchProps {
   showFilters: boolean;
@@ -62,7 +63,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       data.domains,
       data.start,
       data.end,
-      data.ageCategories
+      data.ageCategories,
     );
     props.onSearchCallback && props.onSearchCallback();
   };
@@ -83,12 +84,19 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     reset({ ...activeFilters });
   }, [activeFilters]);
 
+  handleEnterKey('services-search__term__input', 'services-search__button__submit');
+
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
-        <div className='flex flex-col w-full items-center gap-2'>
+        <div className="flex flex-col w-full items-center gap-2">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
-          <p className="font-titillium sm:text-2xl sm:text-xl text-black">{t('subtitle')}<a className='text-black underline cursor-pointer' href="/services">{t('subtitle_link')}</a></p>
+          <p className="font-titillium sm:text-2xl sm:text-xl text-black">
+            {t('subtitle')}
+            <a className="text-black underline cursor-pointer" href="/services">
+              {t('subtitle_link')}
+            </a>
+          </p>
         </div>
         <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
@@ -106,7 +114,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                       error: errors[ServiceSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'programs-search-search__term',
+                      id: 'services-search__term',
                     }}
                   />
                 );
@@ -169,7 +177,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
           )}
 
           <div className="hidden sm:flex w-full h-14 items-center">
-
             <Controller
               key={ServiceSearchConfig.domains.key}
               name={ServiceSearchConfig.domains.key}
@@ -242,7 +249,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             />
 
             <button
-              id="search-services-activity__button-back"
+              id="services-search__button__submit"
               type="button"
               className="yellow-button text-sm sm:text-base w-full h-full"
               onClick={handleSubmit(search)}
