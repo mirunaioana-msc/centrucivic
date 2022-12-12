@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useEffect, useState } from 'react';
 import { t } from 'i18next';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import './Select.css';
-
+import { classNames } from '../../helpers/Tailwind.helper';
 
 export interface MultiSelectConfig {
   label?: string;
@@ -17,10 +17,24 @@ export interface MultiSelectConfig {
   options: any[];
   id?: string;
   isMulti: boolean;
+  icon?: any;
 }
 
+const Control = ({ children, ...props }: any) => {
+  return (
+    components.Control && (
+      <components.Control {...props}>
+        {props.icon && (
+          <props.icon className={classNames(`ml-1 w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')} />
+        )}
+        {children}
+      </components.Control>
+    )
+  );
+};
+
 const MultiValue = ({ getValue, index }: any) =>
-  !index ? <p>{getValue().length} {t('practice-programs-search:selected')}</p> : <p></p>;
+  !index ? <p className='text-lg '>{getValue().length} {t('service_search:selected')}</p> : <p></p>;
 
 const MultiSelect = ({
   placeholder,
@@ -29,13 +43,14 @@ const MultiSelect = ({
   value,
   options,
   id,
-  isMulti
+  isMulti,
+  icon,
 }: MultiSelectConfig) => {
   const [defaultValue, setDefaultValue] = useState<any[]>([]);
 
   useEffect(() => { setDefaultValue(value) }, [value])
 
-  const components = { MultiValue };
+  const components = { MultiValue, Control: (e: any) => Control({ ...e, icon }), DropdownIndicator: null };
   return (
     <div className='w-full'>
       <Select

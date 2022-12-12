@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import aboutCC from '../../assets/images/landing-about-image.svg';
 import { useNavigate } from 'react-router-dom';
 import LandingCta from '../../common/components/landing-cta/LandingCta';
+import { DONATE_URL } from '../../common/constants/ExternalURL.constants';
 
 const Landing = () => {
   const { t } = useTranslation('landing');
@@ -30,7 +31,7 @@ const Landing = () => {
         <Description
           title={t('about.title')}
           content={t('about.paragraph_1')}
-          cta={{ label: t('about.action'), link: '' }}
+          cta={{ label: t('about.action'), link: DONATE_URL }}
           image={aboutCC}
           isTextRight={true}
         ></Description>

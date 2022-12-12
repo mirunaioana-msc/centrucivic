@@ -1,36 +1,36 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { InformationCircleIcon } from '@heroicons/react/outline';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { SunIcon, TemplateIcon, ViewGridAddIcon, XIcon } from '@heroicons/react/solid';
+import { useHref, useLocation, useNavigate } from 'react-router-dom';
 import { classNames } from '../../helpers/Tailwind.helper';
-
-export const EMPLOYEE_ROUTES = [
-  { id: 0, name: 'a', href: '', icon: TemplateIcon },
-  { id: 1, name: 'b', href: 'organization', icon: SunIcon },
-  { id: 2, name: 'c', href: 'apps', icon: ViewGridAddIcon },
-];
+import logo from './../../../assets/images/logo.svg';
+import { MENU_ROUTES, MENU_ROUTES_HREF } from '../../constants/Menu.constants';
+import { XIcon } from '@heroicons/react/solid';
+import { useTranslation } from 'react-i18next';
+import { windowOpener } from '../../helpers/Navigation.helper';
+import { CODE_4_URL, DONATE_URL } from '../../constants/ExternalURL.constants';
 
 export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: boolean, setSlidingMenuOpen: any }) {
+  const { t } = useTranslation('sliding_menu');
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentMenuItemId, setCurrentMenuItemId] = useState(0 as number);
 
-  useEffect(() => {
-    if (location) {
-      const exists = EMPLOYEE_ROUTES.find(
-        (navigationItem) => navigationItem.href == location.pathname.split('/')[1],
-      );
-      setCurrentMenuItemId(exists ? exists.id : -1);
-    }
-  }, [location.pathname]);
+  const [activeTab, setActiveTab] = useState<string>();
 
 
   const handleMenuItemClick = (item: any) => {
     setSlidingMenuOpen(false);
-    setCurrentMenuItemId(item.id);
     navigate(`${item.href}`);
   };
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setActiveTab('/');
+    } else {
+      const found = Object.values(MENU_ROUTES_HREF).find(route => location.pathname.startsWith(`/${route}`));
+      setActiveTab(`/${found}`);
+    }
+  }, [location.pathname])
+
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -49,17 +49,17 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-10">
+            <div className="pointer-events-none relative h-full fixed inset-y-0 left-0 flex w-full">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
-                enterFrom="translate-x-[-18rem]"
+                enterFrom="translate-x-[-100vw]"
                 enterTo="translate-x-0"
                 leave="transform transition ease-in-out duration-500 sm:duration-700"
                 leaveFrom="translate-x-0"
-                leaveTo="translate-x-[-18rem]"
+                leaveTo="translate-x-[-100vw]"
               >
-                <Dialog.Panel className="pointer-events-auto relative w-72">
+                <Dialog.Panel className="pointer-events-auto h-full  overflow-y-scroll w-full bg-white p-6 pt-0">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-500"
@@ -69,10 +69,14 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute top-0 -right-8 flex pt-4">
+
+                    <div className=" flex justify-between py-8 border-b-2">
+                      <div className="flex items-center">
+                        <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
+                      </div>
                       <button
                         type="button"
-                        className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                        className="rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
                         onClick={() => setSlidingMenuOpen(false)}
                       >
                         <XIcon className="w-6 h-6" />
@@ -80,51 +84,37 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="h-full overflow-y-auto bg-gray-900">
-                    <div className="space-y-6 pb-16">
+                  <div className="flex w-full relative">
+                    <div className="gap-6 flex flex-col w-full h-full justify-between">
                       <nav
                         className={classNames(
                           'w-full',
-                          'transition-width duration-300 ease-out p-6 pt-10 space-y-4 bg-gray-900 rounded-xl font-titilliumBold cursor-pointer select-none',
+                          'transition-width duration-300 ease-out pt-10 gap-12 font-titilliumBold  select-none flex flex-col',
                         )}
                         aria-label="Sidebar"
                       >
-                        {EMPLOYEE_ROUTES.map((item) => (
+                        {MENU_ROUTES.map((item) => (
                           <a
                             key={item.name}
                             className={classNames(
-                              item.id === currentMenuItemId
-                                ? 'bg-menu-green/[0.15] text-green'
-                                : '',
-                              'px-4 space-x-5 ',
-                              'main-menu-item',
+                              'side-menu-title active:text-yellow-600', activeTab === item.href && 'text-yellow-700',
                             )}
                             onClick={() => handleMenuItemClick(item)}
                           >
-                            <item.icon className="w-5 h-5" />
-                            <span
-                              className={classNames(
-                                'transition-transform duration-50 whitespace-nowrap',
-                              )}
-                            >
-                              {item.name}
-                            </span>
+                            {item.name}
                           </a>
                         ))}
-                        <div className="pt-60 space-y-4">
-                          <a
-                            key={'info'}
-                            className={classNames('px-4 space-x-5 ', 'main-menu-item')}
-                          >
-                            <InformationCircleIcon className="w-5 h-5" />
-                            <span
-                              className={classNames('transition-all duration-50 whitespace-nowrap')}
-                            >
-                              Informatii
-                            </span>
-                          </a>
-                        </div>
                       </nav>
+                      <div className="flex flex-col gap-2 items-center w-full pt-64">
+                        <button
+                          className="yellow-button flex w-full justify-center py-2 text-lg"
+                          onClick={() => windowOpener(DONATE_URL)}
+                        >
+                          {t('donate')}
+                        </button>
+                        <span>{t('how')}</span>
+                        <a className='text-blue font-bold hover:underline text-base' href={CODE_4_URL} target='_blank' rel="noreferrer">{t('learn_more')}</a>
+                      </div>
                     </div>
                   </div>
                 </Dialog.Panel>

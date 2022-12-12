@@ -1,4 +1,4 @@
-import { LocationMarkerIcon, SearchIcon } from "@heroicons/react/solid";
+import { LocationMarkerIcon, SearchIcon, UserGroupIcon, ViewBoardsIcon } from "@heroicons/react/outline";
 import i18n from "../../../configs/i18n";
 import { AgeCategories } from "../../../enums/AgeCategory.enum";
 import IconAddon from "../../icon-addon/IconAddon";
@@ -44,6 +44,7 @@ export const ServiceSearchConfig: Record<string, any> = {
       collection: [...AgeCategories],
       placeholder: i18n.t('service_search:config.ageCategories.placeholder')
     },
+    icon: UserGroupIcon,
   },
   domains: {
     key: 'domains',
@@ -52,5 +53,6 @@ export const ServiceSearchConfig: Record<string, any> = {
     config: {
       placeholder: i18n.t('service_search:config.domains.placeholder')
     },
+    icon: ViewBoardsIcon
   },
 }

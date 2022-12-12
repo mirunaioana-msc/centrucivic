@@ -144,7 +144,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
 
   return (
     <>
-      <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
+      <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <div className="flex flex-col w-full items-center gap-2">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
           <p className="font-titillium sm:text-xl text-black">
@@ -244,6 +244,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.domains.config.placeholder}
                     options={domains.map(mapItemToSelect)}
+                    icon={ServiceSearchConfig.domains.icon}
                   />
                 );
               }}
@@ -293,6 +294,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
                     options={ServiceSearchConfig.ageCategories.config.collection}
+                    icon={ServiceSearchConfig.ageCategories.icon}
                   />
                 );
               }}
