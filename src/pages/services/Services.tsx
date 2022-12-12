@@ -37,7 +37,7 @@ const Services = () => {
 
   return (
     <section className="w-full">
-      <ServiceSearch showFilters preloadData>
+      <ServiceSearch>
         {error && !isLoading ? (
           <NoData retry={refetch}>{t('errors.search')}</NoData>
         ) : (
@@ -55,9 +55,7 @@ const Services = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={services}
-                itemContent={(index: any, service: any) => (
-                  <ServiceItem key={index} service={service} />
-                )}
+                itemContent={(index, service) => <ServiceItem key={index} service={service} />}
                 itemClassName="virtuso-grid-item"
                 listClassName="virtuso-grid-list"
                 components={{

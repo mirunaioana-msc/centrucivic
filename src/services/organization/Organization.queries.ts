@@ -6,11 +6,15 @@ import { useOrganizations } from '../../store/Selectors';
 import useStore from '../../store/Store';
 import { getOrganizationWithCivicServices, searchOrganizations } from './Organization.service';
 
-export const useOrganizationQuery = () => {
-  const { setOrganizations } = useStore();
+export const useOrganizationQuery = (
+  currentPage: number,
+  search?: string | null,
+  locationId?: number | null,
+  domains?: (number | null)[] | null,
+) => {
+  const { setOrganizations, nextOrganizations } = useStore();
   const {
-    filters: { search, locationId, domains },
-    meta: { currentPage, itemsPerPage },
+    meta: { itemsPerPage },
   } = useOrganizations();
 
   return useQuery(
@@ -24,7 +28,7 @@ export const useOrganizationQuery = () => {
       retry: 0,
     },
   );
-}
+};
 
 export const useOrganization = (organizationId: string) => {
   const { setSelectedOrganization } = useStore();

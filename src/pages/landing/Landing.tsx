@@ -13,10 +13,18 @@ import LandingCta from '../../common/components/landing-cta/LandingCta';
 const Landing = () => {
   const { t } = useTranslation('landing');
   const navigate = useNavigate();
+
+  const onGoToServices = (search: string) => {
+    navigate({
+      pathname: '/services',
+      search,
+    });
+  };
+
   return (
     <section className="w-full">
       <div className="bg-yellow w-full">
-        <ServicesSearch showFilters={true} onSearchCallback={() => navigate('/services')} />
+        <ServicesSearch onSearchCallback={onGoToServices} />
       </div>
       <div className="max-w-screen-xl mx-auto px-10">
         <Description

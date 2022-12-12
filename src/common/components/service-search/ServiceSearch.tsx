@@ -21,12 +21,12 @@ import { SERVICES_QUERY_PARAMS } from '../../constants/Services.constants';
 import { useQueryParams, encodeQueryParams } from 'use-query-params';
 import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
 import { AgeCategories } from '../../enums/AgeCategory.enum';
+import { countFilters } from '../../helpers/Filters.helpers';
+import { stringify } from 'query-string';
 
 interface ServiceSearchProps {
-  showFilters: boolean;
-  preloadData?: boolean;
   children?: React.ReactNode;
-  onSearchCallback?: () => void;
+  onSearchCallback?: (search: string) => void;
 }
 
 const ServiceSearch = (props: ServiceSearchProps) => {
@@ -37,7 +37,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
 
   // search state
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-
   // nomenclature
   const { cities, domains } = useNomenclature();
 
@@ -87,9 +86,12 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     // 2. set query params
     setQuery(queryValues);
     // 3 update filters cound
-    // setFiltersCount(countFilters(queryValues));
+    setFiltersCount(countFilters(queryValues));
 
-    props.onSearchCallback && props.onSearchCallback();
+    props.onSearchCallback &&
+      props.onSearchCallback(
+        `?${stringify(encodeQueryParams(SERVICES_QUERY_PARAMS, queryValues))}`,
+      );
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -111,7 +113,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
 
     // 1. city
     if (locationId) {
-      const citiesResults = await getCities(undefined, locationId.toString());
+      const citiesResults = await getCities({ cityId: locationId.toString() });
       selectedLocationId = mapItemToSelect(citiesResults[0]);
     }
 
@@ -130,7 +132,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    // setFiltersCount(countFilters(query));
+    setFiltersCount(countFilters(query));
 
     return {
       locationId: selectedLocationId,
@@ -145,7 +147,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <div className="flex flex-col w-full items-center gap-2">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
-          <p className="font-titillium sm:text-2xl sm:text-xl text-black">
+          <p className="font-titillium sm:text-xl text-black">
             {t('subtitle')}
             <a className="text-black underline cursor-pointer" href="/services">
               {t('subtitle_link')}
@@ -174,15 +176,13 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                 );
               }}
             />
-            {props.showFilters && (
-              <button
-                type="button"
-                className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-                onClick={handleSubmit(search)}
-              >
-                <SearchIcon className="w-5 h-5" />
-              </button>
-            )}
+            <button
+              type="button"
+              className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
+              onClick={handleSubmit(search)}
+            >
+              <SearchIcon className="w-5 h-5" />
+            </button>
 
             <div className="w-1/3 h-14 hidden sm:flex">
               <Controller
@@ -207,28 +207,26 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               />
             </div>
           </div>
-          {props.showFilters && (
-            <div
-              className="sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200"
-              onClick={() => setFilterModalOpen(true)}
+          <div
+            className="sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200"
+            onClick={() => setFilterModalOpen(true)}
+          >
+            <p
+              id="search-services-activity__button-back"
+              className="text-sm sm:text-base  h-full flex items-center"
             >
+              {t('filters')}
+            </p>
+            <AdjustmentsIcon className="w-5 h-5" />
+            {filtersCount > 0 && (
               <p
                 id="search-services-activity__button-back"
-                className="text-sm sm:text-base  h-full flex items-center"
+                className="text-base rounded-full bg-yellow p-2 flex items-center w-10 justify-center"
               >
-                {t('filters')}
+                {filtersCount}
               </p>
-              <AdjustmentsIcon className="w-5 h-5" />
-              {filtersCount > 0 && (
-                <p
-                  id="search-services-activity__button-back"
-                  className="text-base rounded-full bg-yellow p-2 flex items-center w-10 justify-center"
-                >
-                  {filtersCount}
-                </p>
-              )}
-            </div>
-          )}
+            )}
+          </div>
 
           <div className="hidden sm:flex w-full h-14 items-center">
             <Controller

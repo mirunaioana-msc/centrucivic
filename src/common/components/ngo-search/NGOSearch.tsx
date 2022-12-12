@@ -5,9 +5,8 @@ import SearchField from '../search-field/SearchField';
 import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
-import { useOrganizations } from '../../../store/Selectors';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
-import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
+import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
   useCitiesQuery,
@@ -15,8 +14,11 @@ import {
 } from '../../../services/nomenclature/Nomeclature.queries';
 import { NGOSearchConfig } from './configs/NGOSearch.config';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
-import useStore from '../../../store/Store';
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
+import { ORGANIZATIONS_QUERY_PARAMS } from '../../constants/Organizations.constants';
+import { useQueryParams } from 'use-query-params';
+import { countFilters } from '../../helpers/Filters.helpers';
+import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
 
 interface NGOSearchProps {
   showFilters: boolean;
@@ -25,31 +27,57 @@ interface NGOSearchProps {
 
 const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   const { t } = useTranslation();
+
+  // filters state
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const [filtersCount, setFiltersCount] = useState(0);
 
-  // store hooks
-  const { filters: activeFilters } = useOrganizations();
-  const { updateOrganizationFilters } = useStore();
+  // search state
+  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
+
+  // nomenclature state
   const { cities, domains } = useNomenclature();
+
+  // query params state
+  const [query, setQuery] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
+
+  // form state
+  const form = useForm({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  });
 
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset,
-  } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-  });
+  } = form;
 
   // Queries
   useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
 
+  useEffect(() => {
+    (async () => {
+      const filters = await initFilters();
+      reset({ ...filters });
+    })();
+  }, []);
+
   const search = (data: any) => {
-    updateOrganizationFilters(data.search, data.locationId, data.domains);
+    // 1. map query values
+    const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
+    const queryValues = {
+      search: data?.search,
+      locationId: data?.locationId?.value,
+      domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
+    };
+
+    // 2. set query params
+    setQuery(queryValues);
+    // 3 update filters cound
+    setFiltersCount(countFilters(queryValues));
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -57,12 +85,34 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     return cities.map(mapItemToSelect);
   };
 
-  useEffect(() => {
-    setFiltersCount(
-      [activeFilters.locationId, activeFilters.domains?.length].filter(Boolean).length,
-    );
-    reset({ ...activeFilters });
-  }, [activeFilters.domains, activeFilters.locationId, activeFilters.search]);
+  const initFilters = async () => {
+    const { locationId, domains: queryDomains, ...otherQueryParams } = query;
+
+    // init should get me the correct values for
+    let selectedLocation, selectedDomains;
+
+    // 1. city
+    if (locationId) {
+      const citiesResults = await getCities({ cityId: locationId.toString() });
+      selectedLocation = mapItemToSelect(citiesResults[0]);
+    }
+
+    // 4. domains
+    if (queryDomains && queryDomains?.length > 0) {
+      const allDomains = await getDomains();
+      selectedDomains = allDomains
+        .filter((domain: { id: number; name: string }) => queryDomains?.includes(domain.id))
+        .map(mapItemToSelect);
+    }
+
+    setFiltersCount(countFilters(query));
+
+    return {
+      locationId: selectedLocation,
+      domains: selectedDomains,
+      ...otherQueryParams,
+    };
+  };
 
   return (
     <>
@@ -181,6 +231,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
             onClose={() => {
               setFilterModalOpen(false);
             }}
+            form={form}
+            onSubmit={search}
           />
         )}
       </div>

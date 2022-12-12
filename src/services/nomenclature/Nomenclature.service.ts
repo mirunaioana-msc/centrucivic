@@ -1,11 +1,8 @@
 import API from '../API';
 
-export const getCities = (search?: string, cityId?: string): Promise<any> => {
+export const getCities = (params: { search?: string; cityId?: string }): Promise<any> => {
   return API.get(`/nomenclatures/cities`, {
-    params: {
-      search,
-      cityId,
-    },
+    params,
   }).then((res) => res.data);
 };
 
