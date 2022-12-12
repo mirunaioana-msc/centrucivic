@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import NGOSearch from '../../common/components/ngo-search/NGOSearch';
-import NoData from '../../common/components/no-data/NoData';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../common/constants/Organizations.constants';
 import { useOrganizationQuery } from '../../services/organization/Organization.queries';
 import { useOrganizations } from '../../store/Selectors';
 import OrganizationItem from './components/OrganizationItem';
 import { useQueryParams } from 'use-query-params';
+import ListError from '../../common/components/list-error/ListError';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
@@ -35,7 +35,7 @@ const Organizations = () => {
     <section className="w-full">
       <NGOSearch showFilters>
         {error && !isLoading ? (
-          <NoData retry={refetch}>{t('errors.search')}</NoData>
+          <ListError retry={refetch}>{t('errors.search')}</ListError>
         ) : (
           <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
             {organizations.length !== 0 && !isLoading && (
@@ -54,6 +54,14 @@ const Organizations = () => {
                 itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
                 itemClassName="virtuso-grid-item"
                 listClassName="virtuso-grid-list"
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={organizations?.length === 0}
+                      isLoading={isLoading}
+                    />
+                  ),
+                }}
               />
             </div>
           </div>

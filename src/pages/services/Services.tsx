@@ -2,14 +2,14 @@ import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 import { useServicesQuery } from '../../services/service/Services.queries';
-import NoData from '../../common/components/no-data/NoData';
-import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import { useServices } from '../../store/Selectors';
 import ServiceSearch from '../../common/components/service-search/ServiceSearch';
 import ServiceItem from './components/ServiceItem';
 import { useQueryParams } from 'use-query-params';
 import { SERVICES_QUERY_PARAMS } from '../../common/constants/Services.constants';
 import { AgeCategory } from '../../common/enums/AgeCategory.enum';
+import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
+import ListError from '../../common/components/list-error/ListError';
 
 const Services = () => {
   const { t } = useTranslation('services');
@@ -39,7 +39,7 @@ const Services = () => {
     <section className="w-full">
       <ServiceSearch>
         {error && !isLoading ? (
-          <NoData retry={refetch}>{t('errors.search')}</NoData>
+          <ListError retry={refetch}>{t('errors.search')}</ListError>
         ) : (
           <div className="flex flex-col w-full px-4 sm:px-8 md:px-16 lg:px-40 pt-10">
             {services.length !== 0 && !isLoading && (
@@ -55,11 +55,17 @@ const Services = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={services}
-                itemContent={(index: any, service: any) => (
-                  <ServiceItem key={index} service={service} />
-                )}
+                itemContent={(index, service) => <ServiceItem key={index} service={service} />}
                 itemClassName="virtuso-grid-item"
                 listClassName="virtuso-grid-list"
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={services?.length === 0}
+                      isLoading={isLoading}
+                    />
+                  ),
+                }}
               />
             </div>
           </div>
