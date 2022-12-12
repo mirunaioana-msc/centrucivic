@@ -8,25 +8,16 @@ import { OrganizationFilter } from '../common/interfaces/OrganizationFilter.inte
 import { OrganizationFlat } from '../common/interfaces/OrganizationFlat.interface';
 import { PaginatedEntity } from '../common/interfaces/PaginatedEntity.interface';
 import { IService } from '../common/interfaces/Service.interface';
-import { ServiceFilter } from '../common/interfaces/ServiceFilter.interface';
 import { nomenclatureSlice } from './nomenclatures/Nomenclatures.slice';
 import { organizationsSlice } from './organizations/Organizations.slice';
 import { servicesSlice } from './services/Services.slice';
 
 interface ServicesState {
-  services: PaginatedEntity<IService> & { filters: ServiceFilter };
+  services: PaginatedEntity<IService>;
   selectedService: IService | null;
   setSelectedService: (selectedService: IService) => void;
   setServices: (services: PaginatedEntity<IService>) => void;
-  nextPageServices: () => void;
-  updateServicesFilters: (
-    search: string,
-    locationId: ISelectData,
-    domains: ISelectData[],
-    start: string,
-    end: string,
-    ageCategories: ISelectData[],
-  ) => void;
+  nextServices: (services: PaginatedEntity<IService>) => void;
 }
 
 interface OrganizationsState {
@@ -50,7 +41,6 @@ interface NomenclatureState {
   setDomains: (domains: Domain[]) => void;
   setFaculties: (faculties: Faculty[]) => void;
 }
-
 
 const useStore = create<ServicesState & NomenclatureState & OrganizationsState>()((set: any) => ({
   ...servicesSlice(set),
