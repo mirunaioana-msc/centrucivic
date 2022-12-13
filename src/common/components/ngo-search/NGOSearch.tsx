@@ -49,11 +49,11 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   useDomainsQuery();
 
   const search = (data: any) => {
-    updateOrganizationFilters(data.search, data.locationId, data.domains);
+    updateOrganizationFilters(data.search.trim(), data.locationId, data.domains);
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
+    seSearchtLocationTerm(searchWord.trim());
     return cities.map(mapItemToSelect);
   };
 

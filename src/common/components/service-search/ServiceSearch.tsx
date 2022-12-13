@@ -57,18 +57,18 @@ const ServiceSearch = (props: ServiceSearchProps) => {
 
   const search = (data: any) => {
     updateServicesFilters(
-      data.search,
+      data.search.trim(),
       data.locationId,
       data.domains,
       data.start,
       data.end,
-      data.ageCategories
+      data.ageCategories,
     );
     props.onSearchCallback && props.onSearchCallback();
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
+    seSearchtLocationTerm(searchWord.trim());
     return cities.map(mapItemToSelect);
   };
 
@@ -86,9 +86,14 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
-        <div className='flex flex-col w-full items-center gap-2'>
+        <div className="flex flex-col w-full items-center gap-2">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
-          <p className="font-titillium sm:text-2xl sm:text-xl text-black">{t('subtitle')}<a className='text-black underline cursor-pointer' href="/services">{t('subtitle_link')}</a></p>
+          <p className="font-titillium sm:text-2xl sm:text-xl text-black">
+            {t('subtitle')}
+            <a className="text-black underline cursor-pointer" href="/services">
+              {t('subtitle_link')}
+            </a>
+          </p>
         </div>
         <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
@@ -169,7 +174,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
           )}
 
           <div className="hidden sm:flex w-full h-14 items-center">
-
             <Controller
               key={ServiceSearchConfig.domains.key}
               name={ServiceSearchConfig.domains.key}
