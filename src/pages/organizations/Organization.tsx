@@ -2,12 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
-import Loading from '../../common/components/loading/Loading';
-import NoData from '../../common/components/no-data/NoData';
+import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { useOrganization } from '../../services/organization/Organization.queries';
 import ServiceItem from '../services/components/ServiceItem';
 import OrganizationDetails from './components/OrganizationDetails';
+import ListError from '../../common/components/list-error/ListError';
 
 const Organization = () => {
   const { id } = useParams();
@@ -29,14 +29,21 @@ const Organization = () => {
                 style={{ height: '100vw' }}
                 overscan={200}
                 data={data.services}
-                itemContent={(index: any, service: any) => <ServiceItem key={index} service={service} />}
-                itemClassName='virtuso-grid-item'
-                listClassName='virtuso-grid-list'
+                itemContent={(index, service) => <ServiceItem key={index} service={service} />}
+                itemClassName="virtuso-grid-item"
+                listClassName="virtuso-grid-list"
+                components={{
+                  Footer: () => (
+                    <InfiniteScrollFooter
+                      hasNoData={data.services?.length === 0}
+                      isLoading={isLoading}
+                    />
+                  ),
+                }}
               />
             </div>
           )}
-          {error && !isLoading && <NoData retry={refetch}>{t('errors.get')}</NoData>}
-          {isLoading && <Loading />}
+          {error && !isLoading && <ListError retry={refetch}>{t('errors.get')}</ListError>}
         </>
       </div>
     </ShapeWrapper>

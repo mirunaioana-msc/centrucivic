@@ -1,7 +1,6 @@
 import React from 'react';
 import ServicesSearch from '../../common/components/service-search/ServiceSearch';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
-import { LANDING_DOMAINS } from '../../common/constants/nomenclature.constants';
 import Domains from './components/domains/Domains';
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
@@ -14,10 +13,18 @@ import { DONATE_URL } from '../../common/constants/ExternalURL.constants';
 const Landing = () => {
   const { t } = useTranslation('landing');
   const navigate = useNavigate();
+
+  const onGoToServices = (search: string) => {
+    navigate({
+      pathname: '/services',
+      search,
+    });
+  };
+
   return (
     <section className="w-full">
       <div className="bg-yellow w-full">
-        <ServicesSearch showFilters={true} onSearchCallback={() => navigate('/services')} />
+        <ServicesSearch onSearchCallback={onGoToServices} />
       </div>
       <div className="max-w-screen-xl mx-auto px-10">
         <Description
@@ -31,7 +38,7 @@ const Landing = () => {
       <Counter />
       <ShapeWrapper>
         {' '}
-        <Domains domains={LANDING_DOMAINS}></Domains>
+        <Domains />
       </ShapeWrapper>
       <LandingCta />
     </section>

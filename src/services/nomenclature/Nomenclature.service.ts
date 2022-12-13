@@ -1,12 +1,9 @@
 import API from '../API';
 
-export const getCities = (searchTerm: string): Promise<any> => {
-  let queryParams = '';
-  if (searchTerm) {
-    queryParams = queryParams.concat(`search=${searchTerm}&`);
-  }
-
-  return API.get(`/nomenclatures/cities?${queryParams}`).then((res) => res.data);
+export const getCities = (params: { search?: string; cityId?: string }): Promise<any> => {
+  return API.get(`/nomenclatures/cities`, {
+    params,
+  }).then((res) => res.data);
 };
 
 export const getDomains = (): Promise<any> => {
