@@ -72,6 +72,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
       search: data?.search,
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
+      page: 1,
     };
 
     // 2. set query params
@@ -86,7 +87,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const initFilters = async () => {
-    const { locationId, domains: queryDomains, ...otherQueryParams } = query;
+    const { locationId, domains: queryDomains, page, ...otherQueryParams } = query;
 
     // init should get me the correct values for
     let selectedLocation, selectedDomains;
@@ -105,7 +106,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(countFilters(query));
+    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
 
     return {
       locationId: selectedLocation,

@@ -32,8 +32,8 @@ interface ServiceSearchProps {
 const ServiceSearch = (props: ServiceSearchProps) => {
   const { t } = useTranslation('service_search');
   // filter modal state
-  const [isFilterModalOpen, setFilterModalOpen] = useState(false);
-  const [filtersCount, setFiltersCount] = useState(0);
+  const [isFilterModalOpen, setFilterModalOpen] = useState<boolean>(false);
+  const [filtersCount, setFiltersCount] = useState<number>(0);
 
   // search state
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
@@ -81,6 +81,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       ageCategories: selectedAgeCategories?.length > 0 ? selectedAgeCategories : undefined,
       start: data?.start,
       end: data?.end,
+      page: 1,
     };
 
     // 2. set query params
@@ -105,6 +106,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       locationId,
       domains: queryDomains,
       ageCategories: queryAgeCategories,
+      page,
       ...otherQueryParams
     } = query;
 
@@ -132,7 +134,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(countFilters(query));
+    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
 
     return {
       locationId: selectedLocationId,

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
@@ -12,8 +12,7 @@ import ListError from '../../common/components/list-error/ListError';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
-  const [page, setPage] = useState<number>(1);
-  const [query] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
+  const [query, setQuery] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
 
   const {
     organizations,
@@ -21,14 +20,19 @@ const Organizations = () => {
   } = useOrganizations();
 
   const { isLoading, error, refetch } = useOrganizationQuery(
-    page,
+    query?.page as number,
     query?.search,
     query?.locationId,
     query?.domains,
   );
 
+  useEffect(() => {
+    setQuery({ ...query, page: 1 });
+  }, []);
+
   const loadMore = useCallback(() => {
-    if (total > organizations.length) setPage(page + 1);
+    if (total > organizations.length)
+      setQuery({ ...query, page: query?.page ? query?.page + 1 : 1 });
   }, [organizations, total]);
 
   return (

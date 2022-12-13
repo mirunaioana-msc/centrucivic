@@ -4,4 +4,5 @@ export const ORGANIZATIONS_QUERY_PARAMS = {
   search: StringParam,
   locationId: NumberParam,
   domains: DelimitedNumericArrayParam,
+  page: NumberParam,
 };

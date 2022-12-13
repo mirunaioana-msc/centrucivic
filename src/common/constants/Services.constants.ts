@@ -13,4 +13,5 @@ export const SERVICES_QUERY_PARAMS = {
   start: DateParam,
   end: DateParam,
   domains: DelimitedNumericArrayParam,
+  page: NumberParam,
 };

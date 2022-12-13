@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 import { useServicesQuery } from '../../services/service/Services.queries';
@@ -13,8 +13,7 @@ import ListError from '../../common/components/list-error/ListError';
 
 const Services = () => {
   const { t } = useTranslation('services');
-  const [query] = useQueryParams(SERVICES_QUERY_PARAMS);
-  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useQueryParams(SERVICES_QUERY_PARAMS);
 
   const {
     services,
@@ -22,7 +21,7 @@ const Services = () => {
   } = useServices();
 
   const { isLoading, error, refetch } = useServicesQuery(
-    page,
+    query?.page as number,
     query?.search,
     query?.locationId,
     query?.ageCategories as AgeCategory[],
@@ -31,8 +30,12 @@ const Services = () => {
     query?.end,
   );
 
+  useEffect(() => {
+    setQuery({ ...query, page: 1 });
+  }, []);
+
   const loadMore = useCallback(() => {
-    if (total > services.length) setPage(page + 1);
+    if (total > services.length) setQuery({ ...query, page: query?.page ? query?.page + 1 : 1 });
   }, [services, total]);
 
   return (
