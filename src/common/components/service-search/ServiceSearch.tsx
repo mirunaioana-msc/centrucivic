@@ -8,7 +8,7 @@ import ServerSelect from '../server-select/ServerSelect';
 import { ServiceSearchConfig } from './configs/ServiceSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
-import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
+import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
   useCitiesQuery,
@@ -16,36 +16,46 @@ import {
   useFacultiesQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
-import useStore from '../../../store/Store';
-import { useServices } from '../../../store/Selectors';
 import ServiceFilterModal from '../service-filter-modal/ServiceFilterModal';
+import { SERVICES_QUERY_PARAMS } from '../../constants/Services.constants';
+import { useQueryParams, encodeQueryParams } from 'use-query-params';
+import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
+import { AgeCategories } from '../../enums/AgeCategory.enum';
+import { countFilters } from '../../helpers/Filters.helpers';
+import { stringify } from 'query-string';
 import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface ServiceSearchProps {
-  showFilters: boolean;
-  preloadData?: boolean;
   children?: React.ReactNode;
-  onSearchCallback?: () => void;
+  onSearchCallback?: (search: string) => void;
 }
 
 const ServiceSearch = (props: ServiceSearchProps) => {
   const { t } = useTranslation('service_search');
-  const [isFilterModalOpen, setFilterModalOpen] = useState(false);
+  // filter modal state
+  const [isFilterModalOpen, setFilterModalOpen] = useState<boolean>(false);
+  const [filtersCount, setFiltersCount] = useState<number>(0);
+
+  // search state
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-  const [filtersCount, setFiltersCount] = useState(0);
+  // nomenclature
   const { cities, domains } = useNomenclature();
-  const { updateServicesFilters } = useStore();
-  const { filters: activeFilters } = useServices();
+
+  // query params state
+  const [query, setQuery] = useQueryParams(SERVICES_QUERY_PARAMS);
+
+  // form state
+  const form = useForm({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+  });
 
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset,
-  } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-  });
+  } = form;
 
   // Queries
   useCitiesQuery(searchLocationTerm);
@@ -53,19 +63,37 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   useFacultiesQuery();
 
   useEffect(() => {
-    reset({ ...activeFilters });
+    (async () => {
+      const filters = await initFilters();
+      reset({ ...filters });
+    })();
   }, []);
 
   const search = (data: any) => {
-    updateServicesFilters(
-      data.search,
-      data.locationId,
-      data.domains,
-      data.start,
-      data.end,
-      data.ageCategories,
+    // 1. map query values
+    const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
+    const selectedAgeCategories = data?.ageCategories?.map(
+      (category: ISelectData) => category.value,
     );
-    props.onSearchCallback && props.onSearchCallback();
+    const queryValues = {
+      search: data?.search,
+      locationId: data?.locationId?.value,
+      domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
+      ageCategories: selectedAgeCategories?.length > 0 ? selectedAgeCategories : undefined,
+      start: data?.start,
+      end: data?.end,
+      page: 1,
+    };
+
+    // 2. set query params
+    setQuery(queryValues);
+    // 3 update filters cound
+    setFiltersCount(countFilters(queryValues));
+
+    props.onSearchCallback &&
+      props.onSearchCallback(
+        `?${stringify(encodeQueryParams(SERVICES_QUERY_PARAMS, queryValues))}`,
+      );
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -73,16 +101,49 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     return cities.map(mapItemToSelect);
   };
 
-  useEffect(() => {
-    const count = [
-      activeFilters.locationId,
-      activeFilters.domains?.length,
-      activeFilters.start,
-      activeFilters.end,
-    ].filter(Boolean).length;
-    setFiltersCount(count);
-    reset({ ...activeFilters });
-  }, [activeFilters]);
+  // TODO: These operations should take place in each form cell which requires server data
+  const initFilters = async () => {
+    const {
+      locationId,
+      domains: queryDomains,
+      ageCategories: queryAgeCategories,
+      page,
+      ...otherQueryParams
+    } = query;
+
+    // init should get me the correct values for
+    let selectedLocationId, selectedCategories, selectedDomains;
+
+    // 1. city
+    if (locationId) {
+      const citiesResults = await getCities({ cityId: locationId.toString() });
+      selectedLocationId = mapItemToSelect(citiesResults[0]);
+    }
+
+    // 2. categories
+    if (queryAgeCategories && queryAgeCategories?.length > 0) {
+      selectedCategories = AgeCategories.filter((category) =>
+        queryAgeCategories.includes(category.value),
+      );
+    }
+
+    // 3. domains
+    if (queryDomains && queryDomains?.length > 0) {
+      const allDomains = await getDomains();
+      selectedDomains = allDomains
+        .filter((domain: { id: number; name: string }) => queryDomains?.includes(domain.id))
+        .map(mapItemToSelect);
+    }
+
+    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
+
+    return {
+      locationId: selectedLocationId,
+      domains: selectedDomains,
+      ageCategories: selectedCategories,
+      ...otherQueryParams,
+    };
+  };
 
   handleEnterKey('services-search__term__input', 'services-search__button__submit');
 
@@ -91,7 +152,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <div className="flex flex-col w-full items-center gap-2">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
-          <p className="font-titillium sm:text-2xl sm:text-xl text-black">
+          <p className="font-titillium sm:text-xl text-black">
             {t('subtitle')}
             <a className="text-black underline cursor-pointer" href="/services">
               {t('subtitle_link')}
@@ -120,15 +181,13 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                 );
               }}
             />
-            {props.showFilters && (
-              <button
-                type="button"
-                className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
-                onClick={handleSubmit(search)}
-              >
-                <SearchIcon className="w-5 h-5" />
-              </button>
-            )}
+            <button
+              type="button"
+              className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
+              onClick={handleSubmit(search)}
+            >
+              <SearchIcon className="w-5 h-5" />
+            </button>
 
             <div className="w-1/3 h-14 hidden sm:flex">
               <Controller
@@ -153,28 +212,26 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               />
             </div>
           </div>
-          {props.showFilters && (
-            <div
-              className="sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200"
-              onClick={() => setFilterModalOpen(true)}
+          <div
+            className="sm:hidden flex justify-flex-start h-14 items-center bg-white px-4 gap-2 rounded-md shadow w-fit cursor-pointer active:bg-gray-200"
+            onClick={() => setFilterModalOpen(true)}
+          >
+            <p
+              id="search-services-activity__button-back"
+              className="text-sm sm:text-base  h-full flex items-center"
             >
+              {t('filters')}
+            </p>
+            <AdjustmentsIcon className="w-5 h-5" />
+            {filtersCount > 0 && (
               <p
                 id="search-services-activity__button-back"
-                className="text-sm sm:text-base  h-full flex items-center"
+                className="text-base rounded-full bg-yellow p-2 flex items-center w-10 justify-center"
               >
-                {t('filters')}
+                {filtersCount}
               </p>
-              <AdjustmentsIcon className="w-5 h-5" />
-              {filtersCount > 0 && (
-                <p
-                  id="search-services-activity__button-back"
-                  className="text-base rounded-full bg-yellow p-2 flex items-center w-10 justify-center"
-                >
-                  {filtersCount}
-                </p>
-              )}
-            </div>
-          )}
+            )}
+          </div>
 
           <div className="hidden sm:flex w-full h-14 items-center">
             <Controller

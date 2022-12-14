@@ -7,17 +7,17 @@ import { OrganizationFlat } from '../../../common/interfaces/OrganizationFlat.in
 const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) => {
   const { t } = useTranslation('organizations');
   const navigate = useNavigate();
-
+  console.log('organization', organization.logo);
   return (
     <div className="mt-10">
       <Card>
         <div className="flex flex-col sm:gap-y-10 gap-y-5 h-full">
           <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-100 sm:max-h-full max-h-[8rem]">
-            {organization.logo && (
+            {organization?.logo && (
               <img
                 className="bg-cover h-full w-full"
                 alt="organization image"
-                src={organization.logo}
+                src={organization?.logo}
               ></img>
             )}
           </div>

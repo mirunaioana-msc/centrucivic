@@ -11,8 +11,6 @@ import { useCitiesQuery } from '../../../services/nomenclature/Nomeclature.queri
 import DatePicker from '../date-picker/DatePicker';
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
-import { useServices } from '../../../store/Selectors';
-import useStore from '../../../store/Store';
 import { ServiceSearchConfig } from '../service-search/configs/ServiceSearch.config';
 
 interface SearchFilterModalProps {
@@ -23,8 +21,6 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
   const { t } = useTranslation();
   const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   const { cities, domains, faculties } = useNomenclature();
-  const { updateServicesFilters } = useStore();
-  const { filters } = useServices();
 
   useCitiesQuery(searchLocationTerm);
 
@@ -33,24 +29,12 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
     reValidateMode: 'onChange',
   });
 
-  useEffect(() => {
-    reset({ ...filters });
-  }, [filters]);
-
   const loadOptionsLocationSearch = async (searchWord: string) => {
     seSearchtLocationTerm(searchWord);
     return cities.map(mapItemToSelect);
   };
 
   const onApply = (data: any) => {
-    updateServicesFilters(
-      filters.search || '',
-      data.locationId,
-      data.domains,
-      data.start,
-      data.end,
-      data.ageCategories
-    );
     onClose();
   };
 
@@ -174,16 +158,13 @@ const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
                               isClearable={false}
                               isMulti={false}
                               onChange={onChange}
-                              placeholder={
-                                ServiceSearchConfig.ageCategories.config.placeholder
-                              }
+                              placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
                               options={ServiceSearchConfig.ageCategories.config.collection}
                               icon={ServiceSearchConfig.ageCategories.icon}
                             />
                           );
                         }}
                       />
-
                     </div>
                     <div className="flex flex-col gap-2 w-full absolute bottom-4">
                       <button
