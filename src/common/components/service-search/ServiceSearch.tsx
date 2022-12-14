@@ -96,7 +96,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord.trim());
+    seSearchtLocationTerm(searchWord);
     return cities.map(mapItemToSelect);
   };
 
