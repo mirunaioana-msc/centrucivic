@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
@@ -15,22 +15,22 @@ import { getCities } from '../../../services/nomenclature/Nomenclature.service';
 
 interface SearchFilterModalProps {
   onClose: () => void;
+  form: any;
+  onSubmit: (data: any) => void;
 }
 
-const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
+const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) => {
   const { t } = useTranslation();
-  const { domains, faculties } = useNomenclature();
+  const { domains } = useNomenclature();
 
-  const { handleSubmit, control } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-  });
+  const { handleSubmit, control } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   const onApply = (data: any) => {
+    onSubmit(data);
     onClose();
   };
 

@@ -312,6 +312,8 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             onClose={() => {
               setFilterModalOpen(false);
             }}
+            form={form}
+            onSubmit={search}
           />
         )}
       </div>
