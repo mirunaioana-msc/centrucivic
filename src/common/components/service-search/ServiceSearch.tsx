@@ -23,7 +23,6 @@ import { getCities, getDomains } from '../../../services/nomenclature/Nomenclatu
 import { AgeCategories } from '../../enums/AgeCategory.enum';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { stringify } from 'query-string';
-import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface ServiceSearchProps {
   children?: React.ReactNode;
@@ -145,8 +144,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     };
   };
 
-  handleEnterKey('services-search__term__input', 'services-search__button__submit');
-
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
@@ -176,6 +173,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                       defaultValue: value,
                       onChange: onChange,
                       id: 'services-search__term',
+                      onSearch: handleSubmit(search),
                     }}
                   />
                 );

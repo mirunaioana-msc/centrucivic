@@ -19,7 +19,6 @@ import { ORGANIZATIONS_QUERY_PARAMS } from '../../constants/Organizations.consta
 import { useQueryParams } from 'use-query-params';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
-import { handleEnterKey } from '../../helpers/Format.helper';
 
 interface NGOSearchProps {
   showFilters: boolean;
@@ -116,8 +115,6 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     };
   };
 
-  handleEnterKey('organizations-search__term__input', 'organizations-search__button__submit');
-
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
@@ -139,6 +136,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       defaultValue: value,
                       onChange: onChange,
                       id: 'organizations-search__term',
+                      onSearch: handleSubmit(search),
                     }}
                   />
                 );

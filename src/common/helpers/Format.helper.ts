@@ -24,13 +24,3 @@ export const formatDateMonthYear = (value: Date | string): string =>
 export const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 export const NAME_REGEX = /^(?!.*[ ]{2})[a-zA-Z-\săîâșțĂÎÂȘȚ]*$/;
-
-export const handleEnterKey = (inputId: string, buttonId: string): void => {
-  const input = document.getElementById(inputId);
-  input?.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      document.getElementById(buttonId)?.click();
-    }
-  });
-};
