@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
@@ -7,11 +7,11 @@ import { Controller, useForm } from 'react-hook-form';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
-import { useCitiesQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import DatePicker from '../date-picker/DatePicker';
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 import { ServiceSearchConfig } from '../service-search/configs/ServiceSearch.config';
+import { getCities } from '../../../services/nomenclature/Nomenclature.service';
 
 interface SearchFilterModalProps {
   onClose: () => void;
@@ -19,19 +19,15 @@ interface SearchFilterModalProps {
 
 const SearchFilterModal = ({ onClose }: SearchFilterModalProps) => {
   const { t } = useTranslation();
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-  const { cities, domains, faculties } = useNomenclature();
+  const { domains, faculties } = useNomenclature();
 
-  useCitiesQuery(searchLocationTerm);
-
-  const { handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect);
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   const onApply = (data: any) => {

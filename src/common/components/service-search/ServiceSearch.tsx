@@ -11,7 +11,6 @@ import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.sele
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
-  useCitiesQuery,
   useDomainsQuery,
   useFacultiesQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
@@ -35,10 +34,8 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState<boolean>(false);
   const [filtersCount, setFiltersCount] = useState<number>(0);
 
-  // search state
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
   // nomenclature
-  const { cities, domains } = useNomenclature();
+  const { domains } = useNomenclature();
 
   // query params state
   const [query, setQuery] = useQueryParams(SERVICES_QUERY_PARAMS);
@@ -57,7 +54,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   } = form;
 
   // Queries
-  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
   useFacultiesQuery();
 
@@ -96,8 +92,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect);
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   // TODO: These operations should take place in each form cell which requires server data

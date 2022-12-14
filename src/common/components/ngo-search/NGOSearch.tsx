@@ -8,10 +8,7 @@ import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
-import {
-  useCitiesQuery,
-  useDomainsQuery,
-} from '../../../services/nomenclature/Nomeclature.queries';
+import { useDomainsQuery } from '../../../services/nomenclature/Nomeclature.queries';
 import { NGOSearchConfig } from './configs/NGOSearch.config';
 import NGOFilterModal from '../ngo-filter-modal/NGOFilterModal';
 import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
@@ -32,11 +29,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [filtersCount, setFiltersCount] = useState(0);
 
-  // search state
-  const [searchLocationTerm, seSearchtLocationTerm] = useState('');
-
   // nomenclature state
-  const { cities, domains } = useNomenclature();
+  const { domains } = useNomenclature();
 
   // query params state
   const [query, setQuery] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
@@ -55,7 +49,6 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   } = form;
 
   // Queries
-  useCitiesQuery(searchLocationTerm);
   useDomainsQuery();
 
   useEffect(() => {
@@ -82,8 +75,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    seSearchtLocationTerm(searchWord);
-    return cities.map(mapItemToSelect);
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
   };
 
   const initFilters = async () => {
