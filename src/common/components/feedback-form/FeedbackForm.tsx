@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
 const FeedbackForm = () => {
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const { t } = useTranslation(['feedback_form', 'common']);
-  const { id } = useParams();
+  const { id: serviceId } = useParams();
 
   const {
     handleSubmit,
@@ -29,7 +29,7 @@ const FeedbackForm = () => {
 
   const onSendFeedback = (data: any) => {
     sendServiceFeedback.mutate(
-      { id: id as string, data },
+      { id: serviceId as string, data },
       {
         onSuccess: () => {
           reset();

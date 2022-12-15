@@ -33,7 +33,6 @@ const Contact = () => {
           setShowSuccess(true);
         },
         onError: () => {
-          console.log(data);
           useErrorToast(t('send_error'));
         },
       },

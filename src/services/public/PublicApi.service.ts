@@ -10,6 +10,5 @@ export const sendContactMail = (contactMailPayload: IContactMail): Promise<void>
 };
 
 export const sendServiceFeedback = async (id: string, payload: IFeedback): Promise<void> => {
-  console.log(payload);
   return API.post(`/api/civic-service/service/${id}/feedback`, payload).then((res) => res.data);
 };
