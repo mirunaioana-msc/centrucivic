@@ -135,7 +135,8 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       error: errors[NGOSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'ngo_search__term',
+                      id: 'organizations-search__term',
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );
@@ -219,7 +220,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
               }}
             />
             <button
-              id="create-organization-activity__button-back"
+              id="organizations-search__button__submit"
               type="button"
               className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-56 w-24"
               onClick={handleSubmit(search)}

@@ -172,7 +172,8 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                       error: errors[ServiceSearchConfig.search.key]?.message,
                       defaultValue: value,
                       onChange: onChange,
-                      id: 'programs-search-search__term',
+                      id: 'services-search__term',
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );
@@ -303,7 +304,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             />
 
             <button
-              id="search-services-activity__button-back"
+              id="services-search__button__submit"
               type="button"
               className="yellow-button text-sm sm:text-base w-full h-full"
               onClick={handleSubmit(search)}
