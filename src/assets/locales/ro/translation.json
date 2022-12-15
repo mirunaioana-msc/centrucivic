@@ -94,25 +94,25 @@
     },
     "details": {
       "available": "Disponibil",
-        "age_category": "Categorie de varsta",
-        "domains": "Domenii",
-        "email": "E-mail",
-        "phone": "Telefon",
-        "address": "Adresa",
-        "access": {
-          "online": {
-            "title": "Online",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
-          },
-          "email_or_phone": {
-            "title": "Prin e-mail sau telefon",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
-          },
-          "physical": {
-            "title": "Prin prezentare la adresa",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
-          }
+      "age_category": "Categorie de varsta",
+      "domains": "Domenii",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "address": "Adresa",
+      "access": {
+        "online": {
+          "title": "Online",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+        },
+        "email_or_phone": {
+          "title": "Prin e-mail sau telefon",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+        },
+        "physical": {
+          "title": "Prin prezentare la adresa",
+          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
         }
+      }
     }
   },
   "organization_details": {
@@ -256,6 +256,7 @@
       }
     },
     "title": "Ai interactionat cu acest serviciu?",
-    "subtitle": "Ofera-ne un feedback cu privire la interactiunea ta cu acest serviciu"
+    "subtitle": "Ofera-ne un feedback cu privire la interactiunea ta cu acest serviciu",
+    "send_error": "Eroare la trimiterea feedback-ului"
   }
 }
