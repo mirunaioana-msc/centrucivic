@@ -7,7 +7,6 @@ import { OrganizationFlat } from '../../../common/interfaces/OrganizationFlat.in
 const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) => {
   const { t } = useTranslation('organizations');
   const navigate = useNavigate();
-  console.log('organization', organization.logo);
   return (
     <div className="mt-10">
       <Card>

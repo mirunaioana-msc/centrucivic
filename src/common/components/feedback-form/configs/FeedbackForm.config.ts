@@ -29,7 +29,7 @@ const translations = {
 
 export const FeedbackFormConfig: Record<string, any> = {
   name: {
-    key: 'name',
+    key: 'fullName',
     rules: {
       required: {
         value: true,
