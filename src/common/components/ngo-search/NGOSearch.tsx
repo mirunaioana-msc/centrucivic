@@ -69,7 +69,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     // 1. map query values
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search,
+      search: data?.search.trim(),
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       page: 1,

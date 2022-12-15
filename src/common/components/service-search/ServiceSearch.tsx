@@ -75,7 +75,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       (category: ISelectData) => category.value,
     );
     const queryValues = {
-      search: data?.search,
+      search: data?.search.trim(),
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       ageCategories: selectedAgeCategories?.length > 0 ? selectedAgeCategories : undefined,
