@@ -136,7 +136,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       defaultValue: value,
                       onChange: onChange,
                       id: 'organizations-search__term',
-                      onSearch: handleSubmit(search),
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );

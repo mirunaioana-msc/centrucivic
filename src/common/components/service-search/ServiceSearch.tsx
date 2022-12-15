@@ -173,7 +173,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                       defaultValue: value,
                       onChange: onChange,
                       id: 'services-search__term',
-                      onSearch: handleSubmit(search),
+                      onKeyUp: handleSubmit(search),
                     }}
                   />
                 );

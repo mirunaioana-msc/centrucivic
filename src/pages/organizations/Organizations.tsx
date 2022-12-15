@@ -55,9 +55,7 @@ const Organizations = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={organizations}
-                itemContent={(index, ong) =>
-                  ong && <OrganizationItem key={index} organization={ong} />
-                }
+                itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
                 itemClassName="virtuso-grid-item"
                 listClassName="virtuso-grid-list"
                 components={{

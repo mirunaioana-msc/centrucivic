@@ -58,9 +58,7 @@ const Services = () => {
                 endReached={loadMore}
                 overscan={200}
                 data={services}
-                itemContent={(index, service) =>
-                  service && <ServiceItem key={index} service={service} />
-                }
+                itemContent={(index, service) => <ServiceItem key={index} service={service} />}
                 itemClassName="virtuso-grid-item"
                 listClassName="virtuso-grid-list"
                 components={{
