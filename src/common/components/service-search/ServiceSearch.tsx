@@ -149,7 +149,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
         <div className="flex flex-col w-full items-center gap-2">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
-          <p className="font-titillium sm:text-2xl sm:text-xl text-black">
+          <p className="font-titillium sm:text-xl text-black">
             {t('subtitle')}
             <a className="text-black underline cursor-pointer" href="/services">
               {t('subtitle_link')}
