@@ -6,10 +6,14 @@ import ContactInputField from '../contact-input-field/ContactInputField';
 import Textarea from '../textarea/Textarea';
 import { FeedbackFormConfig } from './configs/FeedbackForm.config';
 import { CheckCircleIcon } from '@heroicons/react/outline';
+import { useErrorToast } from '../../hooks/useToast';
+import { useSendServiceFeedback } from '../../../services/public/PublicApi.queries';
+import { useParams } from 'react-router-dom';
 
 const FeedbackForm = () => {
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const { t } = useTranslation(['feedback_form', 'common']);
+  const { id } = useParams();
 
   const {
     handleSubmit,
@@ -17,14 +21,25 @@ const FeedbackForm = () => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
-  const onSaveFeedback = () => {
-    console.log('Not yet implemented');
-    reset();
-    setShowSuccess(true);
+  const sendServiceFeedback = useSendServiceFeedback();
+
+  const onSendFeedback = (data: any) => {
+    sendServiceFeedback.mutate(
+      { id: id as string, data },
+      {
+        onSuccess: () => {
+          reset();
+          setShowSuccess(true);
+        },
+        onError: () => {
+          useErrorToast(t('send_error'));
+        },
+      },
+    );
   };
 
   return (
@@ -113,7 +128,7 @@ const FeedbackForm = () => {
                 }}
               />
             </form>
-            <button type="button" className="yellow-button" onClick={handleSubmit(onSaveFeedback)}>
+            <button type="button" className="yellow-button" onClick={handleSubmit(onSendFeedback)}>
               {t('send', { ns: 'common' })}
             </button>
           </div>
