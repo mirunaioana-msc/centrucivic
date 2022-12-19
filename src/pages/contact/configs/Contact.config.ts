@@ -33,7 +33,7 @@ export const ContactConfig: Record<string, any> = {
         message: translations.sender.required,
       },
       maxLength: {
-        value: 100,
+        value: 200,
         message: translations.sender.max,
       },
       minLength: {
@@ -59,10 +59,6 @@ export const ContactConfig: Record<string, any> = {
         value: true,
         message: translations.from.required,
       },
-      maxLength: {
-        value: 100,
-        message: translations.from.max,
-      },
       minLength: {
         value: 3,
         message: translations.from.min,
@@ -87,7 +83,7 @@ export const ContactConfig: Record<string, any> = {
         message: translations.text.required,
       },
       maxLength: {
-        value: 250,
+        value: 1500,
         message: translations.text.max,
       },
     },

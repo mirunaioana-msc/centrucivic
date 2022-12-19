@@ -99,6 +99,7 @@
       "email": "E-mail",
       "phone": "Telefon",
       "address": "Adresa",
+      "period_starting_with": "Incepand din",
       "access": {
         "online": {
           "title": "Online",
