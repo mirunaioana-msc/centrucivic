@@ -64,10 +64,10 @@
         "placeholder": "Data Sfarsit"
       },
       "ageCategories": {
-        "placeholder": "Orice Varsta"
+        "placeholder": "Varsta"
       },
       "domains": {
-        "placeholder": "Orice domeniu"
+        "placeholder": "Domeniu"
       }
     }
   },
@@ -139,7 +139,7 @@
         "placeholder": "Toata Romania"
       },
       "domains": {
-        "placeholder": "Orice domeniu"
+        "placeholder": "Domeniu"
       }
     }
   },
