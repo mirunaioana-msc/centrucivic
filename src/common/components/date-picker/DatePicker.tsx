@@ -37,7 +37,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           />
         </div>
         <ReactDatePicker
-          className="block h-14 w-full p-4 pl-8 shadow-md sm:text-lg placeholder:text-gray-500"
+          className="block h-14 w-full p-4 pl-8 shadow-md sm:text-lg placeholder:text-gray-500 truncate"
           selectsRange={false}
           onChange={(update: Date) => {
             setDate(update);
