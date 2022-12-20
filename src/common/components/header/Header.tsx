@@ -10,7 +10,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { classNames } from '../../helpers/Tailwind.helper';
 import { windowOpener } from '../../helpers/Navigation.helper';
 
-const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
+interface HeaderProps {
+  openSlidingMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header = ({ openSlidingMenu }: HeaderProps) => {
   const { t } = useTranslation('header');
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,18 +25,27 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
     if (location.pathname === '/') {
       setActiveTab('/');
     } else {
-      const found = Object.values(MENU_ROUTES_HREF).find(route => location.pathname.startsWith(`/${route}`));
+      const found = Object.values(MENU_ROUTES_HREF).find((route) =>
+        location.pathname.startsWith(`/${route}`),
+      );
       setActiveTab(`/${found}`);
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
   return (
     <header className="bg-white">
       <nav aria-label="Top">
-        <div className='flex items-center gap-4 w-full xl:px-32 lg:px-18 sm:px-8 sm:py-2 px-2 bg-gray-50 h-12'>
+        <div className="flex items-center sm:gap-4 gap-2 w-full xl:px-32 lg:px-18 sm:px-8 sm:py-2 px-2 bg-gray-50 h-12">
           <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
-          <span className='sm:text-base text-xs'>{t('commit_global_solution')}</span>
-          <a className='text-blue font-bold hover:underline sm:text-base text-xs' href={COMMIT_GLOBAL_URL} target='_blank' rel="noreferrer">{t('learn_more')}</a>
+          <span className="sm:text-base text-xs">{t('commit_global_solution')}</span>
+          <a
+            className="text-blue font-bold hover:underline sm:text-base text-xs"
+            href={COMMIT_GLOBAL_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t('learn_more')}
+          </a>
         </div>
         <div className="w-full xl:px-32 lg:px-18 sm:px-8 px-2 py-4 flex gap-4 justify-between items-center">
           <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
@@ -41,12 +54,19 @@ const Header = ({ openSlidingMenu }: { openSlidingMenu?: any }) => {
           <div className="flex gap-4 items-center">
             <div className="gap-6 hidden lg:flex">
               {MENU_ROUTES.map((route) => (
-                <a className={classNames('menu-title', activeTab === route.href ? 'text-yellow-700' : 'text-black')} key={route.id} onClick={() => navigate(route.href)}>
+                <a
+                  className={classNames(
+                    'menu-title',
+                    activeTab === route.href ? 'text-yellow-700' : 'text-black',
+                  )}
+                  key={route.id}
+                  onClick={() => navigate(route.href)}
+                >
                   {route.name}
                 </a>
               ))}
             </div>
-            <div className='lg:pl-8 block'>
+            <div className="lg:pl-8 block">
               <button
                 className="yellow-button lg:flex hidden w-12 menu-title"
                 onClick={() => windowOpener(DONATE_URL)}
