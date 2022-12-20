@@ -153,7 +153,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                               id="create-organization-ageCategories"
                               value={value}
                               isClearable
-                              isMulti={false}
+                              isMulti
                               onChange={onChange}
                               placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
                               options={ServiceSearchConfig.ageCategories.config.collection}
