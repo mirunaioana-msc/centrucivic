@@ -68,7 +68,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
             </div>
             <div className="lg:pl-8 block">
               <button
-                className="yellow-button lg:flex hidden w-12 menu-title"
+                className="yellow-button lg:flex hidden lg:w-32 xl:w-12 menu-title"
                 onClick={() => windowOpener(DONATE_URL)}
               >
                 {t('donate')}
