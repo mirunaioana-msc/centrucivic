@@ -12,7 +12,7 @@ import ListError from '../../common/components/list-error/ListError';
 const Service = () => {
   const { t } = useTranslation('service_details');
   const { id } = useParams();
-  const { data, isLoading, error } = useService(id as string);
+  const { data, isLoading, error, refetch } = useService(id as string);
 
   if (isLoading) {
     return (
@@ -25,7 +25,7 @@ const Service = () => {
   if (error) {
     return (
       <ShapeWrapper>
-        <ListError>{t('details.errors.get')}</ListError>
+        <ListError retry={refetch}>{t('details.errors.get')}</ListError>
       </ShapeWrapper>
     );
   }
