@@ -12,6 +12,7 @@ import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 import { ServiceSearchConfig } from '../service-search/configs/ServiceSearch.config';
 import { getCities } from '../../../services/nomenclature/Nomenclature.service';
+import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface SearchFilterModalProps {
   onClose: () => void;
@@ -26,7 +27,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
   const { handleSubmit, control } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
   };
 
   const onApply = (data: any) => {
@@ -82,7 +83,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                               id="programs-search-location"
                               value={value}
                               isMulti={false}
-                              isClearable={false}
+                              isClearable
                               placeholder={ServiceSearchConfig.locationId.placeholder}
                               onChange={onChange}
                               loadOptions={loadOptionsLocationSearch}
@@ -101,7 +102,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                             <MultiSelect
                               id="create-organization-domains"
                               value={value}
-                              isClearable={false}
+                              isClearable
                               isMulti={true}
                               onChange={onChange}
                               placeholder={ServiceSearchConfig.domains.config.placeholder}
@@ -151,8 +152,8 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                             <MultiSelect
                               id="create-organization-ageCategories"
                               value={value}
-                              isClearable={false}
-                              isMulti={false}
+                              isClearable
+                              isMulti
                               onChange={onChange}
                               placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
                               options={ServiceSearchConfig.ageCategories.config.collection}

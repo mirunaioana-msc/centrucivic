@@ -16,6 +16,7 @@ import { ORGANIZATIONS_QUERY_PARAMS } from '../../constants/Organizations.consta
 import { useQueryParams } from 'use-query-params';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
+import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface NGOSearchProps {
   showFilters: boolean;
@@ -62,7 +63,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     // 1. map query values
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
     const queryValues = {
-      search: data?.search.trim(),
+      search: data?.search?.trim(),
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       page: 1,
@@ -75,7 +76,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
   };
 
   const initFilters = async () => {
@@ -87,7 +88,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
     // 1. city
     if (locationId) {
       const citiesResults = await getCities({ cityId: locationId.toString() });
-      selectedLocation = mapItemToSelect(citiesResults[0]);
+      selectedLocation = mapCitiesToSelect(citiesResults[0]);
     }
 
     // 4. domains
@@ -113,27 +114,29 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
         <p className="title">{t('ngo_search:title')}</p>
         <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
-            <Controller
-              key={NGOSearchConfig.search.key}
-              name={NGOSearchConfig.search.key}
-              rules={NGOSearchConfig.search.rules}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return (
-                  <SearchField
-                    config={{
-                      ...NGOSearchConfig.search.config,
-                      name: NGOSearchConfig.search.key,
-                      error: errors[NGOSearchConfig.search.key]?.message,
-                      defaultValue: value,
-                      onChange: onChange,
-                      id: 'organizations-search__term',
-                      onKeyUp: handleSubmit(search),
-                    }}
-                  />
-                );
-              }}
-            />
+            <div className="sm:w-3/4 w-full">
+              <Controller
+                key={NGOSearchConfig.search.key}
+                name={NGOSearchConfig.search.key}
+                rules={NGOSearchConfig.search.rules}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <SearchField
+                      config={{
+                        ...NGOSearchConfig.search.config,
+                        name: NGOSearchConfig.search.key,
+                        error: errors[NGOSearchConfig.search.key]?.message,
+                        defaultValue: value,
+                        onChange: onChange,
+                        id: 'organizations-search__term',
+                        onKeyUp: handleSubmit(search),
+                      }}
+                    />
+                  );
+                }}
+              />
+            </div>
             {showFilters && (
               <button
                 type="button"
@@ -144,7 +147,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
               </button>
             )}
 
-            <div className="w-1/3 h-14 hidden sm:flex">
+            <div className="w-1/4 h-14 hidden sm:flex">
               <Controller
                 key={NGOSearchConfig.locationId.key}
                 name={NGOSearchConfig.locationId.key}
@@ -156,7 +159,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                       id="programs-search-location"
                       value={value}
                       isMulti={false}
-                      isClearable={false}
+                      isClearable
                       placeholder={NGOSearchConfig.locationId.placeholder}
                       onChange={onChange}
                       loadOptions={loadOptionsLocationSearch}
@@ -191,30 +194,32 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
           )}
 
           <div className="hidden sm:flex w-full h-14 items-center">
-            <Controller
-              key={NGOSearchConfig.domains.key}
-              name={NGOSearchConfig.domains.key}
-              rules={NGOSearchConfig.domains.rules}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return (
-                  <MultiSelect
-                    id="create-organization-domains"
-                    value={value}
-                    isClearable={false}
-                    isMulti={true}
-                    onChange={onChange}
-                    placeholder={NGOSearchConfig.domains.config.placeholder}
-                    options={domains.map(mapItemToSelect)}
-                    icon={NGOSearchConfig.domains.icon}
-                  />
-                );
-              }}
-            />
+            <div className="w-5/6">
+              <Controller
+                key={NGOSearchConfig.domains.key}
+                name={NGOSearchConfig.domains.key}
+                rules={NGOSearchConfig.domains.rules}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <MultiSelect
+                      id="create-organization-domains"
+                      value={value}
+                      isClearable
+                      isMulti={true}
+                      onChange={onChange}
+                      placeholder={NGOSearchConfig.domains.config.placeholder}
+                      options={domains.map(mapItemToSelect)}
+                      icon={NGOSearchConfig.domains.icon}
+                    />
+                  );
+                }}
+              />
+            </div>
             <button
               id="organizations-search__button__submit"
               type="button"
-              className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-56 w-24"
+              className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-1/6 w-24"
               onClick={handleSubmit(search)}
             >
               {t('ngo_search:searchWord')}

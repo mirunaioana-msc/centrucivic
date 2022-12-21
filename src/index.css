@@ -89,12 +89,19 @@
   .show-more-text {
     @apply text-blue cursor-pointer underline;
   }
-
 }
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */
   min-height: calc(100vh - 6rem - 18rem);
+}
+
+.range-clear-button::after {
+  background-color: transparent !important;
+  color: #c0c0c0 !important;
+  height: 20px !important;
+  width: 20px !important;
+  font-size: 20px !important;
 }
 
 a {

@@ -25,9 +25,11 @@ const Control = ({ children, ...props }: any) => {
   return (
     components.Control && (
       <components.Control {...props}>
-        {(
-          <LocationMarkerIcon className={classNames(`w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')} />
-        )}
+        {
+          <LocationMarkerIcon
+            className={classNames(`w-5 h-5`, props.hasValue ? 'text-purple' : 'text-gray-500')}
+          />
+        }
         {children}
       </components.Control>
     )

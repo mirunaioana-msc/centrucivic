@@ -15,7 +15,7 @@ export const useServicesQuery = (
   start?: Date | null,
   end?: Date | null,
 ) => {
-  const { setServices } = useStore();
+  const { setServices, nextServices } = useStore();
   const {
     meta: { itemsPerPage },
   } = useServices();
@@ -35,7 +35,11 @@ export const useServicesQuery = (
       ),
     {
       onSuccess: (data: PaginatedEntity<IService>) => {
-        setServices(data);
+        if (currentPage > 1) {
+          nextServices(data);
+        } else {
+          setServices(data);
+        }
       },
       enabled: !!(currentPage && itemsPerPage),
       retry: 0,
