@@ -1,13 +1,11 @@
-import i18n from "../configs/i18n";
-import { AgeCategory } from "../enums/AgeCategory.enum";
-import { IService } from "../interfaces/Service.interface";
-import { formatDateMonthYear } from "./Format.helper";
+import i18n from '../configs/i18n';
+import { AgeCategory } from '../enums/AgeCategory.enum';
+import { IService } from '../interfaces/Service.interface';
+import { formatDateMonthYear } from './Format.helper';
 
 const translations = {
-  starting_with: i18n.t('practice_program:details.period_starting_with'),
-  unlimited: i18n.t('practice_program:details.deadline_unlimited'),
+  starting_with: i18n.t('service_details:details.period_starting_with'),
 };
-
 
 const AgeCategoriesMapper = {
   [AgeCategory['0_18']]: '0-18',
@@ -18,13 +16,13 @@ const AgeCategoriesMapper = {
 };
 
 export const calculatePeriod = (item: IService) => {
-  if (!item?.endDate) {
-    const startDate = formatDateMonthYear(item?.startDate);
-    return `${translations.starting_with} ${startDate}`;
-  } else {
-    const endDate = item?.endDate ? formatDateMonthYear(item.endDate) : translations.unlimited;
+  if (item?.endDate) {
+    const endDate = formatDateMonthYear(item.endDate);
     const startDate = formatDateMonthYear(item?.startDate);
     return `${startDate} - ${endDate}`;
+  } else {
+    const startDate = formatDateMonthYear(item?.startDate);
+    return `${translations.starting_with} ${startDate}`;
   }
 };
 

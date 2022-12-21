@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarIcon, CheckCircleIcon, ClockIcon, LocationMarkerIcon } from '@heroicons/react/solid';
+import { CheckCircleIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
 import { formatDateDot } from '../../../common/helpers/Format.helper';
@@ -16,11 +16,7 @@ const ServiceItem = ({ service }: { service: IService }) => {
       <div className="flex flex-col gap-y-2 h-full">
         <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-150 sm:max-h-full max-h-[8rem]">
           {p4g_logo && (
-            <img
-              className="bg-cover h-full w-full"
-              alt="service image"
-              src={p4g_logo}
-            ></img>
+            <img className="bg-cover h-full w-full" alt="service image" src={p4g_logo}></img>
           )}
         </div>
         <div className="flex flex-row items-center gap-x-1">
@@ -32,15 +28,33 @@ const ServiceItem = ({ service }: { service: IService }) => {
           <p className="article card-text-overflow">{service.shortDescription}</p>
         </div>
 
-        <div className='flex pt-2'>
-          <p><span>{t('available')}</span>&nbsp;<span>{formatDateDot(service.startDate)}</span> - <span>{formatDateDot(service.endDate)}</span></p>
+        <div className="flex pt-2">
+          <p>
+            <span>{t('available')}</span>&nbsp;<span>{formatDateDot(service.startDate)}</span> -{' '}
+            <span>{formatDateDot(service.endDate)}</span>
+          </p>
         </div>
-        <div className='mt-24'>
-          <p className='font-titilliumBold text-gray-600'>{t('access')}</p>
-          <div className='flex gap-4 py-4'>
-            {service.hasOnlineAccess && <div className='flex gap-2 items-center'><CheckCircleIcon className='w-5 h-5 text-green' /><span className='text-sm'>{t('online')}</span></div>}
-            {service.hasEmailPhoneAccess && <div className='flex gap-2 items-center'><CheckCircleIcon className='w-5 h-5 text-green' /><span className='text-sm'>{t('email')}</span></div>}
-            {service.hasPhysicalAccess && <div className='flex gap-2 items-center'><CheckCircleIcon className='w-5 h-5 text-green' /><span className='text-sm'>{t('location')}</span></div>}
+        <div className="mt-24">
+          <p className="font-titilliumBold text-gray-600">{t('access')}</p>
+          <div className="flex gap-4 py-4">
+            {service.hasOnlineAccess && (
+              <div className="flex gap-2 items-center">
+                <CheckCircleIcon className="w-5 h-5 text-green" />
+                <span className="text-sm">{t('online')}</span>
+              </div>
+            )}
+            {service.hasEmailPhoneAccess && (
+              <div className="flex gap-2 items-center">
+                <CheckCircleIcon className="w-5 h-5 text-green" />
+                <span className="text-sm">{t('email')}</span>
+              </div>
+            )}
+            {service.hasPhysicalAccess && (
+              <div className="flex gap-2 items-center">
+                <CheckCircleIcon className="w-5 h-5 text-green" />
+                <span className="text-sm">{t('location')}</span>
+              </div>
+            )}
           </div>
         </div>
         <button

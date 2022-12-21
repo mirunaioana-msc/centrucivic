@@ -19,7 +19,7 @@ export const openInNewTab = (url: string): void => {
 };
 
 export const formatDateMonthYear = (value: Date | string): string =>
-  format(new Date(value), 'MMM y');
+  format(new Date(value), 'dd MMM y');
 
 export const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
