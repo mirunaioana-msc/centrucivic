@@ -48,7 +48,7 @@
   }
 
   .article {
-    @apply sm:text-base text-sm text-gray-500;
+    @apply sm:text-base text-sm text-gray-500 break-words;
   }
 
   .card-text-overflow {
