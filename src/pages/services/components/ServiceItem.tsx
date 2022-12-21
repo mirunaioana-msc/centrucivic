@@ -24,16 +24,16 @@ const ServiceItem = ({ service }: { service: IService }) => {
           <p className="sm:text-sm lg:text-base text-xs">{service.location.name}</p>
         </div>
         <div className="flex flex-col gap-y-3">
-          <p className="subtitle card-title-overflow h-16">{service.name}</p>
-          <p className="article card-text-overflow h-28">{service.shortDescription}</p>
+          <p className="subtitle card-title-overflow sm:h-16 h-12">{service.name}</p>
+          <p className="article card-text-overflow sm:h-28 h-24">{service.shortDescription}</p>
         </div>
         <div className="flex pt-2">
           <p>
             <span>{t('available')}</span>&nbsp;<span>{formatDateDot(service.startDate)}</span> -{' '}
-            <span>{formatDateDot(service.endDate)}</span>
+            <span>{service.endDate ? formatDateDot(service.endDate) : t('present')}</span>
           </p>
         </div>
-        <div className="mt-24">
+        <div className="mt-4">
           <p className="font-titilliumBold text-gray-600">{t('access')}</p>
           <div className="flex gap-4 py-4">
             {service.hasOnlineAccess && (

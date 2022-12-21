@@ -8,31 +8,26 @@ const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) 
   const { t } = useTranslation('organizations');
   const navigate = useNavigate();
   return (
-    <div className="mt-10">
-      <Card>
-        <div className="flex flex-col sm:gap-y-10 gap-y-5 h-full">
-          <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-100 sm:max-h-full max-h-[8rem]">
-            {organization?.logo && (
-              <img
-                className="bg-cover h-full w-full"
-                alt="organization image"
-                src={organization?.logo}
-              ></img>
-            )}
-          </div>
-          <div className="flex flex-col gap-y-5">
-            <p className="subtitle card-title-overflow h-16">{organization?.name}</p>
-            <p className="article card-text-overflow h-28">{organization?.description}</p>
-          </div>
-          <button
-            className="yellow-button w-full mt-auto"
-            onClick={() => navigate(`${organization?.id}`)}
-          >
-            {t('action')}
-          </button>
+    <Card>
+      <div className="flex flex-col sm:gap-y-10 gap-y-5 h-full">
+        <div
+          style={{ backgroundImage: `url(${organization?.logo})` }}
+          className={`aspect-square bg-contain bg-no-repeat bg-center lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] sm:max-h-full max-h-[8rem] ${
+            organization.logo ? 'bg-transparent' : 'bg-gray-100'
+          }`}
+        ></div>
+        <div className="flex flex-col gap-y-5">
+          <p className="subtitle card-title-overflow sm:h-16 h-12">{organization?.name}</p>
+          <p className="article card-text-overflow sm:h-28 h-24">{organization?.description}</p>
         </div>
-      </Card>
-    </div>
+        <button
+          className="yellow-button w-full mt-auto"
+          onClick={() => navigate(`${organization?.id}`)}
+        >
+          {t('action')}
+        </button>
+      </div>
+    </Card>
   );
 };
 

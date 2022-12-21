@@ -70,9 +70,7 @@
   }
 
   .virtuso-grid-list {
-    @apply flex flex-row flex-wrap gap-8;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
+    @apply flex flex-wrap gap-8;
   }
 
   .menu-title {
