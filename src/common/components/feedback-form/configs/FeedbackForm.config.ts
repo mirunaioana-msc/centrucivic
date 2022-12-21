@@ -36,7 +36,7 @@ export const FeedbackFormConfig: Record<string, any> = {
         message: translations.name.required,
       },
       maxLength: {
-        value: 100,
+        value: 200,
         message: translations.name.max,
       },
       minLength: {
@@ -63,7 +63,7 @@ export const FeedbackFormConfig: Record<string, any> = {
         message: translations.interaction_date.required,
       },
       maxLength: {
-        value: 30,
+        value: 50,
         message: translations.interaction_date.max,
       },
     },

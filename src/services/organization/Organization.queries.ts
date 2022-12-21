@@ -22,7 +22,11 @@ export const useOrganizationQuery = (
     () => searchOrganizations(itemsPerPage, currentPage, search, locationId, domains),
     {
       onSuccess: (data: PaginatedEntity<OrganizationFlat>) => {
-        setOrganizations(data);
+        if (currentPage > 1) {
+          nextOrganizations(data);
+        } else {
+          setOrganizations(data);
+        }
       },
       enabled: !!(currentPage && itemsPerPage),
       retry: 0,

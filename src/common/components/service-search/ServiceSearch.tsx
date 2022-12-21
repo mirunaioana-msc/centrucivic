@@ -22,6 +22,7 @@ import { getCities, getDomains } from '../../../services/nomenclature/Nomenclatu
 import { AgeCategories } from '../../enums/AgeCategory.enum';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { stringify } from 'query-string';
+import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface ServiceSearchProps {
   children?: React.ReactNode;
@@ -71,7 +72,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       (category: ISelectData) => category.value,
     );
     const queryValues = {
-      search: data?.search.trim(),
+      search: data?.search?.trim(),
       locationId: data?.locationId?.value,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
       ageCategories: selectedAgeCategories?.length > 0 ? selectedAgeCategories : undefined,
@@ -92,7 +93,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
-    return getCities({ search: searchWord }).then((cities) => cities.map(mapItemToSelect));
+    return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
   };
 
   // TODO: These operations should take place in each form cell which requires server data
@@ -111,7 +112,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     // 1. city
     if (locationId) {
       const citiesResults = await getCities({ cityId: locationId.toString() });
-      selectedLocationId = mapItemToSelect(citiesResults[0]);
+      selectedLocationId = mapCitiesToSelect(citiesResults[0]);
     }
 
     // 2. categories
@@ -153,27 +154,29 @@ const ServiceSearch = (props: ServiceSearchProps) => {
         </div>
         <div className="flex flex-col gap-4 max-w-5xl w-full justify-items-center">
           <div className="flex w-full items-center h-14">
-            <Controller
-              key={ServiceSearchConfig.search.key}
-              name={ServiceSearchConfig.search.key}
-              rules={ServiceSearchConfig.search.rules}
-              control={control}
-              render={({ field: { onChange, value } }) => {
-                return (
-                  <SearchField
-                    config={{
-                      ...ServiceSearchConfig.search.config,
-                      name: ServiceSearchConfig.search.key,
-                      error: errors[ServiceSearchConfig.search.key]?.message,
-                      defaultValue: value,
-                      onChange: onChange,
-                      id: 'services-search__term',
-                      onKeyUp: handleSubmit(search),
-                    }}
-                  />
-                );
-              }}
-            />
+            <div className="sm:w-3/4 w-full">
+              <Controller
+                key={ServiceSearchConfig.search.key}
+                name={ServiceSearchConfig.search.key}
+                rules={ServiceSearchConfig.search.rules}
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <SearchField
+                      config={{
+                        ...ServiceSearchConfig.search.config,
+                        name: ServiceSearchConfig.search.key,
+                        error: errors[ServiceSearchConfig.search.key]?.message,
+                        defaultValue: value,
+                        onChange: onChange,
+                        id: 'services-search__term',
+                        onKeyUp: handleSubmit(search),
+                      }}
+                    />
+                  );
+                }}
+              />
+            </div>
             <button
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
@@ -182,7 +185,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               <SearchIcon className="w-5 h-5" />
             </button>
 
-            <div className="w-1/3 h-14 hidden sm:flex">
+            <div className="w-1/4 h-14 hidden sm:flex">
               <Controller
                 key={ServiceSearchConfig.locationId.key}
                 name={ServiceSearchConfig.locationId.key}
@@ -194,7 +197,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                       id="programs-search-location"
                       value={value}
                       isMulti={false}
-                      isClearable={false}
+                      isClearable
                       placeholder={ServiceSearchConfig.locationId.placeholder}
                       onChange={onChange}
                       loadOptions={loadOptionsLocationSearch}
@@ -226,7 +229,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             )}
           </div>
 
-          <div className="hidden sm:flex w-full h-14 items-center">
+          <div className="hidden sm:grid sm:grid-cols-5 w-full h-14 items-center">
             <Controller
               key={ServiceSearchConfig.domains.key}
               name={ServiceSearchConfig.domains.key}
@@ -237,7 +240,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                   <MultiSelect
                     id="search-services-domains"
                     value={value}
-                    isClearable={false}
+                    isClearable
                     isMulti={true}
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.domains.config.placeholder}
@@ -287,7 +290,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                   <MultiSelect
                     id="search-services-ageCategories"
                     value={value}
-                    isClearable={false}
+                    isClearable
                     isMulti={true}
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.ageCategories.config.placeholder}

@@ -21,12 +21,12 @@ const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) 
             )}
           </div>
           <div className="flex flex-col gap-y-5">
-            <p className="subtitle card-title-overflow h-16">{organization.name}</p>
-            <p className="article card-text-overflow h-28">{organization.description}</p>
+            <p className="subtitle card-title-overflow h-16">{organization?.name}</p>
+            <p className="article card-text-overflow h-28">{organization?.description}</p>
           </div>
           <button
             className="yellow-button w-full mt-auto"
-            onClick={() => navigate(`${organization.id}`)}
+            onClick={() => navigate(`${organization?.id}`)}
           >
             {t('action')}
           </button>

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { useHref, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { classNames } from '../../helpers/Tailwind.helper';
 import logo from './../../../assets/images/logo.svg';
 import { MENU_ROUTES, MENU_ROUTES_HREF } from '../../constants/Menu.constants';
@@ -8,16 +8,21 @@ import { XIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import { windowOpener } from '../../helpers/Navigation.helper';
 import { CODE_4_URL, DONATE_URL } from '../../constants/ExternalURL.constants';
+import { IMenuURL } from '../../interfaces/Menu.interface';
 
-export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: boolean, setSlidingMenuOpen: any }) {
+interface SlidingMenuProps {
+  isOpen: boolean;
+  setSlidingMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuProps) {
   const { t } = useTranslation('sliding_menu');
   const navigate = useNavigate();
   const location = useLocation();
 
   const [activeTab, setActiveTab] = useState<string>();
 
-
-  const handleMenuItemClick = (item: any) => {
+  const handleMenuItemClick = (item: IMenuURL) => {
     setSlidingMenuOpen(false);
     navigate(`${item.href}`);
   };
@@ -26,11 +31,12 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
     if (location.pathname === '/') {
       setActiveTab('/');
     } else {
-      const found = Object.values(MENU_ROUTES_HREF).find(route => location.pathname.startsWith(`/${route}`));
+      const found = Object.values(MENU_ROUTES_HREF).find((route) =>
+        location.pathname.startsWith(`/${route}`),
+      );
       setActiveTab(`/${found}`);
     }
-  }, [location.pathname])
-
+  }, [location.pathname]);
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -49,7 +55,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none relative h-full fixed inset-y-0 left-0 flex w-full">
+            <div className="pointer-events-none relative h-full inset-y-0 left-0 flex w-full">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -69,10 +75,13 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-
                     <div className=" flex justify-between py-8 border-b-2">
                       <div className="flex items-center">
-                        <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
+                        <img
+                          src={logo}
+                          alt="Code 4 Romania - ONG Hub"
+                          className="sm:h-full sm:w-full h-10"
+                        />
                       </div>
                       <button
                         type="button"
@@ -97,7 +106,8 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
                           <a
                             key={item.name}
                             className={classNames(
-                              'side-menu-title active:text-yellow-600', activeTab === item.href && 'text-yellow-700',
+                              'side-menu-title active:text-yellow-600',
+                              activeTab === item.href && 'text-yellow-700',
                             )}
                             onClick={() => handleMenuItemClick(item)}
                           >
@@ -113,7 +123,14 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: { isOpen: bo
                           {t('donate')}
                         </button>
                         <span>{t('how')}</span>
-                        <a className='text-blue font-bold hover:underline text-base' href={CODE_4_URL} target='_blank' rel="noreferrer">{t('learn_more')}</a>
+                        <a
+                          className="text-blue font-bold hover:underline text-base"
+                          href={CODE_4_URL}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t('learn_more')}
+                        </a>
                       </div>
                     </div>
                   </div>

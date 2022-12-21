@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { ISelectData } from './Nomenclature.helper';
 
 export const formatDateYear = (value: Date | string | null): string =>
   value ? format(new Date(value), 'dd MMM yyyy') : '';
@@ -8,6 +9,11 @@ export const formatDateDot = (value: Date | string | null): string =>
 
 export const formatDate = (value: Date | string | null): string =>
   value ? format(new Date(value), 'dd MMM') : '';
+
+export const mapCitiesToSelect = (item: any): ISelectData => ({
+  value: item?.id,
+  label: `${item.name}, jud. ${item.county?.name}`,
+});
 
 export const openInNewTab = (url: string): void => {
   // Temporary - TO REMOVE after fixing http addon on input
@@ -19,7 +25,7 @@ export const openInNewTab = (url: string): void => {
 };
 
 export const formatDateMonthYear = (value: Date | string): string =>
-  format(new Date(value), 'MMM y');
+  format(new Date(value), 'dd MMM y');
 
 export const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

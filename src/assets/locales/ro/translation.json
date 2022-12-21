@@ -49,7 +49,7 @@
       "search": {
         "max": "Cautarea nu poate avea mai mult de 50 de caractere",
         "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau serviciu..."
+        "placeholder": "Cauta un ONG sau un serviciu..."
       },
       "location": {
         "placeholder": "Toata Romania"
@@ -64,10 +64,10 @@
         "placeholder": "Data Sfarsit"
       },
       "ageCategories": {
-        "placeholder": "Orice Varsta"
+        "placeholder": "Varsta"
       },
       "domains": {
-        "placeholder": "Orice domeniu"
+        "placeholder": "Domeniu"
       }
     }
   },
@@ -99,6 +99,7 @@
       "email": "E-mail",
       "phone": "Telefon",
       "address": "Adresa",
+      "period_starting_with": "Incepand din",
       "access": {
         "online": {
           "title": "Online",
@@ -112,6 +113,9 @@
           "title": "Prin prezentare la adresa",
           "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
         }
+      },
+      "errors": {
+        "get": "Eroare la incarcarea serviciului"
       }
     }
   },
@@ -139,7 +143,7 @@
         "placeholder": "Toata Romania"
       },
       "domains": {
-        "placeholder": "Orice domeniu"
+        "placeholder": "Domeniu"
       }
     }
   },
