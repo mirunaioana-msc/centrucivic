@@ -49,7 +49,7 @@
       "search": {
         "max": "Cautarea nu poate avea mai mult de 50 de caractere",
         "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau serviciu..."
+        "placeholder": "Cauta un ONG sau un serviciu..."
       },
       "location": {
         "placeholder": "Toata Romania"
