@@ -11,7 +11,6 @@ const translations = {
   },
   from: {
     required: i18n.t('contact:form.email.required'),
-    max: i18n.t('contact:form.email.max'),
     min: i18n.t('contact:form.email.min'),
     invalid: i18n.t('contact:form.email.invalid'),
     label: i18n.t('contact:form.email.label'),
@@ -19,7 +18,6 @@ const translations = {
   text: {
     required: i18n.t('contact:form.message.required'),
     max: i18n.t('contact:form.message.max'),
-    min: i18n.t('contact:form.message.min'),
     label: i18n.t('contact:form.message.label'),
   },
 };
