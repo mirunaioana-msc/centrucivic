@@ -18,15 +18,12 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
   return (
     <Card>
       <div className="flex lg:flex-row flex-col gap-x-20 gap-y-10">
-        <div className="aspect-square lg:w-72 lg:h-72 bg-gray-100 sm:h-44 sm:w-44 w-full h-32">
-          {organization.logo && (
-            <img
-              alt="Organization logo"
-              className="w-full h-full bg-cover"
-              src={organization.logo}
-            ></img>
-          )}
-        </div>
+        <div
+          style={{ backgroundImage: `url(${organization?.logo})` }}
+          className={`aspect-square bg-contain bg-no-repeat bg-center lg:w-72 lg:h-72 sm:h-44 sm:w-44 w-full h-32 ${
+            organization.logo ? 'bg-transparent' : 'bg-gray-100'
+          }`}
+        ></div>
         <div className="flex flex-col gap-y-5">
           <p className="subtitle">{organization.name}</p>
           <p className="article">{organization.shortDescription}</p>

@@ -82,11 +82,12 @@
   },
   "service_card": {
     "available": "Disponibil",
+    "present": "Prezent",
     "access": "Cum poate fi accesat serviciul",
     "online": "Online",
     "email": "Email sau telefon",
     "location": "La locatie",
-    "details": "Detalii"
+    "details": "Vezi mai mult"
   },
   "service_details": {
     "actions": {
