@@ -1,3 +1,4 @@
+import { ExclamationCircleIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { classNames } from '../../helpers/Tailwind.helper';
 import { ContactInputFieldConfig } from './ContactInputFieldConfig.interface';
@@ -36,6 +37,11 @@ const ContactInputField = (props: {
             disabled={props.disabled}
             id={`${props.config.id}__input`}
           />
+        )}
+        {props.config.error && (
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
+          </div>
         )}
       </div>
       {!props.config.error && (
