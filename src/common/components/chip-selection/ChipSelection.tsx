@@ -29,7 +29,9 @@ export const Chip = ({ item, selected, readonly, onClick }: ChipProps) => {
       onClick={() => !readonly && onClick(item)}
     >
       {item}
-      {selected && <CheckIcon className="w-5 h-5 ml-2.5 text-green" />}
+      {selected && (
+        <CheckIcon className="w-5 h-5 min-h-[1.25rem] min-w-[1.25rem] ml-2.5 text-green" />
+      )}
     </span>
   );
 };
