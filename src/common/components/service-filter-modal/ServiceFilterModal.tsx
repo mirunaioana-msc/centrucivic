@@ -3,7 +3,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
 import { Controller } from 'react-hook-form';
-
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
@@ -18,9 +17,10 @@ interface SearchFilterModalProps {
   onClose: () => void;
   form: any;
   onSubmit: (data: any) => void;
+  onResetFilters: () => void;
 }
 
-const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) => {
+const SearchFilterModal = ({ onClose, form, onSubmit, onResetFilters }: SearchFilterModalProps) => {
   const { t } = useTranslation();
   const { domains } = useNomenclature();
 
@@ -33,6 +33,10 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
   const onApply = (data: any) => {
     onSubmit(data);
     onClose();
+  };
+
+  const onReset = () => {
+    onResetFilters();
   };
 
   return (
@@ -70,7 +74,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                     </button>
                   </div>
                   <div className="h-1 bg-gray-200 my-8"></div>
-                  <div className="flex  flex-col w-full justify-between">
+                  <div className="flex flex-col w-full justify-between">
                     <div className="flex flex-col w-full gap-4">
                       <Controller
                         key={ServiceSearchConfig.locationId.key}
@@ -169,7 +173,14 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                         className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={handleSubmit(onApply)}
                       >
-                        {t('filterModal:apply')}
+                        {t('filter_modal:apply')}
+                      </button>
+                      <button
+                        type="button"
+                        className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                        onClick={onReset}
+                      >
+                        {t('filter_modal:reset')}
                       </button>
                     </div>
                   </div>

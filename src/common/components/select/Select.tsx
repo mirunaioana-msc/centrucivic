@@ -1,9 +1,8 @@
 import React from 'react';
-import { t } from 'i18next';
 import Select, { components } from 'react-select';
 import './Select.css';
 import { classNames } from '../../helpers/Tailwind.helper';
-
+import i18n from 'i18next';
 export interface MultiSelectConfig {
   label?: string;
   helperText?: string;
@@ -39,7 +38,7 @@ const MultiValue = ({ getValue, index, ...rest }: any) => {
   } else {
     return index == 0 ? (
       <p className="text-lg truncate">
-        {getValue().length} {t('practice_programs_search:selected')}
+        {getValue().length} {i18n.t('common:selected')}
       </p>
     ) : (
       <></>

@@ -8,7 +8,8 @@
     "contact_message_1": "Feedback trimis cu succes!",
     "contact_message_2": "Te vom contacta cât de curând.",
     "share": "Distribuie",
-    "shared": "Link-ul a fost copiat"
+    "shared": "Link-ul a fost copiat",
+    "selected": "selectate"
   },
   "menu": {
     "home": "Acasa",
@@ -43,7 +44,6 @@
     "subtitle": "Caută un serviciu specific în funcție de nevoile tale, sau ",
     "subtitle_link": "Descoperă toate serviciile.",
     "filters": "Filtre",
-    "selected": "selectate",
     "searchWord": "Caută",
     "config": {
       "search": {
@@ -132,7 +132,6 @@
   "ngo_search": {
     "title": "Caută organizații",
     "filters": "Filtre",
-    "selected": "selectate",
     "searchWord": "Cauta",
     "config": {
       "search": {
@@ -148,8 +147,9 @@
       }
     }
   },
-  "filterModal": {
-    "apply": "Aplica filtre"
+  "filter_modal": {
+    "apply": "Aplica filtre",
+    "reset": "Reseteaza filtre"
   },
   "landing": {
     "about": {
