@@ -21,8 +21,8 @@ const FeedbackForm = () => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: 'onSubmit',
-    reValidateMode: 'onSubmit',
+    mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
   const sendServiceFeedback = useSendServiceFeedback();
