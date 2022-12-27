@@ -140,13 +140,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     };
   };
 
-  const onResetFilters = () => {
-    (async () => {
-      const filters = await initFilters();
-      reset({ ...filters });
-    })();
-  };
-
   return (
     <>
       <div className="bg-yellow w-full flex flex-col items-center px-2 sm:px-4 sm:py-14 py-10 gap-8 bg-search bg-no-repeat bg-cover bg-center">
@@ -325,7 +318,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             }}
             form={form}
             onSubmit={search}
-            onResetFilters={onResetFilters}
           />
         )}
       </div>

@@ -2,7 +2,13 @@ import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
-import { Controller } from 'react-hook-form';
+import {
+  Controller,
+  FieldValues,
+  UseFormReset,
+  UseFormReturn,
+  UseFormSetValue,
+} from 'react-hook-form';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
@@ -15,16 +21,15 @@ import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface SearchFilterModalProps {
   onClose: () => void;
-  form: any;
+  form: UseFormReturn<FieldValues, any>;
   onSubmit: (data: any) => void;
-  onResetFilters: () => void;
 }
 
-const SearchFilterModal = ({ onClose, form, onSubmit, onResetFilters }: SearchFilterModalProps) => {
+const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) => {
   const { t } = useTranslation();
   const { domains } = useNomenclature();
 
-  const { handleSubmit, control } = form;
+  const { handleSubmit, control, reset } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
@@ -36,7 +41,8 @@ const SearchFilterModal = ({ onClose, form, onSubmit, onResetFilters }: SearchFi
   };
 
   const onReset = () => {
-    onResetFilters();
+    reset();
+    handleSubmit(onApply)();
   };
 
   return (
