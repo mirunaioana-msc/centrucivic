@@ -2,13 +2,7 @@ import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
-import {
-  Controller,
-  FieldValues,
-  UseFormReset,
-  UseFormReturn,
-  UseFormSetValue,
-} from 'react-hook-form';
+import { Controller, FieldValues, UseFormReturn } from 'react-hook-form';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
@@ -41,7 +35,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
   };
 
   const onReset = () => {
-    reset();
+    reset({});
     handleSubmit(onApply)();
   };
 

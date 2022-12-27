@@ -34,7 +34,7 @@ const NGOFilterModal = ({ onClose, onSubmit, form }: PracticeProgramFilterModalP
   };
 
   const onReset = () => {
-    reset();
+    reset({});
     handleSubmit(onApply)();
   };
 

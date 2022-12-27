@@ -1,5 +1,5 @@
 import React from 'react';
-import ServicesSearch from '../../common/components/service-search/ServiceSearch';
+import ServiceSearch from '../../common/components/service-search/ServiceSearch';
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import Domains from './components/domains/Domains';
 import Counter from './components/counter/Counter';
@@ -24,7 +24,7 @@ const Landing = () => {
   return (
     <section className="w-full">
       <div className="bg-yellow w-full">
-        <ServicesSearch onSearchCallback={onGoToServices} />
+        <ServiceSearch onSearchCallback={onGoToServices} />
       </div>
       <div className="max-w-screen-xl mx-auto px-10">
         <Description
