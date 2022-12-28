@@ -1,8 +1,6 @@
 import { AgeCategory } from '../enums/AgeCategory.enum';
 import { City } from './City.interface';
 import { Domain } from './Domain.interface';
-import { Faculty } from './Faculty.interface';
-import { Skill } from './Skill.interface';
 
 export interface IService {
   id: number;
@@ -30,7 +28,6 @@ export interface IService {
   hasPhysicalAccess: boolean;
   physicalAccessAddress: string;
   physicalAccessDescription: string;
-
 
   active: boolean;
   organization: {
