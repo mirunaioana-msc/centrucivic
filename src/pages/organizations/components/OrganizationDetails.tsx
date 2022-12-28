@@ -37,11 +37,11 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
               <p className="text-purple font-titilliumSemiBold">{t('contact')}</p>
               <div className="flex gap-x-2">
                 <PhoneIcon className="w-4"></PhoneIcon>
-                <p>{organization.contact.phone || '-'}</p>
+                <p>{organization.contact?.phone || '-'}</p>
               </div>
               <div className="flex gap-x-2">
                 <MailIcon className="w-4"></MailIcon>
-                <p>{organization.contact.email || '-'}</p>
+                <p>{organization.contact?.email || '-'}</p>
               </div>
               <div className="flex gap-x-2">
                 <HomeIcon className="w-4"></HomeIcon>

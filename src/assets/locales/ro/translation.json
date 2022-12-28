@@ -1,14 +1,28 @@
 {
   "common": {
-    "greeting": "buna",
     "loading": "Se incarca...",
     "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
     "end_of_list": "Nu mai sunt date de afisat",
     "send": "Trimite",
-    "contact_message_1": "Feedback trimis cu succes!",
-    "contact_message_2": "Te vom contacta cât de curând.",
     "share": "Distribuie",
-    "shared": "Link-ul a fost copiat"
+    "shared": "Link-ul a fost copiat",
+    "selected": "selectate",
+    "domains": "Domenii",
+    "available": "Disponibil",
+    "search": {
+      "filters": "Filtre",
+      "search_button": "Caută",
+      "config": {
+        "search": {
+          "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+          "min": "Cautarea nu poate avea mai putin de 3 caractere",
+          "placeholder": "Cauta un ONG sau un serviciu..."
+        },
+        "location": {
+          "placeholder": "Toata Romania"
+        }
+      }
+    }
   },
   "menu": {
     "home": "Acasa",
@@ -42,18 +56,7 @@
     "title": "Caută servicii în funcție de nevoile tale",
     "subtitle": "Caută un serviciu specific în funcție de nevoile tale, sau ",
     "subtitle_link": "Descoperă toate serviciile.",
-    "filters": "Filtre",
-    "selected": "selectate",
-    "searchWord": "Caută",
     "config": {
-      "search": {
-        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-        "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta un ONG sau un serviciu..."
-      },
-      "location": {
-        "placeholder": "Toata Romania"
-      },
       "faculties": {
         "placeholder": "Facultate"
       },
@@ -63,10 +66,10 @@
       "end": {
         "placeholder": "Data Sfarsit"
       },
-      "ageCategories": {
+      "age_categories": {
         "placeholder": "Varsta"
       },
-      "domains": {
+      "domain": {
         "placeholder": "Domeniu"
       }
     }
@@ -78,25 +81,12 @@
     "action": "Detalii",
     "errors": {
       "search": "Eroare la incarcarea serviciilor"
-    }
-  },
-  "service_card": {
-    "available": "Disponibil",
-    "present": "Prezent",
-    "access": "Cum poate fi accesat serviciul",
-    "online": "Online",
-    "email": "Email sau telefon",
-    "location": "La locatie",
-    "details": "Vezi mai mult"
-  },
-  "service_details": {
-    "actions": {
-      "open": "Acceseaza online"
     },
     "details": {
-      "available": "Disponibil",
+      "actions": {
+        "open": "Acceseaza online"
+      },
       "age_category": "Categorie de varsta",
-      "domains": "Domenii",
       "email": "E-mail",
       "phone": "Telefon",
       "address": "Adresa",
@@ -118,37 +108,20 @@
       "errors": {
         "get": "Eroare la incarcarea serviciului"
       }
-    }
-  },
-  "organization_details": {
-    "activity_domains": "Domenii activitate",
-    "contact": "Contact",
-    "social_media": "Social media",
-    "programs_title": "Serviciile organizației",
-    "errors": {
-      "get": "Eroare la incarcarea organizatiei"
+    },
+    "card": {
+      "present": "Prezent",
+      "access": "Cum poate fi accesat serviciul",
+      "online": "Online",
+      "email": "Email sau telefon",
+      "location": "La locatie",
+      "details": "Vezi mai mult"
     }
   },
   "ngo_search": {
-    "title": "Caută organizații",
-    "filters": "Filtre",
-    "selected": "selectate",
-    "searchWord": "Cauta",
-    "config": {
-      "search": {
-        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-        "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau program..."
-      },
-      "location": {
-        "placeholder": "Toata Romania"
-      },
-      "domains": {
-        "placeholder": "Domeniu"
-      }
-    }
+    "title": "Caută organizații"
   },
-  "filterModal": {
+  "filter_modal": {
     "apply": "Aplica filtre"
   },
   "landing": {
@@ -160,9 +133,6 @@
     "counter": {
       "services": "Servicii adăugate pe platformă",
       "ngos": "ONG-uri active pe platformă"
-    },
-    "domains": {
-      "title": "Domenii"
     },
     "cta": {
       "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
@@ -181,14 +151,16 @@
     "action": "Vezi mai mult",
     "errors": {
       "search": "Eroare la incarcarea ONG-urilor"
+    },
+    "details": {
+      "activity_domains": "Domenii activitate",
+      "contact": "Contact",
+      "social_media": "Social media",
+      "programs_title": "Serviciile organizației",
+      "errors": {
+        "get": "Eroare la incarcarea organizatiei"
+      }
     }
-  },
-  "practice_programs": {
-    "one_program_title": "program de practică",
-    "many_programs_title": "programe de practică",
-    "no_programs": "Nu au fost găsite programe de practică",
-    "action": "Detalii",
-    "deadline": "Aplică până la"
   },
   "contact": {
     "form": {
