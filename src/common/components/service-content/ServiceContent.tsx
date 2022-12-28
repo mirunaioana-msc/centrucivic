@@ -108,7 +108,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
                 className="yellow-button text-base"
                 onClick={() => windowOpener(service.onlineAccessLink)}
               >
-                {t('actions.open')}
+                {t('details.actions.open')}
               </button>
             </div>
           </div>
