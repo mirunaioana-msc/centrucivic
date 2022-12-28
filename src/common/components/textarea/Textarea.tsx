@@ -1,7 +1,6 @@
 import React from 'react';
 import { TextAreaConfig } from './TextareaConfig.interface';
 import { classNames } from '../../helpers/Tailwind.helper';
-import { ExclamationCircleIcon } from '@heroicons/react/solid';
 
 const Textarea = (props: { config: Partial<TextAreaConfig>; readonly?: boolean }) => {
   return (
@@ -30,11 +29,6 @@ const Textarea = (props: { config: Partial<TextAreaConfig>; readonly?: boolean }
             aria-invalid={props.config.error ? 'true' : 'false'}
             id={`${props.config.id}__input`}
           ></textarea>
-        )}
-        {props.config.error && (
-          <div className="absolute inset-y-0 right-0 pr-3 top-4 flex pointer-events-none">
-            <ExclamationCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
-          </div>
         )}
       </div>
       {!props.config.error && (
