@@ -23,12 +23,12 @@ interface CivicCenterAccessDetailsRowProps {
 
 const CivicCenterAccessDetail = ({ title, description }: CivicCenterAccessDetailProps) => (
   <div className="pb-4">
-    <h4 className="flex items-center  justify-start gap-2">
+    <h4 className="flex items-center justify-start gap-2">
       <CheckCircleIcon className="w-5 h-5 text-green" />
-      <span className="font-titilliumBold text-base text-gray-800">{title}</span>
+      <span className="font-titilliumBold text-base text-gray-800 break-word">{title}</span>
     </h4>
     <p
-      className="font-normal text-sm text-gray-500 richtext_html"
+      className="font-normal text-sm text-gray-500 richtext_html break-word"
       dangerouslySetInnerHTML={{ __html: description || '' }}
     />
   </div>
@@ -37,7 +37,7 @@ const CivicCenterAccessDetail = ({ title, description }: CivicCenterAccessDetail
 const CivicCenterAccessDetailsRow = ({ label, value }: CivicCenterAccessDetailsRowProps) => (
   <div className="flex lg:flex-row flex-col justify-start gap-2 text-base items-baseline">
     <span className="font-titilliumBold text-gray-600 shrink-0">{label}</span>
-    <span className="font-titillium break-all">{value}</span>
+    <span className="font-titillium break-word">{value}</span>
   </div>
 );
 
@@ -55,8 +55,8 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
       <div className="flex flex-col gap-2 pb-8">
         <div className="flex justify-between w-full">
           <p className="flex font-titilliumSemiBold text-base items-center gap-2">
-            <LocationMarkerIcon className="h-4 w-4" />
-            <span>{service.location.name}</span>
+            <LocationMarkerIcon className="h-4 w-4 min-h-[1rem] min-w-[1rem]" />
+            <span className="break-word">{service.location.name}</span>
           </p>
           <div>
             {sharedUrl ? (
@@ -75,10 +75,10 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
             )}
           </div>
         </div>
-        <h3 className="font-titilliumBold text-2xl">{service.name}</h3>
+        <h3 className="font-titilliumBold text-2xl break-word">{service.name}</h3>
         <div className="flex flex-col gap-4 font-titillium text-base">
-          <p className="text-gray-400">{service?.shortDescription}</p>
-          <p className="text-gray-400">{service?.longDescription}</p>
+          <p className="text-gray-400 break-word">{service?.shortDescription}</p>
+          <p className="text-gray-400 break-word">{service?.longDescription}</p>
         </div>
         <div className="flex flex-col gap-2 md:gap-4 md:flex-row md:flex-wrap">
           <CivicCenterAccessDetailsRow
