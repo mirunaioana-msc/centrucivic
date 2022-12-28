@@ -11,8 +11,10 @@ const CounterItem = ({ value, type }: ICounterItem) => {
         <CountUp
           className="font-titilliumSemiBold sm:text-6xl lg:text-7xl text-4xl"
           end={value}
-          duration={5}
+          duration={value * 0.0001 + 1}
           enableScrollSpy={true} // https://github.com/glennreyes/react-countup/issues/699
+          scrollSpyOnce={true}
+          preserveValue={true}
         />
       )}
       {value === undefined && (
