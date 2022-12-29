@@ -13,7 +13,7 @@ interface OrganizationProps {
 }
 
 const OrganizationDetails = ({ organization }: OrganizationProps) => {
-  const { t } = useTranslation('organization_details');
+  const { t } = useTranslation('organizations');
 
   return (
     <Card>
@@ -29,12 +29,12 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
           <p className="article">{organization.shortDescription}</p>
           <p className="article">{organization.description}</p>
           <div className="flex sm:flex-row flex-col gap-x-2 body-text">
-            <p className="text-purple font-titilliumSemiBold">{t('activity_domains')}</p>
+            <p className="text-purple font-titilliumSemiBold">{t('details.activity_domains')}</p>
             <p>{organization.domains?.map((domain) => domain.name).join(', ')}</p>
           </div>
           <div className="flex sm:flex-row flex-col gap-x-10 gap-y-5 body-text">
             <div className="flex flex-col lg:gap-y-2 gap-y-1 flex-1">
-              <p className="text-purple font-titilliumSemiBold">{t('contact')}</p>
+              <p className="text-purple font-titilliumSemiBold">{t('details.contact')}</p>
               <div className="flex gap-x-2">
                 <PhoneIcon className="w-4"></PhoneIcon>
                 <p>{organization.phone || '-'}</p>
@@ -49,7 +49,7 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
               </div>
             </div>
             <div className="flex flex-col lg:gap-y-2 gap-y-1 flex-1">
-              <p className="text-purple font-titilliumSemiBold">{t('social_media')}</p>
+              <p className="text-purple font-titilliumSemiBold">{t('details.social_media')}</p>
               <div className="flex flex-row gap-x-5">
                 {organization.facebook && (
                   <img

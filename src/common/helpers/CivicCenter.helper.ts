@@ -4,7 +4,7 @@ import { IService } from '../interfaces/Service.interface';
 import { formatDateMonthYear } from './Format.helper';
 
 const translations = {
-  starting_with: i18n.t('service_details:details.period_starting_with'),
+  starting_with: i18n.t('services:details.period_starting_with'),
 };
 
 const AgeCategoriesMapper = {

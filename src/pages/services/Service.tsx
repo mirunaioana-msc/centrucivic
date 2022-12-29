@@ -10,7 +10,7 @@ import { useService } from '../../services/service/Services.queries';
 import ListError from '../../common/components/list-error/ListError';
 
 const Service = () => {
-  const { t } = useTranslation('service_details');
+  const { t } = useTranslation('services');
   const { id } = useParams();
   const { data, isLoading, error, refetch } = useService(id as string);
 
