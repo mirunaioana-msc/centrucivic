@@ -52,6 +52,26 @@
     "how": "Cum adaugi serviciile organizației tale?",
     "learn_more": "Află mai multe"
   },
+  "landing": {
+    "about": {
+      "title": "Despre Centrul Civic",
+      "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Această platformă este locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
+      "action": "Susține proiectul"
+    },
+    "counter": {
+      "services": "Servicii adăugate pe platformă",
+      "ngos": "ONG-uri active pe platformă"
+    },
+    "cta": {
+      "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
+      "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în ONG Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
+      "register": "Inscrie-te in ONG Hub",
+      "title_2": "Vrei sa te implici ca voluntar?",
+      "description_2": "Poți contacta ONG-urile din Centru Civic pentru a descoperi cum poți deveni voluntar. Dacă ești student, vezi programele de practică disponibile în sectorul non-profit pe ",
+      "p4g_link": "Practice for Good.",
+      "discover_ongs": "Descopera ONG-urile"
+    }
+  },
   "service_search": {
     "title": "Caută servicii în funcție de nevoile tale",
     "subtitle": "Caută un serviciu specific în funcție de nevoile tale, sau ",
@@ -123,26 +143,6 @@
   },
   "filter_modal": {
     "apply": "Aplica filtre"
-  },
-  "landing": {
-    "about": {
-      "title": "Despre Centrul Civic",
-      "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Această platformă este locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
-      "action": "Susține proiectul"
-    },
-    "counter": {
-      "services": "Servicii adăugate pe platformă",
-      "ngos": "ONG-uri active pe platformă"
-    },
-    "cta": {
-      "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
-      "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în ONG Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
-      "register": "Inscrie-te in ONG Hub",
-      "title_2": "Vrei sa te implici ca voluntar?",
-      "description_2": "Poți contacta ONG-urile din Centru Civic pentru a descoperi cum poți deveni voluntar. Dacă ești student, vezi programele de practică disponibile în sectorul non-profit pe ",
-      "p4g_link": "Practice for Good.",
-      "discover_ongs": "Descopera ONG-urile"
-    }
   },
   "organizations": {
     "one_organization_title": "ONG",
