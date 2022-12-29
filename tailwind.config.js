@@ -51,7 +51,7 @@ module.exports = {
         500: '#6B7280',
         700: '#374159',
         900: '#151926',
-        1000: '#7F88A7'
+        1000: '#7F88A7',
       },
       purple: {
         DEFAULT: '#6543C8',
@@ -83,6 +83,9 @@ module.exports = {
       },
     },
     extend: {
+      flex: {
+        2: '2 2 0%',
+      },
       fontFamily: {
         roboto: 'Roboto',
         titilliumBold: 'TitilliumWeb-Bold',
@@ -121,7 +124,8 @@ module.exports = {
       },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
-        search: 'linear-gradient(0deg, rgba(255, 223, 112, 0.5), rgba(255, 223, 112, 0.5)), url(./assets/images/background-search-image.svg)',
+        search:
+          'linear-gradient(0deg, rgba(255, 223, 112, 0.5), rgba(255, 223, 112, 0.5)), url(./assets/images/background-search-image.svg)',
       },
     },
   },

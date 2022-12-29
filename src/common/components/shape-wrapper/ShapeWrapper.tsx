@@ -5,7 +5,7 @@ interface ShapeWrapperProps {
 }
 
 const ShapeWrapper = ({ children }: ShapeWrapperProps) => {
-  return <div className="flex-1 w-full bg-shape bg-repeat sm:bg-auto bg-contain">{children}</div>;
+  return <div className="w-full bg-shape bg-repeat sm:bg-auto bg-contain">{children}</div>;
 };
 
 export default ShapeWrapper;

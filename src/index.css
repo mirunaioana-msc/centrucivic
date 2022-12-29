@@ -36,7 +36,7 @@
   }
 
   .title {
-    @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl pb-10;
+    @apply font-titilliumBold sm:text-3xl lg:text-4xl text-2xl;
   }
 
   .subtitle {
@@ -65,12 +65,8 @@
     -webkit-box-orient: vertical;
   }
 
-  .virtuso-grid-item {
-    @apply w-[22.75rem];
-  }
-
   .virtuso-grid-list {
-    @apply flex flex-wrap gap-8;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 sm:gap-8;
   }
 
   .menu-title {

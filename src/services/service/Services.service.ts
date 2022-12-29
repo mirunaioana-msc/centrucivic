@@ -1,28 +1,19 @@
-import { AgeCategory } from '../../common/enums/AgeCategory.enum';
+import { CivicCenterQuery } from '../../common/interfaces/CivicCenterQuery.interface';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IService } from '../../common/interfaces/Service.interface';
 import API from '../API';
 
-export const searchServices = async (
-  limit: number,
-  page: number,
-  search?: string | null,
-  locationId?: number | null,
-  ageCategories?: (AgeCategory | null)[] | null,
-  domains?: (number | null)[] | null,
-  start?: Date | null,
-  end?: Date | null,
-): Promise<PaginatedEntity<IService>> => {
+export const getServices = async ({
+  pageParam = 1,
+  ...query
+}: {
+  pageParam?: number;
+} & Partial<CivicCenterQuery>): Promise<PaginatedEntity<IService>> => {
   return API.get('/api/civic-service/search', {
     params: {
-      limit,
-      page,
-      search,
-      locationId,
-      domains,
-      start,
-      end,
-      ageCategories,
+      limit: 25,
+      page: pageParam,
+      ...query,
     },
   }).then((res) => res.data);
 };

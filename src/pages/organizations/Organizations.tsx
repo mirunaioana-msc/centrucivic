@@ -1,76 +1,71 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import NGOSearch from '../../common/components/ngo-search/NGOSearch';
 import { ORGANIZATIONS_QUERY_PARAMS } from '../../common/constants/Organizations.constants';
-import { useOrganizationQuery } from '../../services/organization/Organization.queries';
-import { useOrganizations } from '../../store/Selectors';
+import { useOrganizationsInfiniteQuery } from '../../services/organization/Organization.queries';
 import OrganizationItem from './components/OrganizationItem';
 import { useQueryParams } from 'use-query-params';
 import ListError from '../../common/components/list-error/ListError';
+import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.interface';
+import { mapPagesToItems } from '../../common/helpers/Format.helper';
+import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
+import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
-  const [query, setQuery] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
+  const [query] = useQueryParams(ORGANIZATIONS_QUERY_PARAMS);
 
-  const {
-    organizations,
-    meta: { totalItems: total },
-  } = useOrganizations();
+  const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
+    useOrganizationsInfiniteQuery(query as OrganizationQuery);
 
-  const { isLoading, error, refetch } = useOrganizationQuery(
-    query?.page as number,
-    query?.search,
-    query?.locationId,
-    query?.domains,
-  );
-
-  useEffect(() => {
-    setQuery({ ...query, page: 1 });
-  }, []);
-
-  const loadMore = useCallback(() => {
-    if (total > organizations.length)
-      setQuery({ ...query, page: query?.page ? query?.page + 1 : 1 });
-  }, [organizations, total]);
+  const loadMore = () => {
+    if (!isFetching && hasNextPage) fetchNextPage();
+  };
 
   return (
     <section className="w-full">
-      <NGOSearch showFilters>
-        {error && !isLoading ? (
-          <ListError retry={refetch}>{t('errors.search')}</ListError>
-        ) : (
-          <div className="flex flex-col w-full lg:px-60 px-10 pt-10">
-            {organizations.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${
-                total > 1 ? t('many_organizations_title') : t('one_organization_title')
-              }`}</p>
-            )}
-            <div className="mb-[10rem]">
-              <VirtuosoGrid
-                useWindowScroll
-                style={{ height: '100vw' }}
-                context={{ loadMore }}
-                endReached={loadMore}
-                overscan={200}
-                data={organizations}
-                itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-                itemClassName="virtuso-grid-item"
-                listClassName="virtuso-grid-list"
-                components={{
-                  Footer: () => (
-                    <InfiniteScrollFooter
-                      hasNoData={organizations?.length === 0}
-                      isLoading={isLoading}
-                    />
-                  ),
-                }}
-              />
-            </div>
-          </div>
-        )}
-      </NGOSearch>
+      <NGOSearch showFilters />
+      {error && !isFetching ? (
+        <ListError retry={refetch}>{t('errors.search')}</ListError>
+      ) : (
+        <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
+          <VirtuosoGrid
+            useWindowScroll
+            style={{ height: '100vw' }}
+            context={{ loadMore }}
+            endReached={loadMore}
+            overscan={200}
+            data={mapPagesToItems<OrganizationFlat>(data?.pages)}
+            itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
+            itemClassName="virtuso-grid-item"
+            listClassName="virtuso-grid-list"
+            components={{
+              Footer: () => (
+                <InfiniteScrollFooter
+                  hasNoData={data?.pages?.length === 0}
+                  isLoading={isFetching}
+                />
+              ),
+              Header: () => {
+                return data?.pages[0]?.meta && !isFetching ? (
+                  <VirtuosoHeader
+                    totalItems={data.pages[0].meta.totalItems}
+                    entities={
+                      data.pages[0].meta.totalItems > 1
+                        ? t('many_organizations_title')
+                        : t('one_organization_title')
+                    }
+                  />
+                ) : (
+                  <></>
+                );
+              },
+            }}
+          />
+        </div>
+      )}
     </section>
   );
 };

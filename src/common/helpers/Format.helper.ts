@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { PaginatedEntity } from '../interfaces/PaginatedEntity.interface';
 import { ISelectData } from './Nomenclature.helper';
 
 export const formatDateYear = (value: Date | string | null): string =>
@@ -14,6 +15,12 @@ export const mapCitiesToSelect = (item: any): ISelectData => ({
   value: item?.id,
   label: `${item.name}, jud. ${item.county?.name}`,
 });
+
+export const mapPagesToItems = <T>(pages?: PaginatedEntity<T>[]): T[] => {
+  const items: T[] = [];
+  pages?.forEach((page) => items.push(...page.items));
+  return items;
+};
 
 export const openInNewTab = (url: string): void => {
   // Temporary - TO REMOVE after fixing http addon on input

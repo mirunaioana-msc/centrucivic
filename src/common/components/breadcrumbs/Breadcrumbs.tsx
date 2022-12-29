@@ -4,19 +4,15 @@ import { NavLink, useLocation } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import i18n from '../../configs/i18n';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
-import { useSelectedService } from '../../../store/services/Services.selectors';
-import { useSelectedOrganization } from '../../../store/Selectors';
 
 const DynamicPracticeProgram = ({ match }: any) => {
-  const { selectedService } = useSelectedService();
-
-  return <span>{selectedService?.name || match.params.id}</span>;
+  // return <span>{selectedService?.name || match.params.id}</span>;
+  return <span>{match.params.id}</span>;
 };
 
 const DynamicOrganization = ({ match }: any) => {
-  const { selectedOrganization } = useSelectedOrganization();
-
-  return <span>{selectedOrganization?.name || match.params.id}</span>;
+  // return <span>{selectedOrganization?.name || match.params.id}</span>;
+  return <span>{match.params.id}</span>;
 };
 
 const HomeBreadcrumb = () => {

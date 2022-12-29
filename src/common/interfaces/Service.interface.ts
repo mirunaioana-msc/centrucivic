@@ -30,12 +30,9 @@ export interface IService {
   physicalAccessDescription: string;
 
   active: boolean;
-  organization: {
-    id: number;
-    organizationGeneral: {
-      name: string;
-    };
-  };
+  logo: string;
+  organizationName: string;
+  organizationId: string;
 
   feedbacks: any[];
 }
