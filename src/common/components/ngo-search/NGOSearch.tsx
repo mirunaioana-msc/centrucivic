@@ -99,8 +99,6 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
-
     return {
       locationId: selectedLocation,
       domains: selectedDomains,

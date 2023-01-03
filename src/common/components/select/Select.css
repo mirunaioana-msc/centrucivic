@@ -1,58 +1,75 @@
 .reactselect__control {
-  /* border-radius: 6px !important; */
-  border: unset!important;
-  border-radius: 0!important;
+  border: unset !important;
+  border-radius: 0 !important;
   padding: 8px;
   height: 56px;
   line-height: 1rem;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)!important;
- 
-  
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  cursor: text !important;
+  font-family: 'TitilliumWeb-Regular' !important;
+  align-items: center;
+}
+
+.reactselect__control--is-focused {
+  box-shadow: theme('boxShadow.input') !important;
 }
 
 .reactselect__option--is-selected {
-  background-color: #6543C8 !important;
+  background-color: theme('colors.purple.DEFAULT') !important;
 }
 
-@media only screen and (min-width: 675px) {
-  
+.reactselect__clear-indicator > svg {
+  display: none;
+}
+
+.reactselect__clear-indicator::after {
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  content: '×';
+  color: #c0c0c0 !important;
+}
+
+@media only screen and (min-width: 640px) {
   .reactselect__menu {
-    width: 30rem!important;
+    width: 30rem !important;
   }
 
-  .reactselect__control { 
-    font-size: 1.125rem!important;
-    font-family: 'TitilliumWeb-Regular'!important
+  .reactselect__control {
+    font-size: 1.125rem !important;
+    font-family: 'TitilliumWeb-Regular' !important;
   }
 }
-
 
 .reactselect__value-container--is-multi {
- flex-direction: row!important;
- flex-wrap: nowrap!important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
 }
 
 .reactselect__multi-value {
-  background-color: #6543C8 !important;
+  background-color: theme('colors.purple.DEFAULT') !important;
   padding: 6px 12px !important;
-  /* border-radius: 100px !important; */
-  display: flex!important;
+  display: flex !important;
   color: white;
   align-items: center;
-  font-family: 'TitilliumWeb-Regular'!important;
+  font-family: 'TitilliumWeb-Regular' !important;
 }
 .reactselect__input-container {
-  margin: 0!important;
-  padding: 0!important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .reactselect__multi-value__label {
   font-size: 0.875rem !important;
   padding: 0 !important;
-  color: white!important;
+  color: white !important;
   font-weight: bold !important;
   max-width: 7rem;
-  font-family: 'TitilliumWeb-Regular'!important;
+  font-family: 'TitilliumWeb-Regular' !important;
 }
 
 .reactselect__input-container input[type='text']:focus {
@@ -71,18 +88,26 @@
 }
 
 .reactselect__multi-value__remove > svg {
-  color: #6543C8;
+  color: theme('colors.purple.DEFAULT');
   font-size: 1rem;
   width: 16px;
   height: 16px;
 }
 
 .reactselect__menu {
-  font-family: 'TitilliumWeb-Regular'!important;
-  z-index: 999!important;
+  font-family: 'TitilliumWeb-Regular' !important;
+  z-index: 999 !important;
 }
 
-.reactselect__option:hover {
-  background-color: #8a76c5;
+.reactselect__menu > div > div {
+  background-color: white;
+}
+
+.reactselect__menu > div > div:hover {
+  background-color: theme('colors.purple.100');
+}
+
+.reactselect__menu > div > div:active {
+  background-color: theme('colors.purple.500');
   color: white;
 }

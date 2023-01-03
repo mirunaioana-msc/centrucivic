@@ -51,10 +51,12 @@ module.exports = {
         500: '#6B7280',
         700: '#374159',
         900: '#151926',
-        1000: '#7F88A7'
+        1000: '#7F88A7',
       },
       purple: {
         DEFAULT: '#6543C8',
+        100: '#efebf9',
+        500: '#6e4dcb',
       },
       red: {
         50: '#FEF2F2',
@@ -91,6 +93,7 @@ module.exports = {
       },
       boxShadow: {
         card: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+        input: 'inset 0 0 0 2px #6543C8',
       },
       fontSize: {
         xs: [
@@ -121,7 +124,8 @@ module.exports = {
       },
       backgroundImage: {
         shape: 'url(./assets/images/shape-background.svg)',
-        search: 'linear-gradient(0deg, rgba(255, 223, 112, 0.5), rgba(255, 223, 112, 0.5)), url(./assets/images/background-search-image.svg)',
+        search:
+          'linear-gradient(0deg, rgba(255, 223, 112, 0.5), rgba(255, 223, 112, 0.5)), url(./assets/images/background-search-image.svg)',
       },
     },
   },

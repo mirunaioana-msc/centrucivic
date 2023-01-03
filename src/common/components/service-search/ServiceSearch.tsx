@@ -130,8 +130,6 @@ const ServiceSearch = (props: ServiceSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
-
     return {
       locationId: selectedLocationId,
       domains: selectedDomains,
@@ -304,7 +302,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             <button
               id="services-search__button__submit"
               type="button"
-              className="yellow-button text-sm sm:text-base w-full h-full"
+              className="yellow-button text-sm sm:text-base w-full h-full shadow-md"
               onClick={handleSubmit(search)}
             >
               {t('searchWord')}
