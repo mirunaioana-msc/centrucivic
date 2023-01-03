@@ -32,7 +32,7 @@
   }
 
   .yellow-button {
-    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow-500 sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple;
+    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow-500 sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit outline-none hover:bg-yellow-300;
   }
 
   .title {
