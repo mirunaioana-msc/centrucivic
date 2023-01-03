@@ -38,7 +38,7 @@ const MultiValue = ({ getValue, index, ...rest }: any) => {
     return <p>({getValue().length})&nbsp;</p>;
   } else {
     return index == 0 ? (
-      <p className="text-lg truncate">
+      <p className="sm:text-lg truncate">
         {getValue().length} {t('common:selected')}
       </p>
     ) : (
@@ -71,6 +71,7 @@ const MultiSelect = ({
         closeMenuOnSelect={false}
         closeMenuOnScroll={true}
         id={id}
+        menuPlacement={'auto'}
         isSearchable={true}
         icon={icon}
         components={{

@@ -1,0 +1,19 @@
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--selected {
+  background-color: theme('colors.purple.DEFAULT') !important;
+}
+
+.react-datepicker__day {
+  outline: none;
+}
+
+.react-datepicker__day:focus {
+  outline: none;
+  background-color: theme('colors.purple.500') !important;
+  color: white;
+  border-radius: 0.3rem;
+}
+
+.react-datepicker__day:hover {
+  background-color: theme('colors.purple.100');
+}

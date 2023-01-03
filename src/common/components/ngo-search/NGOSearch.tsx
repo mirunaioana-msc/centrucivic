@@ -99,7 +99,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
         .map(mapItemToSelect);
     }
 
-    setFiltersCount(page ? countFilters(query) - 1 : countFilters(query));
+    setFiltersCount(countFilters(query));
 
     return {
       locationId: selectedLocation,
@@ -140,7 +140,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
             {showFilters && (
               <button
                 type="button"
-                className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
+                className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
                 onClick={handleSubmit(search)}
               >
                 <SearchIcon className="w-5 h-5" />
@@ -219,7 +219,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
             <button
               id="organizations-search__button__submit"
               type="button"
-              className="text-sm sm:text-base text-yellow bg-black px-6 h-full sm:w-1/6 w-24 hover:bg-black-800"
+              className="text-sm sm:text-base text-yellow bg-black px-6 h-full sm:w-1/6 w-24 shadow-md hover:bg-black-800"
               onClick={handleSubmit(search)}
             >
               {t('common:search.search_button')}
