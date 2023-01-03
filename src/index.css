@@ -119,10 +119,6 @@
     font-size: 24px !important;
     padding: 0 16px 0 0 !important;
   }
-
-  .webkit-scroll {
-    -webkit-overflow-scrolling: touch;
-  }
 }
 
 .content {
