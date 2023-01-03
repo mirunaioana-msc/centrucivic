@@ -12,10 +12,12 @@ import Service from '../../pages/services/Service';
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 import { parse, stringify } from 'query-string';
+import ScrollToTop from '../scroll-to-top/ScrollToTop';
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <QueryParamProvider
         adapter={ReactRouter6Adapter}
         options={{
