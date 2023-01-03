@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { MENU_ROUTES_HREF } from '../../../common/constants/Menu.constants';
 
 const ServiceItem = ({ service }: { service: IService }) => {
-  const { t } = useTranslation('service_card');
+  const { t } = useTranslation(['services', 'common']);
   const navigate = useNavigate();
   return (
     <Card>
@@ -29,29 +29,30 @@ const ServiceItem = ({ service }: { service: IService }) => {
         </div>
         <div className="flex pt-2">
           <p>
-            <span>{t('available')}</span>&nbsp;<span>{formatDateDot(service.startDate)}</span> -{' '}
-            <span>{service.endDate ? formatDateDot(service.endDate) : t('present')}</span>
+            <span>{t('available', { ns: 'common' })}</span>&nbsp;
+            <span>{formatDateDot(service.startDate)}</span> -{' '}
+            <span>{service.endDate ? formatDateDot(service.endDate) : t('card.present')}</span>
           </p>
         </div>
         <div className="mt-4">
-          <p className="font-titilliumBold text-gray-600">{t('access')}</p>
+          <p className="font-titilliumBold text-gray-600">{t('card.access')}</p>
           <div className="flex gap-4 py-4">
             {service.hasOnlineAccess && (
               <div className="flex gap-2 items-center">
                 <CheckCircleIcon className="w-5 h-5 text-green" />
-                <span className="text-sm">{t('online')}</span>
+                <span className="text-sm">{t('card.online')}</span>
               </div>
             )}
             {service.hasEmailPhoneAccess && (
               <div className="flex gap-2 items-center">
                 <CheckCircleIcon className="w-5 h-5 text-green" />
-                <span className="text-sm">{t('email')}</span>
+                <span className="text-sm">{t('card.email')}</span>
               </div>
             )}
             {service.hasPhysicalAccess && (
               <div className="flex gap-2 items-center">
                 <CheckCircleIcon className="w-5 h-5 text-green" />
-                <span className="text-sm">{t('location')}</span>
+                <span className="text-sm">{t('card.location')}</span>
               </div>
             )}
           </div>
@@ -60,7 +61,7 @@ const ServiceItem = ({ service }: { service: IService }) => {
           className="yellow-button w-full mt-auto"
           onClick={() => navigate(`/${MENU_ROUTES_HREF.services}/${service.id}`)}
         >
-          {t('details')}
+          {t('card.details')}
         </button>
       </div>
     </Card>

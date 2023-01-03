@@ -30,7 +30,7 @@ interface ServiceSearchProps {
 }
 
 const ServiceSearch = (props: ServiceSearchProps) => {
-  const { t } = useTranslation('service_search');
+  const { t } = useTranslation(['service_search', 'common']);
   // filter modal state
   const [isFilterModalOpen, setFilterModalOpen] = useState<boolean>(false);
   const [filtersCount, setFiltersCount] = useState<number>(0);
@@ -214,7 +214,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               id="search-services-activity__button-back"
               className="text-sm sm:text-base  h-full flex items-center"
             >
-              {t('filters')}
+              {t('search.filters', { ns: 'common' })}
             </p>
             <AdjustmentsIcon className="w-5 h-5" />
             {filtersCount > 0 && (
@@ -305,7 +305,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               className="yellow-button text-sm sm:text-base w-full h-full shadow-md"
               onClick={handleSubmit(search)}
             >
-              {t('searchWord')}
+              {t('search.search_button', { ns: 'common' })}
             </button>
           </div>
         </div>

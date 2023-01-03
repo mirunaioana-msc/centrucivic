@@ -42,7 +42,7 @@ const CivicCenterAccessDetailsRow = ({ label, value }: CivicCenterAccessDetailsR
 );
 
 const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) => {
-  const { t } = useTranslation(['service_details']);
+  const { t } = useTranslation(['services', 'common']);
   const [sharedUrl, setSharedUrl] = useState<string>();
 
   const shareUrl = () => {
@@ -82,7 +82,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
         </div>
         <div className="flex flex-col gap-2 md:gap-4 md:flex-row md:flex-wrap">
           <CivicCenterAccessDetailsRow
-            label={t('details.available')}
+            label={t('available', { ns: 'common' })}
             value={calculatePeriod(service)}
           />
           <CivicCenterAccessDetailsRow
@@ -90,7 +90,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
             value={formatAgeCategories(service)}
           />
           <CivicCenterAccessDetailsRow
-            label={t('details.domains')}
+            label={t('domains', { ns: 'common' })}
             value={dataToCsv(service.domains)}
           />
         </div>
@@ -108,7 +108,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
                 className="yellow-button text-base"
                 onClick={() => windowOpener(service.onlineAccessLink)}
               >
-                {t('actions.open')}
+                {t('details.actions.open')}
               </button>
             </div>
           </div>
