@@ -2,8 +2,7 @@ import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import logo from './../../../assets/images/logo.svg';
 import { XIcon } from '@heroicons/react/solid';
-import { Controller } from 'react-hook-form';
-
+import { Controller, FieldValues, UseFormReturn } from 'react-hook-form';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
@@ -16,7 +15,7 @@ import { mapCitiesToSelect } from '../../helpers/Format.helper';
 
 interface SearchFilterModalProps {
   onClose: () => void;
-  form: any;
+  form: UseFormReturn<FieldValues, any>;
   onSubmit: (data: any) => void;
 }
 
@@ -24,7 +23,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
   const { t } = useTranslation();
   const { domains } = useNomenclature();
 
-  const { handleSubmit, control } = form;
+  const { handleSubmit, control, reset } = form;
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
     return getCities({ search: searchWord }).then((cities) => cities.map(mapCitiesToSelect));
@@ -33,6 +32,11 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
   const onApply = (data: any) => {
     onSubmit(data);
     onClose();
+  };
+
+  const onReset = () => {
+    reset({});
+    handleSubmit(onApply)();
   };
 
   return (
@@ -70,7 +74,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                     </button>
                   </div>
                   <div className="h-1 bg-gray-200 my-8"></div>
-                  <div className="flex  flex-col w-full justify-between">
+                  <div className="flex flex-col w-full justify-between">
                     <div className="flex flex-col w-full gap-4">
                       <Controller
                         key={ServiceSearchConfig.locationId.key}
@@ -170,6 +174,13 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                         onClick={handleSubmit(onApply)}
                       >
                         {t('filter_modal:apply')}
+                      </button>
+                      <button
+                        type="button"
+                        className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                        onClick={onReset}
+                      >
+                        {t('filter_modal:reset')}
                       </button>
                     </div>
                   </div>
