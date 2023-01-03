@@ -140,7 +140,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
             {showFilters && (
               <button
                 type="button"
-                className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
+                className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
                 onClick={handleSubmit(search)}
               >
                 <SearchIcon className="w-5 h-5" />
