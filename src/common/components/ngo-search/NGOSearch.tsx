@@ -219,7 +219,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
             <button
               id="organizations-search__button__submit"
               type="button"
-              className="text-sm sm:text-base text-yellow bg-black px-6 h-full sm:w-1/6 w-24 hover:bg-black-800"
+              className="text-sm sm:text-base text-yellow bg-black px-6 h-full sm:w-1/6 w-24 shadow-md hover:bg-black-800"
               onClick={handleSubmit(search)}
             >
               {t('common:search.search_button')}
