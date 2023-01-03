@@ -2,7 +2,7 @@ import React from 'react';
 import Select, { components } from 'react-select';
 import './Select.css';
 import { classNames } from '../../helpers/Tailwind.helper';
-import i18n from 'i18next';
+import { t } from 'i18next';
 export interface MultiSelectConfig {
   label?: string;
   helperText?: string;
