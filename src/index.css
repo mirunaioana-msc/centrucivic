@@ -100,7 +100,7 @@
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */
-  min-height: calc(100vh - 6rem - 18rem);
+  min-height: calc(100vh - 11rem - 18rem);
 }
 
 .range-clear-button::after {
