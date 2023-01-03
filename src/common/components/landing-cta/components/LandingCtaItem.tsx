@@ -18,12 +18,15 @@ const LandingCtaItem = (props: LandingCtaItemProps) => {
 
   return (
     <div className={classNames(`${props.backgroundColor}`, 'pt-10 md:pt-16 md:pb-12 pb-8')}>
-      <div className="flex flex-col gap-8 h-full justify-between xl:px-40 lg:px-24 sm:px-20 sm:px-8 px-4">
+      <div className="flex flex-col gap-8 h-full justify-between xl:px-40 lg:px-24 sm:px-8 px-4">
         <p className="title pb-0">{props.title}</p>
         <p className="text-base w-10/12">
           {props.description}
           {props.anchorLinkText && (
-            <a href={process.env.REACT_APP_P4G_LINK} className='cursor-pointer text-black underline'>
+            <a
+              href={process.env.REACT_APP_P4G_LINK}
+              className="cursor-pointer text-black underline"
+            >
               {props.anchorLinkText}
             </a>
           )}
