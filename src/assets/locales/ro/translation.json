@@ -1,15 +1,28 @@
 {
   "common": {
-    "greeting": "buna",
     "loading": "Se incarca...",
     "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
     "end_of_list": "Nu mai sunt date de afisat",
     "send": "Trimite",
-    "contact_message_1": "Feedback trimis cu succes!",
-    "contact_message_2": "Te vom contacta cât de curând.",
     "share": "Distribuie",
     "shared": "Link-ul a fost copiat",
-    "selected": "selectate"
+    "selected": "selectate",
+    "domains": "Domenii",
+    "available": "Disponibil",
+    "search": {
+      "filters": "Filtre",
+      "search_button": "Caută",
+      "config": {
+        "search": {
+          "max": "Cautarea nu poate avea mai mult de 50 de caractere",
+          "min": "Cautarea nu poate avea mai putin de 3 caractere",
+          "placeholder": "Cauta un ONG sau un serviciu..."
+        },
+        "location": {
+          "placeholder": "Toata Romania"
+        }
+      }
+    }
   },
   "menu": {
     "home": "Acasa",
@@ -39,21 +52,31 @@
     "how": "Cum adaugi serviciile organizației tale?",
     "learn_more": "Află mai multe"
   },
+  "landing": {
+    "about": {
+      "title": "Despre Centrul Civic",
+      "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Această platformă este locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
+      "action": "Susține proiectul"
+    },
+    "counter": {
+      "services": "Servicii adăugate pe platformă",
+      "ngos": "ONG-uri active pe platformă"
+    },
+    "cta": {
+      "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
+      "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în ONG Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
+      "register": "Inscrie-te in ONG Hub",
+      "title_2": "Vrei sa te implici ca voluntar?",
+      "description_2": "Poți contacta ONG-urile din Centru Civic pentru a descoperi cum poți deveni voluntar. Dacă ești student, vezi programele de practică disponibile în sectorul non-profit pe ",
+      "p4g_link": "Practice for Good.",
+      "discover_ongs": "Descopera ONG-urile"
+    }
+  },
   "service_search": {
     "title": "Caută servicii în funcție de nevoile tale",
     "subtitle": "Caută un serviciu specific în funcție de nevoile tale, sau ",
     "subtitle_link": "Descoperă toate serviciile.",
-    "filters": "Filtre",
-    "searchWord": "Caută",
     "config": {
-      "search": {
-        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-        "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta un ONG sau un serviciu..."
-      },
-      "location": {
-        "placeholder": "Toata Romania"
-      },
       "faculties": {
         "placeholder": "Facultate"
       },
@@ -63,10 +86,10 @@
       "end": {
         "placeholder": "Data Sfarsit"
       },
-      "ageCategories": {
+      "age_categories": {
         "placeholder": "Varsta"
       },
-      "domains": {
+      "domain": {
         "placeholder": "Domeniu"
       }
     }
@@ -78,25 +101,12 @@
     "action": "Detalii",
     "errors": {
       "search": "Eroare la incarcarea serviciilor"
-    }
-  },
-  "service_card": {
-    "available": "Disponibil",
-    "present": "Prezent",
-    "access": "Cum poate fi accesat serviciul",
-    "online": "Online",
-    "email": "Email sau telefon",
-    "location": "La locatie",
-    "details": "Vezi mai mult"
-  },
-  "service_details": {
-    "actions": {
-      "open": "Acceseaza online"
     },
     "details": {
-      "available": "Disponibil",
+      "actions": {
+        "open": "Acceseaza online"
+      },
       "age_category": "Categorie de varsta",
-      "domains": "Domenii",
       "email": "E-mail",
       "phone": "Telefon",
       "address": "Adresa",
@@ -118,61 +128,22 @@
       "errors": {
         "get": "Eroare la incarcarea serviciului"
       }
-    }
-  },
-  "organization_details": {
-    "activity_domains": "Domenii activitate",
-    "contact": "Contact",
-    "social_media": "Social media",
-    "programs_title": "Serviciile organizației",
-    "errors": {
-      "get": "Eroare la incarcarea organizatiei"
+    },
+    "card": {
+      "present": "Prezent",
+      "access": "Cum poate fi accesat serviciul",
+      "online": "Online",
+      "email": "Email sau telefon",
+      "location": "La locatie",
+      "details": "Vezi mai mult"
     }
   },
   "ngo_search": {
-    "title": "Caută organizații",
-    "filters": "Filtre",
-    "searchWord": "Cauta",
-    "config": {
-      "search": {
-        "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-        "min": "Cautarea nu poate avea mai putin de 3 caractere",
-        "placeholder": "Cauta ong sau program..."
-      },
-      "location": {
-        "placeholder": "Toata Romania"
-      },
-      "domains": {
-        "placeholder": "Domeniu"
-      }
-    }
+    "title": "Caută organizații"
   },
   "filter_modal": {
     "apply": "Aplica filtre",
     "reset": "Reseteaza filtre"
-  },
-  "landing": {
-    "about": {
-      "title": "Despre Centrul Civic",
-      "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Această platformă este locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
-      "action": "Susține proiectul"
-    },
-    "counter": {
-      "services": "Servicii adăugate pe platformă",
-      "ngos": "ONG-uri active pe platformă"
-    },
-    "domains": {
-      "title": "Domenii"
-    },
-    "cta": {
-      "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
-      "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în ONG Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
-      "register": "Inscrie-te in ONG Hub",
-      "title_2": "Vrei sa te implici ca voluntar?",
-      "description_2": "Poți contacta ONG-urile din Centru Civic pentru a descoperi cum poți deveni voluntar. Dacă ești student, vezi programele de practică disponibile în sectorul non-profit pe ",
-      "p4g_link": "Practice for Good.",
-      "discover_ongs": "Descopera ONG-urile"
-    }
   },
   "organizations": {
     "one_organization_title": "ONG",
@@ -181,14 +152,16 @@
     "action": "Vezi mai mult",
     "errors": {
       "search": "Eroare la incarcarea ONG-urilor"
+    },
+    "details": {
+      "activity_domains": "Domenii activitate",
+      "contact": "Contact",
+      "social_media": "Social media",
+      "programs_title": "Serviciile organizației",
+      "errors": {
+        "get": "Eroare la incarcarea organizatiei"
+      }
     }
-  },
-  "practice_programs": {
-    "one_program_title": "program de practică",
-    "many_programs_title": "programe de practică",
-    "no_programs": "Nu au fost găsite programe de practică",
-    "action": "Detalii",
-    "deadline": "Aplică până la"
   },
   "contact": {
     "form": {
@@ -211,7 +184,6 @@
         "label": "Mesajul tău"
       }
     },
-    "action": "Trimite",
     "paragraph_1": "Centru Civic este primul centralizator al serviciilor pe care societatea civilă le pune la dispoziția cetățenilor români. Soluția a pornit ca un agregator al tuturor aplicațiilor civice dezvoltate de ONG-uri, instituții sau cetăţeni din România.",
     "paragraph_2": "În noua versiune, Centru Civic va deveni locul unde, printr-o căutare simplă, fiecare cetățean va avea la dispoziție informațiile necesare despre toate serviciile oferite de sectorul ONG care vizează o anumită problemă, scoțând în evidență importanța și amploarea sectorului non-profit în societatea românească.",
     "title": "Contactează-ne",

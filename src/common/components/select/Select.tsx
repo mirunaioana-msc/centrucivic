@@ -38,7 +38,7 @@ const MultiValue = ({ getValue, index, ...rest }: any) => {
   } else {
     return index == 0 ? (
       <p className="text-lg truncate">
-        {getValue().length} {i18n.t('common:selected')}
+        {getValue().length} {t('common:selected')}
       </p>
     ) : (
       <></>

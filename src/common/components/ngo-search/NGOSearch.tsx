@@ -179,7 +179,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
                 id="create-organization-activity__button-back"
                 className="text-sm sm:text-base  h-full flex items-center"
               >
-                {t('service_search:filters')}
+                {t('common:search.filters')}
               </p>
               <AdjustmentsIcon className="w-5 h-5" />
               {filtersCount > 0 && (
@@ -222,7 +222,7 @@ const NGOSearch = ({ showFilters, children }: NGOSearchProps) => {
               className="text-sm sm:text-xl text-yellow bg-black px-6 h-full sm:w-1/6 w-24"
               onClick={handleSubmit(search)}
             >
-              {t('ngo_search:searchWord')}
+              {t('common:search.search_button')}
             </button>
           </div>
         </div>
