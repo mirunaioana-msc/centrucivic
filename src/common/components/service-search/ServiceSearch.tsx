@@ -130,6 +130,8 @@ const ServiceSearch = (props: ServiceSearchProps) => {
         .map(mapItemToSelect);
     }
 
+    setFiltersCount(countFilters(query));
+
     return {
       locationId: selectedLocationId,
       domains: selectedDomains,
