@@ -3,7 +3,7 @@
   border-radius: 0 !important;
   padding: 8px;
   height: 56px;
-  font-family: 'TitilliumWeb-Regular' !important;
+  font-family: theme('fontFamily.titillium') !important;
   box-shadow: theme('boxShadow.md') !important;
   cursor: text !important;
 }
@@ -31,12 +31,12 @@
 }
 
 .reactserverselect__single-value {
-  font-family: 'TitilliumWeb-Regular';
+  font-family: theme('fontFamily.titillium');
   color: #000000 !important;
 }
 
 .reactserverselect__multi-value__label {
-  font-family: 'TitilliumWeb-Regular';
+  font-family: theme('fontFamily.titillium');
   padding: 0 !important;
   color: white !important;
   font-weight: bold !important;

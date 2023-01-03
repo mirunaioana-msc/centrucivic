@@ -6,7 +6,7 @@
   line-height: 1rem;
   box-shadow: theme('boxShadow.md') !important;
   cursor: text !important;
-  font-family: 'TitilliumWeb-Regular' !important;
+  font-family: theme('fontFamily.titillium') !important;
   align-items: center;
 }
 
@@ -41,7 +41,7 @@
 
   .reactselect__control {
     font-size: 1.125rem !important;
-    font-family: 'TitilliumWeb-Regular' !important;
+    font-family: theme('fontFamily.titillium') !important;
   }
 }
 
@@ -56,7 +56,7 @@
   display: flex !important;
   color: white;
   align-items: center;
-  font-family: 'TitilliumWeb-Regular' !important;
+  font-family: theme('fontFamily.titillium') !important;
 }
 .reactselect__input-container {
   margin: 0 !important;
@@ -69,7 +69,7 @@
   color: white !important;
   font-weight: bold !important;
   max-width: 7rem;
-  font-family: 'TitilliumWeb-Regular' !important;
+  font-family: theme('fontFamily.titillium') !important;
 }
 
 .reactselect__input-container input[type='text']:focus {
@@ -95,7 +95,7 @@
 }
 
 .reactselect__menu {
-  font-family: 'TitilliumWeb-Regular' !important;
+  font-family: theme('fontFamily.titillium') !important;
   z-index: 999 !important;
 }
 
