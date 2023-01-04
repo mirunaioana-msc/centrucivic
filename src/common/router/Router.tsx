@@ -47,7 +47,7 @@ const Router = () => {
 
             {/* Service Page from NGO Details - For Breadcurmbs purpose only */}
             <Route
-              path={`${MENU_ROUTES_HREF.organizations}/:organizationId/:serviceId`}
+              path={`${MENU_ROUTES_HREF.organizations}/:organizationId/${MENU_ROUTES_HREF.service}/:serviceId`}
               element={<Service />}
             ></Route>
 

@@ -21,7 +21,9 @@ const Organization = () => {
   const { data, isLoading, error, refetch } = useOrganization(organizationId as string);
 
   const onNavigate = (serviceId: number) => {
-    navigate(`/${MENU_ROUTES_HREF.organizations}/${organizationId}/${serviceId}`);
+    navigate(
+      `/${MENU_ROUTES_HREF.organizations}/${organizationId}/${MENU_ROUTES_HREF.service}/${serviceId}`,
+    );
   };
 
   return (

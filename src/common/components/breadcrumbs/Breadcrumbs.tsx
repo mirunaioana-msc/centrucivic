@@ -31,13 +31,17 @@ const routes = [
   { path: `/${MENU_ROUTES_HREF.organizations}`, breadcrumb: i18n.t('menu:organizations') },
   { path: `/${MENU_ROUTES_HREF.organizations}/:organizationId`, breadcrumb: DynamicOrganization },
   {
-    path: `/${MENU_ROUTES_HREF.organizations}/:organizationId/:serviceId`,
+    path: `/${MENU_ROUTES_HREF.organizations}/:organizationId/${MENU_ROUTES_HREF.service}/:serviceId`,
     breadcrumb: DynamicService,
   },
 ];
 
 const Breadcrumbs = () => {
-  const breadcrumbs = useBreadcrumbs(routes);
+  const breadcrumbs = useBreadcrumbs(routes, {
+    excludePaths: [
+      `/${MENU_ROUTES_HREF.organizations}/:organizationId/${MENU_ROUTES_HREF.service}`,
+    ],
+  });
   const location = useLocation();
 
   // Breadcrums must not be displayed on certain pages.
