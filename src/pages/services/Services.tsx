@@ -46,7 +46,7 @@ const Services = () => {
               components={{
                 Footer: () => (
                   <InfiniteScrollFooter
-                    hasNoData={data?.pages?.length === 0}
+                    hasNoData={data?.pages[0]?.items?.length === 0}
                     isLoading={isFetching}
                   />
                 ),

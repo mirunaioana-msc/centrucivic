@@ -12,6 +12,7 @@ import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.int
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
+import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
@@ -30,41 +31,42 @@ const Organizations = () => {
       {error && !isFetching ? (
         <ListError retry={refetch}>{t('errors.search')}</ListError>
       ) : (
-        <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
-          <VirtuosoGrid
-            useWindowScroll
-            style={{ height: '100vw' }}
-            context={{ loadMore }}
-            endReached={loadMore}
-            overscan={200}
-            data={mapPagesToItems<OrganizationFlat>(data?.pages)}
-            itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
-            itemClassName="virtuso-grid-item"
-            listClassName="virtuso-grid-list"
-            components={{
-              Footer: () => (
-                <InfiniteScrollFooter
-                  hasNoData={data?.pages?.length === 0}
-                  isLoading={isFetching}
-                />
-              ),
-              Header: () => {
-                return data?.pages[0]?.meta && !isFetching ? (
-                  <VirtuosoHeader
-                    totalItems={data.pages[0].meta.totalItems}
-                    entities={
-                      data.pages[0].meta.totalItems > 1
-                        ? t('many_organizations_title')
-                        : t('one_organization_title')
-                    }
+        <ShapeWrapper>
+          <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
+            <VirtuosoGrid
+              useWindowScroll
+              context={{ loadMore }}
+              endReached={loadMore}
+              overscan={200}
+              data={mapPagesToItems<OrganizationFlat>(data?.pages)}
+              itemContent={(index, ong) => <OrganizationItem key={index} organization={ong} />}
+              itemClassName="virtuso-grid-item"
+              listClassName="virtuso-grid-list"
+              components={{
+                Footer: () => (
+                  <InfiniteScrollFooter
+                    hasNoData={data?.pages[0]?.items?.length === 0}
+                    isLoading={isFetching}
                   />
-                ) : (
-                  <></>
-                );
-              },
-            }}
-          />
-        </div>
+                ),
+                Header: () => {
+                  return data?.pages[0]?.meta && !isFetching ? (
+                    <VirtuosoHeader
+                      totalItems={data.pages[0].meta.totalItems}
+                      entities={
+                        data.pages[0].meta.totalItems > 1
+                          ? t('many_organizations_title')
+                          : t('one_organization_title')
+                      }
+                    />
+                  ) : (
+                    <></>
+                  );
+                },
+              }}
+            />
+          </div>
+        </ShapeWrapper>
       )}
     </section>
   );
