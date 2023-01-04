@@ -8,34 +8,28 @@ import CivicCenterServiceContent from '../../common/components/service-content/S
 import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { useService } from '../../services/service/Services.queries';
 import ListError from '../../common/components/list-error/ListError';
+import Breadcrumbs from '../../common/components/breadcrumbs/Breadcrumbs';
 
 const Service = () => {
   const { t } = useTranslation('services');
-  const { id } = useParams();
-  const { data, isLoading, error, refetch } = useService(id as string);
-
-  if (isLoading) {
-    return (
-      <ShapeWrapper>
-        <Loading />
-      </ShapeWrapper>
-    );
-  }
-
-  if (error) {
-    return (
-      <ShapeWrapper>
-        <ListError retry={refetch}>{t('details.errors.get')}</ListError>
-      </ShapeWrapper>
-    );
-  }
+  const { serviceId } = useParams();
+  const { data, isLoading, error, refetch } = useService(serviceId as string);
 
   return (
     <ShapeWrapper>
-      <div className="xl:px-60 px-4 lg:pt-20 pt-10">
-        <Card>{data && <CivicCenterServiceContent service={data} />}</Card>
-      </div>
-      <FeedbackForm />
+      <>
+        <Breadcrumbs />
+        {isLoading && <Loading />}
+        {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
+        {!isLoading && !error && (
+          <>
+            <div className="xl:px-60 px-4 lg:pt-20 pt-10">
+              <Card>{data && <CivicCenterServiceContent service={data} />}</Card>
+            </div>
+            <FeedbackForm />
+          </>
+        )}
+      </>
     </ShapeWrapper>
   );
 };

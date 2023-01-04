@@ -2,21 +2,26 @@ import React from 'react';
 import { CheckCircleIcon, LocationMarkerIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
+import p4g_logo from '../../../assets/images/logo.svg';
 import { formatDateDot } from '../../../common/helpers/Format.helper';
 import { IService } from '../../../common/interfaces/Service.interface';
-import { useNavigate } from 'react-router-dom';
-import { MENU_ROUTES_HREF } from '../../../common/constants/Menu.constants';
 
-const ServiceItem = ({ service }: { service: IService }) => {
+interface ServiceItemProps {
+  service: IService;
+  onNavigate: () => void;
+}
+
+const ServiceItem = ({ service, onNavigate }: ServiceItemProps) => {
   const { t } = useTranslation(['services', 'common']);
-  const navigate = useNavigate();
   return (
     <Card>
       <div className="flex flex-col gap-y-2 h-full">
         <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-150 sm:max-h-full max-h-[8rem]">
-          {service.logo && (
-            <img className="bg-cover h-full w-full" alt="service image" src={service.logo}></img>
-          )}
+          <img
+            className="bg-cover h-full w-full"
+            alt="service image"
+            src={service?.logo || p4g_logo}
+          ></img>
         </div>
         <div className="flex flex-row items-center gap-x-1">
           <LocationMarkerIcon className="w-4"></LocationMarkerIcon>
@@ -56,10 +61,7 @@ const ServiceItem = ({ service }: { service: IService }) => {
             )}
           </div>
         </div>
-        <button
-          className="yellow-button w-full mt-auto"
-          onClick={() => navigate(`/${MENU_ROUTES_HREF.services}/${service.id}`)}
-        >
+        <button className="yellow-button w-full mt-auto" onClick={onNavigate}>
           {t('card.details')}
         </button>
       </div>

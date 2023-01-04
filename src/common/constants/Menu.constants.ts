@@ -5,8 +5,9 @@ export const MENU_ROUTES_HREF = {
   organizations: 'organizations',
   services: 'services',
   about: 'about',
-  contact: 'contact'
-}
+  contact: 'contact',
+  service: 'service',
+};
 
 export const MENU_ROUTES: IMenuURL[] = [
   { id: 0, name: i18n.t('menu:home'), href: '/' },
