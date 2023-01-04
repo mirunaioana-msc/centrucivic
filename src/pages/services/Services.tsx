@@ -1,79 +1,74 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
-import { useServicesQuery } from '../../services/service/Services.queries';
-import { useServices } from '../../store/Selectors';
 import ServiceSearch from '../../common/components/service-search/ServiceSearch';
 import ServiceItem from './components/ServiceItem';
 import { useQueryParams } from 'use-query-params';
 import { SERVICES_QUERY_PARAMS } from '../../common/constants/Services.constants';
-import { AgeCategory } from '../../common/enums/AgeCategory.enum';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
 import ListError from '../../common/components/list-error/ListError';
+import { userCivicCenterServicesInfiniteQuery } from '../../services/service/Services.queries';
+import { CivicCenterQuery } from '../../common/interfaces/CivicCenterQuery.interface';
+import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
+import { IService } from '../../common/interfaces/Service.interface';
+import { mapPagesToItems } from '../../common/helpers/Format.helper';
+import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
 
 const Services = () => {
   const { t } = useTranslation('services');
-  const [query, setQuery] = useQueryParams(SERVICES_QUERY_PARAMS);
+  const [query] = useQueryParams(SERVICES_QUERY_PARAMS);
 
-  const {
-    services,
-    meta: { totalItems: total },
-  } = useServices();
+  const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
+    userCivicCenterServicesInfiniteQuery(query as CivicCenterQuery);
 
-  const { isLoading, error, refetch } = useServicesQuery(
-    query?.page as number,
-    query?.search,
-    query?.locationId,
-    query?.ageCategories as AgeCategory[],
-    query?.domains,
-    query?.start,
-    query?.end,
-  );
-
-  useEffect(() => {
-    setQuery({ ...query, page: 1 });
-  }, []);
-
-  const loadMore = useCallback(() => {
-    if (total > services.length) setQuery({ ...query, page: query?.page ? query?.page + 1 : 1 });
-  }, [services, total]);
+  const loadMore = () => {
+    if (!isFetching && hasNextPage) fetchNextPage();
+  };
 
   return (
     <section className="w-full">
-      <ServiceSearch>
-        {error && !isLoading ? (
-          <ListError retry={refetch}>{t('errors.search')}</ListError>
-        ) : (
-          <div className="flex flex-col w-full px-4 sm:px-8 md:px-16 lg:px-40 pt-10">
-            {services.length !== 0 && !isLoading && (
-              <p className="title text-center">{`${total} ${
-                total > 1 ? t('many_services_title') : t('one_service_title')
-              }`}</p>
-            )}
-            <div className="mb-[10rem]">
-              <VirtuosoGrid
-                useWindowScroll
-                style={{ height: '100vw' }}
-                context={{ loadMore }}
-                endReached={loadMore}
-                overscan={200}
-                data={services}
-                itemContent={(index, service) => <ServiceItem key={index} service={service} />}
-                itemClassName="virtuso-grid-item"
-                listClassName="virtuso-grid-list"
-                components={{
-                  Footer: () => (
-                    <InfiniteScrollFooter
-                      hasNoData={services?.length === 0}
-                      isLoading={isLoading}
+      <div className="bg-yellow w-full">
+        <ServiceSearch />
+      </div>
+      <ShapeWrapper>
+        <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
+          {error && !isFetching ? (
+            <ListError retry={refetch}>{t('errors.search')}</ListError>
+          ) : (
+            <VirtuosoGrid
+              useWindowScroll
+              context={{ loadMore }}
+              endReached={loadMore}
+              overscan={200}
+              data={mapPagesToItems<IService>(data?.pages)}
+              itemContent={(index, service) => <ServiceItem key={index} service={service} />}
+              listClassName="virtuso-grid-list"
+              components={{
+                Footer: () => (
+                  <InfiniteScrollFooter
+                    hasNoData={data?.pages?.length === 0}
+                    isLoading={isFetching}
+                  />
+                ),
+                Header: () => {
+                  return data?.pages[0].meta && !isFetching ? (
+                    <VirtuosoHeader
+                      totalItems={data.pages[0].meta.totalItems}
+                      entities={
+                        data.pages[0].meta.totalItems > 1
+                          ? t('many_services_title')
+                          : t('one_service_title')
+                      }
                     />
-                  ),
-                }}
-              />
-            </div>
-          </div>
-        )}
-      </ServiceSearch>
+                  ) : (
+                    <></>
+                  );
+                },
+              }}
+            />
+          )}
+        </div>
+      </ShapeWrapper>
     </section>
   );
 };

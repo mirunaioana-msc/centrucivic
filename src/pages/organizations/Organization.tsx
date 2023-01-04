@@ -18,19 +18,22 @@ const Organization = () => {
 
   return (
     <ShapeWrapper>
-      <div className="w-full xl:px-60 px-4 lg:py-20 py-10">
+      <div className="w-full lg:py-20 py-10 px-[5%] lg:px-[10%] pb-5">
         <>
           {data && !isLoading && (
             <div className="content">
               <OrganizationDetails organization={data}></OrganizationDetails>
-              <h2 className="subtitle mt-10">{t('details.programs_title')}</h2>
+              <h2 className="subtitle mt-10 mb-5">{t('details.programs_title')}</h2>
               <VirtuosoGrid
                 useWindowScroll
-                style={{ height: '100vw' }}
                 overscan={200}
                 data={data.services}
-                itemContent={(index, service) => <ServiceItem key={index} service={service} />}
-                itemClassName="virtuso-grid-item"
+                itemContent={(index, service) => (
+                  <ServiceItem
+                    key={index}
+                    service={{ ...service, logo: data.logo, organizationName: data.name }}
+                  />
+                )}
                 listClassName="virtuso-grid-list"
                 components={{
                   Footer: () => (

@@ -1,49 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
-import { Organization } from '../../common/interfaces/Organization.interface';
-import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
-import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
-import { useOrganizations } from '../../store/Selectors';
-import useStore from '../../store/Store';
-import { getOrganizationWithCivicServices, searchOrganizations } from './Organization.service';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.interface';
+import { getOrganizations, getOrganizationWithCivicServices } from './Organization.service';
 
-export const useOrganizationQuery = (
-  currentPage: number,
-  search?: string | null,
-  locationId?: number | null,
-  domains?: (number | null)[] | null,
-) => {
-  const { setOrganizations, nextOrganizations } = useStore();
-  const {
-    meta: { itemsPerPage },
-  } = useOrganizations();
-
-  return useQuery(
-    ['organizations', itemsPerPage, currentPage, search, locationId, domains],
-    () => searchOrganizations(itemsPerPage, currentPage, search, locationId, domains),
+export const useOrganizationsInfiniteQuery = (query?: OrganizationQuery) => {
+  return useInfiniteQuery(
+    ['organizations', query],
+    ({ pageParam }) => {
+      return getOrganizations({ pageParam, ...query });
+    },
     {
-      onSuccess: (data: PaginatedEntity<OrganizationFlat>) => {
-        if (currentPage > 1) {
-          nextOrganizations(data);
-        } else {
-          setOrganizations(data);
-        }
+      getNextPageParam: (lastPage) => {
+        return lastPage?.meta.totalPages > lastPage?.meta.currentPage
+          ? lastPage?.meta.currentPage + 1
+          : undefined;
       },
-      enabled: !!(currentPage && itemsPerPage),
       retry: 0,
     },
   );
 };
 
 export const useOrganization = (organizationId: string) => {
-  const { setSelectedOrganization } = useStore();
-
   return useQuery(
     ['organization', organizationId],
     () => getOrganizationWithCivicServices(organizationId),
     {
-      onSuccess: (data: Organization) => {
-        setSelectedOrganization(data);
-      },
       enabled: !!organizationId,
       retry: 0,
     },

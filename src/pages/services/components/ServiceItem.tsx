@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import Card from '../../../common/components/card/Card';
 import { formatDateDot } from '../../../common/helpers/Format.helper';
 import { IService } from '../../../common/interfaces/Service.interface';
-import p4g_logo from '../../../assets/images/logo.svg';
 import { useNavigate } from 'react-router-dom';
 import { MENU_ROUTES_HREF } from '../../../common/constants/Menu.constants';
 
@@ -15,8 +14,8 @@ const ServiceItem = ({ service }: { service: IService }) => {
     <Card>
       <div className="flex flex-col gap-y-2 h-full">
         <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-150 sm:max-h-full max-h-[8rem]">
-          {p4g_logo && (
-            <img className="bg-cover h-full w-full" alt="service image" src={p4g_logo}></img>
+          {service.logo && (
+            <img className="bg-cover h-full w-full" alt="service image" src={service.logo}></img>
           )}
         </div>
         <div className="flex flex-row items-center gap-x-1">
