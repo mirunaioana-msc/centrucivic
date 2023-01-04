@@ -1,8 +1,8 @@
 import React from 'react';
-import { t } from 'i18next';
 import Select, { components } from 'react-select';
 import './Select.css';
 import { classNames } from '../../helpers/Tailwind.helper';
+import { t } from 'i18next';
 
 export interface MultiSelectConfig {
   label?: string;
@@ -38,7 +38,7 @@ const MultiValue = ({ getValue, index, ...rest }: any) => {
     return <p>({getValue().length})&nbsp;</p>;
   } else {
     return index == 0 ? (
-      <p className="text-lg truncate">
+      <p className="sm:text-lg truncate">
         {getValue().length} {t('common:selected')}
       </p>
     ) : (
@@ -71,6 +71,7 @@ const MultiSelect = ({
         closeMenuOnSelect={false}
         closeMenuOnScroll={true}
         id={id}
+        menuPlacement={'auto'}
         isSearchable={true}
         icon={icon}
         components={{

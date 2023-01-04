@@ -3,6 +3,7 @@ import { CalendarIcon } from '@heroicons/react/outline';
 import { default as ReactDatePicker } from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import './DatePicker.css';
 import { classNames } from '../../helpers/Tailwind.helper';
 
 interface DateRangePickerProps {
@@ -41,7 +42,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           onClick={props.onClick}
           ref={ref}
           onChange={props.onChange}
-          className="block h-full w-full pl-10 truncate"
+          className="block h-full w-full pl-10 truncate outline-none focus:shadow-input font-titillium"
           placeholder={props.placeholder}
           defaultValue={props.value}
           maxLength={100}
@@ -61,7 +62,7 @@ const DatePicker = ({ defaultValue, onChange, placeholder }: DateRangePickerProp
           selected={date}
           isClearable
           placeholderText={placeholder}
-          clearButtonClassName="range-clear-button"
+          clearButtonClassName="datepicker-clear-button"
           dateFormat="dd.MM.yyyy"
           customInput={<CustomInput />}
         />

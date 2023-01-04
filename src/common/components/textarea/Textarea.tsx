@@ -22,7 +22,7 @@ const Textarea = (props: { config: Partial<TextAreaConfig>; readonly?: boolean }
               props.config.error
                 ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500 '
                 : 'focus:ring-indigo-500 focus:border-indigo-500',
-              'block w-full border py-2 px-3 border-gray-300 shadow-sm body-text rounded-md',
+              'block w-full border py-2 px-3 border-gray-300 shadow-sm body-text rounded-md outline-none focus:shadow-input',
             )}
             placeholder={props.config.placeholder}
             defaultValue={props.config.defaultValue}

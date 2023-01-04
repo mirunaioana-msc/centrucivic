@@ -14,7 +14,6 @@ import {
   useDomainsQuery,
   useFacultiesQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
-import ShapeWrapper from '../shape-wrapper/ShapeWrapper';
 import ServiceFilterModal from '../service-filter-modal/ServiceFilterModal';
 import { SERVICES_QUERY_PARAMS } from '../../constants/Services.constants';
 import { useQueryParams, encodeQueryParams } from 'use-query-params';
@@ -175,7 +174,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
           </div>
           <button
             type="button"
-            className="text-sm sm:text-base sm:hidden text-yellow bg-black  px-4 flex items-center justify-center h-full"
+            className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
             onClick={handleSubmit(search)}
           >
             <SearchIcon className="w-5 h-5" />
@@ -300,7 +299,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
           <button
             id="services-search__button__submit"
             type="button"
-            className="yellow-button text-sm sm:text-base w-full h-full"
+            className="yellow-button text-sm sm:text-base w-full h-full shadow-md"
             onClick={handleSubmit(search)}
           >
             {t('search.search_button', { ns: 'common' })}

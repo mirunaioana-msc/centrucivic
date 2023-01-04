@@ -13,7 +13,10 @@ module.exports = {
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
-      black: '#000000',
+      black: {
+        DEFAULT: '#000000',
+        800: '#262626',
+      },
       white: '#FFFFFF',
       green: {
         DEFAULT: '#0DB683',
@@ -55,6 +58,8 @@ module.exports = {
       },
       purple: {
         DEFAULT: '#6543C8',
+        100: '#efebf9',
+        500: '#6e4dcb',
       },
       red: {
         50: '#FEF2F2',
@@ -94,6 +99,7 @@ module.exports = {
       },
       boxShadow: {
         card: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+        input: 'inset 0 0 0 2px #6543C8',
       },
       fontSize: {
         xs: [
