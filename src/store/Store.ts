@@ -3,6 +3,7 @@ import { City } from '../common/interfaces/City.interface';
 import { Domain } from '../common/interfaces/Domain.interface';
 import { Faculty } from '../common/interfaces/Faculty.interface';
 import { nomenclatureSlice } from './nomenclatures/Nomenclatures.slice';
+import { breadcrumbsSlice } from './breadcrumbs-state/Breadcrumbs.slice';
 
 interface NomenclatureState {
   cities: City[];
@@ -13,8 +14,16 @@ interface NomenclatureState {
   setFaculties: (faculties: Faculty[]) => void;
 }
 
-const useStore = create<NomenclatureState>()((set: any) => ({
+interface BreadcurmbsState {
+  organizationName: string | null;
+  serviceName: string | null;
+  setOrganizationName: (organizationName: string) => void;
+  setServiceName: (serviceName: string) => void;
+}
+
+const useStore = create<NomenclatureState & BreadcurmbsState>()((set: any) => ({
   ...nomenclatureSlice(set),
+  ...breadcrumbsSlice(set),
 }));
 
 export default useStore;

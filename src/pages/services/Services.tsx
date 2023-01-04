@@ -13,9 +13,12 @@ import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { IService } from '../../common/interfaces/Service.interface';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
+import { useNavigate } from 'react-router-dom';
+import { MENU_ROUTES_HREF } from '../../common/constants/Menu.constants';
 
 const Services = () => {
   const { t } = useTranslation('services');
+  const navigate = useNavigate();
   const [query] = useQueryParams(SERVICES_QUERY_PARAMS);
 
   const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
@@ -23,6 +26,10 @@ const Services = () => {
 
   const loadMore = () => {
     if (!isFetching && hasNextPage) fetchNextPage();
+  };
+
+  const onNavigate = (serviceId: number) => {
+    navigate(`/${MENU_ROUTES_HREF.services}/${serviceId}`);
   };
 
   return (
@@ -41,7 +48,13 @@ const Services = () => {
               endReached={loadMore}
               overscan={200}
               data={mapPagesToItems<IService>(data?.pages)}
-              itemContent={(index, service) => <ServiceItem key={index} service={service} />}
+              itemContent={(index, service) => (
+                <ServiceItem
+                  key={index}
+                  service={service}
+                  onNavigate={onNavigate.bind(null, service.id)}
+                />
+              )}
               listClassName="virtuso-grid-list"
               components={{
                 Footer: () => (

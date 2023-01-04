@@ -4,15 +4,16 @@ import { NavLink, useLocation } from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 import i18n from '../../configs/i18n';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
+import { useBreadcrumbsState } from '../../../store/Selectors';
 
-const DynamicPracticeProgram = ({ match }: any) => {
-  // return <span>{selectedService?.name || match.params.id}</span>;
-  return <span>{match.params.id}</span>;
+const DynamicService = () => {
+  const { serviceName } = useBreadcrumbsState();
+  return <span>{serviceName || ''}</span>;
 };
 
-const DynamicOrganization = ({ match }: any) => {
-  // return <span>{selectedOrganization?.name || match.params.id}</span>;
-  return <span>{match.params.id}</span>;
+const DynamicOrganization = () => {
+  const { organizationName } = useBreadcrumbsState();
+  return <span>{organizationName || ''}</span>;
 };
 
 const HomeBreadcrumb = () => {
@@ -26,11 +27,13 @@ const HomeBreadcrumb = () => {
 const routes = [
   { path: '', breadcrumb: HomeBreadcrumb },
   { path: `/${MENU_ROUTES_HREF.services}`, breadcrumb: i18n.t('menu:services') },
-  { path: `/${MENU_ROUTES_HREF.services}/:id`, breadcrumb: DynamicPracticeProgram },
+  { path: `/${MENU_ROUTES_HREF.services}/:serviceId`, breadcrumb: DynamicService },
   { path: `/${MENU_ROUTES_HREF.organizations}`, breadcrumb: i18n.t('menu:organizations') },
-  { path: `/${MENU_ROUTES_HREF.organizations}/:id`, breadcrumb: DynamicOrganization },
-  { path: `/${MENU_ROUTES_HREF.about}`, breadcrumb: i18n.t('menu:about') },
-  { path: `/${MENU_ROUTES_HREF.contact}`, breadcrumb: i18n.t('menu:contact') },
+  { path: `/${MENU_ROUTES_HREF.organizations}/:organizationId`, breadcrumb: DynamicOrganization },
+  {
+    path: `/${MENU_ROUTES_HREF.organizations}/:organizationId/:serviceId`,
+    breadcrumb: DynamicService,
+  },
 ];
 
 const Breadcrumbs = () => {
@@ -41,24 +44,28 @@ const Breadcrumbs = () => {
   if (
     location.pathname === '/' ||
     location.pathname == `/${MENU_ROUTES_HREF.organizations}` ||
-    location.pathname == `/${MENU_ROUTES_HREF.services}`
+    location.pathname == `/${MENU_ROUTES_HREF.services}` ||
+    location.pathname == `/${MENU_ROUTES_HREF.about}` ||
+    location.pathname == `/${MENU_ROUTES_HREF.contact}`
   ) {
     return <></>;
   }
 
   return (
-    <div className="flex gap-2 items-center lg:px-60 md:px-20 sm:px-8 px-2 py-4">
-      {breadcrumbs.map(({ match, breadcrumb }, index) => (
-        <span key={match.pathname}>
-          <NavLink
-            className="text-gray-1000 flex gap-2 items-center hover:underline"
-            to={match.pathname}
-          >
-            {breadcrumb}{' '}
-            {index < breadcrumbs.length - 1 && <ChevronRightIcon className="w-4 h-4" />}
-          </NavLink>
-        </span>
-      ))}
+    <div className="flex flex-row gap-2">
+      {breadcrumbs.map(({ match, breadcrumb }, index) => {
+        return (
+          <span key={match.pathname}>
+            <NavLink
+              className="text-gray-1000 flex gap-2 items-center hover:underline"
+              to={match.pathname}
+            >
+              {breadcrumb}{' '}
+              {index < breadcrumbs.length - 1 && <ChevronRightIcon className="w-4 h-4" />}
+            </NavLink>
+          </span>
+        );
+      })}
     </div>
   );
 };
