@@ -60,7 +60,7 @@ const Breadcrumbs = () => {
   }
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 items-center">
       {breadcrumbs.map(({ match, breadcrumb }, index) => {
         return (
           <span key={match.pathname}>
