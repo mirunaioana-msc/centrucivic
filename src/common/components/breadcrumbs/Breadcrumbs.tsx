@@ -6,14 +6,18 @@ import i18n from '../../configs/i18n';
 import { MENU_ROUTES_HREF } from '../../constants/Menu.constants';
 import { useBreadcrumbsState } from '../../../store/Selectors';
 
+const BreadcrumbItem = ({ children }: { children: string }) => (
+  <span className="max-w-[5rem] sm:max-w-[15rem] lg:max-w-xs truncate">{children}</span>
+);
+
 const DynamicService = () => {
   const { serviceName } = useBreadcrumbsState();
-  return <span>{serviceName || ''}</span>;
+  return <BreadcrumbItem>{serviceName || ''}</BreadcrumbItem>;
 };
 
 const DynamicOrganization = () => {
   const { organizationName } = useBreadcrumbsState();
-  return <span>{organizationName || ''}</span>;
+  return <BreadcrumbItem>{organizationName || ''}</BreadcrumbItem>;
 };
 
 const HomeBreadcrumb = () => {
