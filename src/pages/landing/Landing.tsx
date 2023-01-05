@@ -1,6 +1,5 @@
 import React from 'react';
 import ServiceSearch from '../../common/components/service-search/ServiceSearch';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import Domains from './components/domains/Domains';
 import Counter from './components/counter/Counter';
 import Description from '../../common/components/description/Description';
@@ -23,23 +22,17 @@ const Landing = () => {
 
   return (
     <section className="w-full">
-      <div className="bg-yellow w-full">
-        <ServiceSearch onSearchCallback={onGoToServices} />
-      </div>
-      <div className="max-w-screen-xl mx-auto px-10">
-        <Description
-          title={t('about.title')}
-          content={t('about.paragraph_1')}
-          cta={{ label: t('about.action'), link: DONATE_URL }}
-          image={aboutCC}
-          isTextRight={true}
-        ></Description>
-      </div>
+      <ServiceSearch onSearchCallback={onGoToServices} />
+      <Description
+        title={t('about.title')}
+        content={t('about.paragraph_1')}
+        cta={{ label: t('about.action'), link: DONATE_URL }}
+        image={aboutCC}
+        isTextRight={true}
+        layoutCSS="wrapper"
+      ></Description>
       <Counter />
-      <ShapeWrapper>
-        {' '}
-        <Domains />
-      </ShapeWrapper>
+      <Domains />
       <LandingCta />
     </section>
   );

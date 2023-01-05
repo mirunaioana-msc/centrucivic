@@ -9,7 +9,6 @@ import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer
 import ListError from '../../common/components/list-error/ListError';
 import { userCivicCenterServicesInfiniteQuery } from '../../services/service/Services.queries';
 import { CivicCenterQuery } from '../../common/interfaces/CivicCenterQuery.interface';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { IService } from '../../common/interfaces/Service.interface';
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
@@ -34,14 +33,12 @@ const Services = () => {
 
   return (
     <section className="w-full">
-      <div className="bg-yellow w-full">
-        <ServiceSearch />
-      </div>
-      <ShapeWrapper>
-        <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
-          {error && !isFetching ? (
-            <ListError retry={refetch}>{t('errors.search')}</ListError>
-          ) : (
+      <ServiceSearch />
+      <div className="min-h-[30rem] bg-gray-100 w-full">
+        {error && !isFetching ? (
+          <ListError retry={refetch}>{t('errors.search')}</ListError>
+        ) : (
+          <div className="wrapper sm:pb-40 pb-28">
             <VirtuosoGrid
               useWindowScroll
               context={{ loadMore }}
@@ -68,9 +65,9 @@ const Services = () => {
                     <VirtuosoHeader
                       totalItems={data.pages[0].meta.totalItems}
                       entities={
-                        data.pages[0].meta.totalItems > 1
-                          ? t('many_services_title')
-                          : t('one_service_title')
+                        data.pages[0].meta.totalItems === 1
+                          ? t('one_service_title')
+                          : t('many_services_title')
                       }
                     />
                   ) : (
@@ -79,9 +76,9 @@ const Services = () => {
                 },
               }}
             />
-          )}
-        </div>
-      </ShapeWrapper>
+          </div>
+        )}
+      </div>
     </section>
   );
 };
