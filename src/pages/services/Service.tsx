@@ -26,7 +26,7 @@ const Service = () => {
             <div className="xl:px-60 px-4 lg:pt-20 pt-10">
               <Card>{data && <CivicCenterServiceContent service={data} />}</Card>
             </div>
-            <FeedbackForm />
+            <FeedbackForm serviceId={serviceId as string} />
           </>
         )}
       </>

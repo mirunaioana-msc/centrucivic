@@ -8,12 +8,10 @@ import { FeedbackFormConfig } from './configs/FeedbackForm.config';
 import { CheckCircleIcon } from '@heroicons/react/outline';
 import { useErrorToast } from '../../hooks/useToast';
 import { useSendServiceFeedback } from '../../../services/public/PublicApi.queries';
-import { useParams } from 'react-router-dom';
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ serviceId }: { serviceId: string }) => {
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const { t } = useTranslation(['feedback_form', 'common']);
-  const { id: serviceId } = useParams();
 
   const {
     handleSubmit,
@@ -137,8 +135,8 @@ const FeedbackForm = () => {
       {showSuccess && (
         <div className="flex-1 flex flex-col items-center justify-center mb-10">
           <CheckCircleIcon className="sm:w-24 w-12 mb-6 text-green" />
-          <p className="subtitle">{t('contact_message_1')}</p>
-          <p className="body-text">{t('contact_message_2')}</p>
+          <p className="subtitle">{t('contact_message_1', { ns: 'contact' })}</p>
+          <p className="body-text">{t('contact_message_2', { ns: 'contact' })}</p>
         </div>
       )}
     </div>
