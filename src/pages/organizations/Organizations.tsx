@@ -31,7 +31,7 @@ const Organizations = () => {
         <ListError retry={refetch}>{t('errors.search')}</ListError>
       ) : (
         <div className="min-h-[30rem] bg-gray-100 w-full">
-          <div className="wrapper sm:pb-40 pb-28">
+          <div className="wrapper sm:pb-40 pb-28 sm:w-[90%] lg:max-w-screen-3xl">
             <VirtuosoGrid
               useWindowScroll
               context={{ loadMore }}
