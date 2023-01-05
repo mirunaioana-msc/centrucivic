@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { useOrganization } from '../../services/organization/Organization.queries';
 import ServiceItem from '../services/components/ServiceItem';
 import OrganizationDetails from './components/OrganizationDetails';

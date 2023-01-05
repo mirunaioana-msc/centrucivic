@@ -24,7 +24,7 @@ const Service = () => {
           {!isLoading && !error && (
             <>
               <Card>{data && <CivicCenterServiceContent service={data} />}</Card>
-              <FeedbackForm />
+              <FeedbackForm serviceId={serviceId as string} />
             </>
           )}
         </>
