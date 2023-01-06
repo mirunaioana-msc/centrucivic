@@ -5,7 +5,6 @@ import Card from '../../common/components/card/Card';
 import FeedbackForm from '../../common/components/feedback-form/FeedbackForm';
 import Loading from '../../common/components/loading/Loading';
 import CivicCenterServiceContent from '../../common/components/service-content/ServiceContent';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { useService } from '../../services/service/Services.queries';
 import ListError from '../../common/components/list-error/ListError';
 import Breadcrumbs from '../../common/components/breadcrumbs/Breadcrumbs';
@@ -16,21 +15,21 @@ const Service = () => {
   const { data, isLoading, error, refetch } = useService(serviceId as string);
 
   return (
-    <ShapeWrapper>
-      <>
+    <div className="w-full bg-gray-100">
+      <div className="wrapper pt-5">
         <Breadcrumbs />
-        {isLoading && <Loading />}
-        {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
-        {!isLoading && !error && (
-          <>
-            <div className="xl:px-60 px-4 lg:pt-20 pt-10">
+        <>
+          {isLoading && <Loading />}
+          {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
+          {!isLoading && !error && (
+            <>
               <Card>{data && <CivicCenterServiceContent service={data} />}</Card>
-            </div>
-            <FeedbackForm serviceId={serviceId as string} />
-          </>
-        )}
-      </>
-    </ShapeWrapper>
+              <FeedbackForm serviceId={serviceId as string} />
+            </>
+          )}
+        </>
+      </div>
+    </div>
   );
 };
 

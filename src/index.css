@@ -32,7 +32,7 @@
   }
 
   .yellow-button {
-    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow-500 sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit outline-none hover:bg-yellow-300;
+    @apply font-titilliumSemiBold rounded sm:py-[13px] py-[8px] sm:px-[25px] px-[15px] shadow-sm bg-yellow sm:w-auto h-fit text-center lg:w-48 w-32 sm:text-xl text-sm min-w-fit outline-none hover:bg-yellow-300;
   }
 
   .title {
@@ -48,29 +48,29 @@
   }
 
   .article {
-    @apply sm:text-base text-sm text-gray-500 break-words;
+    @apply sm:text-base text-sm text-gray-500 break-word;
   }
 
   .card-text-overflow {
-    @apply text-ellipsis overflow-hidden;
+    @apply text-ellipsis overflow-hidden break-word;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
 
   .card-title-overflow {
-    @apply text-ellipsis overflow-hidden;
+    @apply text-ellipsis overflow-hidden break-word;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 
   .virtuso-grid-list {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 sm:gap-8;
+    @apply grid lg:grid-cols-cards-desktop md:grid-cols-cards-tablet grid-cols-cards-mobile gap-5 sm:gap-8;
   }
 
   .menu-title {
-    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3 cursor-pointer;
+    @apply font-titilliumBold md:text-lg text-sm text-gray-900 leading-3 cursor-pointer whitespace-nowrap;
   }
 
   .side-menu-title {
@@ -78,7 +78,7 @@
   }
 
   .footer-title {
-    @apply font-titilliumBold text-base text-yellow-1000;
+    @apply font-titilliumBold text-base text-yellow;
   }
 
   .footer-text {
@@ -115,11 +115,34 @@
     font-size: 24px !important;
     padding: 0 16px 0 0 !important;
   }
+
+  .wrapper {
+    @apply sm:w-[80%] w-[90%] max-w-screen-xl sm:py-20 py-10 flex flex-col sm:gap-8 gap-5 justify-items-center mx-auto;
+  }
+
+  .right-split-color {
+    background: linear-gradient(
+      to right,
+      theme('backgroundColor.yellow.500') 0%,
+      theme('backgroundColor.yellow.500') 50%,
+      theme('backgroundColor.gray.100') 50%,
+      theme('backgroundColor.gray.100') 100%
+    );
+  }
+  .bottom-split-color {
+    background: linear-gradient(
+      to bottom,
+      theme('backgroundColor.yellow.500') 0%,
+      theme('backgroundColor.yellow.500') 50%,
+      theme('backgroundColor.gray.100') 50%,
+      theme('backgroundColor.gray.100') 100%
+    );
+  }
 }
 
 .content {
   /* Give the content enought white space so the footer is at the bottom */
-  min-height: calc(100vh - 11rem - 18rem);
+  min-height: calc(100vh - 11rem - 13rem);
 }
 
 a {

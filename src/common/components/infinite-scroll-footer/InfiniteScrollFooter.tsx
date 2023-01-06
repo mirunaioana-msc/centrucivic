@@ -15,7 +15,7 @@ const InfiniteScrollFooter = ({ isLoading, hasNoData }: InfiniteScrollFooterProp
   }
 
   if (hasNoData) {
-    return <div className="w-full flex items-center justify-center">{t('no_results')}</div>;
+    return <div className="w-full flex items-center justify-center px-10">{t('no_results')}</div>;
   }
 
   return <></>;

@@ -12,7 +12,6 @@ import { OrganizationQuery } from '../../common/interfaces/OrganizationQuery.int
 import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import { OrganizationFlat } from '../../common/interfaces/OrganizationFlat.interface';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 
 const Organizations = () => {
   const { t } = useTranslation('organizations');
@@ -31,8 +30,8 @@ const Organizations = () => {
       {error && !isFetching ? (
         <ListError retry={refetch}>{t('errors.search')}</ListError>
       ) : (
-        <ShapeWrapper>
-          <div className="min-h-[30rem] px-[10%] sm:px-[5%] pb-28 sm:pb-40">
+        <div className="min-h-[30rem] bg-gray-100 w-full">
+          <div className="wrapper sm:pb-40 pb-28 sm:w-[90%] lg:max-w-screen-3xl">
             <VirtuosoGrid
               useWindowScroll
               context={{ loadMore }}
@@ -54,9 +53,9 @@ const Organizations = () => {
                     <VirtuosoHeader
                       totalItems={data.pages[0].meta.totalItems}
                       entities={
-                        data.pages[0].meta.totalItems > 1
-                          ? t('many_organizations_title')
-                          : t('one_organization_title')
+                        data.pages[0].meta.totalItems === 1
+                          ? t('one_organization_title')
+                          : t('many_organizations_title')
                       }
                     />
                   ) : (
@@ -66,7 +65,7 @@ const Organizations = () => {
               }}
             />
           </div>
-        </ShapeWrapper>
+        </div>
       )}
     </section>
   );

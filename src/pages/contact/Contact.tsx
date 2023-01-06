@@ -40,12 +40,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col w-full xl:px-60 sm:px-20 px-10 lg:py-20 py-10">
-      <div className="flex lg:flex-row flex-col xl:gap-x-36 gap-x-20 gap-y-10">
-        <div className="flex-1">
+    <div className="w-full">
+      <div className="wrapper flex lg:flex-row flex-col xl:gap-x-36 gap-x-20 gap-y-10">
+        <div className="flex-1 flex flex-col sm:gap-8 gap-4">
           <p className="title">{t('title')}</p>
           <p className="body-text">{t('paragraph_1')}</p>
-          <br />
           <p className="body-text">{t('paragraph_2')}</p>
         </div>
         {!showSuccess && (
