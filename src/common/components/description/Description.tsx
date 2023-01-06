@@ -6,19 +6,19 @@ interface DescriptionProps {
   content: string;
   image: string;
   isTextRight?: boolean;
-  layoutCSS?: string;
+  className?: string;
   cta?: {
     label?: string;
     link?: string;
   };
 }
 
-const Description = ({ title, content, image, cta, isTextRight, layoutCSS }: DescriptionProps) => {
+const Description = ({ title, content, image, cta, isTextRight, className }: DescriptionProps) => {
   return (
     <div className="w-full">
       <div
         className={`${
-          layoutCSS ? layoutCSS : ''
+          className ? className : ''
         } grid md:grid-cols-2 grid-cols-1 gap-x-12 lg:gap-y-10 gap-y-5`}
       >
         <div

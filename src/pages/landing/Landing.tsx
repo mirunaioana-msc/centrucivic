@@ -29,7 +29,7 @@ const Landing = () => {
         cta={{ label: t('about.action'), link: DONATE_URL }}
         image={aboutCC}
         isTextRight={true}
-        layoutCSS="wrapper"
+        className="wrapper"
       ></Description>
       <Counter />
       <Domains />
