@@ -142,6 +142,11 @@ module.exports = {
       screens: {
         '3xl': '1700px',
       },
+      gridTemplateColumns: {
+        'cards-desktop': 'repeat(auto-fill, minmax(20rem, 1fr))',
+        'cards-tablet': 'repeat(auto-fill, minmax(17rem, 1fr))',
+        'cards-mobile': 'repeat(auto-fill, minmax(15rem, 1fr))',
+      },
     },
   },
   plugins: [],

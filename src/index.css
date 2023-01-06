@@ -66,7 +66,7 @@
   }
 
   .virtuso-grid-list {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 sm:gap-8;
+    @apply grid lg:grid-cols-cards-desktop md:grid-cols-cards-tablet grid-cols-cards-mobile gap-5 sm:gap-8;
   }
 
   .menu-title {
