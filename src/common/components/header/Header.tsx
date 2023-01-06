@@ -35,52 +35,54 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
   return (
     <header className="bg-white">
       <nav aria-label="Top">
-        <div className="flex items-center sm:gap-4 gap-2 w-full xl:px-32 lg:px-18 sm:px-8 sm:py-2 px-2 bg-gray-50 h-12">
-          <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
-          <span className="sm:text-base text-xs">{t('commit_global_solution')}</span>
-          <a
-            className="text-blue font-bold hover:underline sm:text-base text-xs"
-            href={COMMIT_GLOBAL_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t('learn_more')}
-          </a>
-        </div>
-        <div className="w-full xl:px-32 lg:px-18 sm:px-8 px-2 py-4 flex gap-4 justify-between items-center">
-          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
+        <div className="w-full bg-gray-50 sm:h-12 h-10 flex items-center">
+          <div className="wrapper flex-row items-center sm:gap-4 gap-2 sm:py-2 py-0 sm:w-[90%] lg:max-w-screen-3xl">
+            <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
+            <span className="sm:text-base text-xxs">{t('commit_global_solution')}</span>
+            <a
+              className="text-blue font-bold hover:underline sm:text-base text-xxs"
+              href={COMMIT_GLOBAL_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('learn_more')}
+            </a>
           </div>
-          <div className="flex gap-4 items-center">
-            <div className="gap-6 hidden lg:flex">
-              {MENU_ROUTES.map((route) => (
-                <a
-                  className={classNames(
-                    'menu-title',
-                    activeTab === route.href ? 'text-yellow-700' : 'text-black',
-                  )}
-                  key={route.id}
-                  onClick={() => navigate(route.href)}
-                >
-                  {route.name}
-                </a>
-              ))}
+        </div>
+        <div className="w-full flex items-center">
+          <div className="wrapper flex-row gap-4 py-2 sm:w-[90%] lg:max-w-screen-3xl">
+            <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
+              <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
             </div>
-            <div className="lg:pl-8 block">
+            <div className="flex gap-4 items-center ml-auto">
+              <div className="gap-6 hidden lg:flex">
+                {MENU_ROUTES.map((route) => (
+                  <a
+                    className={classNames(
+                      'menu-title',
+                      activeTab === route.href ? 'text-yellow-700' : 'text-black',
+                    )}
+                    key={route.id}
+                    onClick={() => navigate(route.href)}
+                  >
+                    {route.name}
+                  </a>
+                ))}
+              </div>
               <button
-                className="yellow-button lg:flex hidden lg:w-32 xl:w-12 menu-title"
+                className="yellow-button bg-black text-white lg:flex hidden menu-title hover:bg-black-800 w-fit ml-10"
                 onClick={() => windowOpener(DONATE_URL)}
               >
                 {t('donate')}
               </button>
-            </div>
-            <div className="flex lg:hidden items-center">
-              <button
-                className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl outline-none"
-                onClick={() => openSlidingMenu(true)}
-              >
-                <MenuIcon className="w-5 h-5" />
-              </button>
+              <div className="flex lg:hidden items-center">
+                <button
+                  className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl outline-none"
+                  onClick={() => openSlidingMenu(true)}
+                >
+                  <MenuIcon className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

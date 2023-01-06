@@ -18,6 +18,7 @@ module.exports = {
         800: '#262626',
       },
       white: '#FFFFFF',
+      blue: '#0000FA',
       green: {
         DEFAULT: '#0DB683',
         50: '#ECFDF5',
@@ -32,7 +33,7 @@ module.exports = {
         900: '#064E3B',
       },
       yellow: {
-        DEFAULT: '#FFF649',
+        DEFAULT: '#FFEB4F',
         50: '#FFFDE7',
         100: '#FFF9C4',
         200: '#FFF59D',
@@ -43,7 +44,6 @@ module.exports = {
         700: '#FBC02D',
         800: '#F9A825',
         900: '#F57F17',
-        1000: '#FFEB4F',
       },
       gray: {
         50: '#F1F1F1',
@@ -102,6 +102,12 @@ module.exports = {
         input: 'inset 0 0 0 2px #6543C8',
       },
       fontSize: {
+        xxs: [
+          '0.7rem',
+          {
+            lineHeight: '1rem',
+          },
+        ],
         xs: [
           '0.75rem',
           {
@@ -132,6 +138,14 @@ module.exports = {
         shape: 'url(./assets/images/shape-background.svg)',
         search:
           'linear-gradient(0deg, rgba(255, 223, 112, 0.5), rgba(255, 223, 112, 0.5)), url(./assets/images/background-search-image.svg)',
+      },
+      screens: {
+        '3xl': '1700px',
+      },
+      gridTemplateColumns: {
+        'cards-desktop': 'repeat(auto-fill, minmax(20rem, 1fr))',
+        'cards-tablet': 'repeat(auto-fill, minmax(17rem, 1fr))',
+        'cards-mobile': 'repeat(auto-fill, minmax(15rem, 1fr))',
       },
     },
   },

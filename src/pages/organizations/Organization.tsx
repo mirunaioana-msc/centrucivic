@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
 import InfiniteScrollFooter from '../../common/components/infinite-scroll-footer/InfiniteScrollFooter';
-import ShapeWrapper from '../../common/components/shape-wrapper/ShapeWrapper';
 import { useOrganization } from '../../services/organization/Organization.queries';
 import ServiceItem from '../services/components/ServiceItem';
 import OrganizationDetails from './components/OrganizationDetails';
@@ -27,9 +26,9 @@ const Organization = () => {
   };
 
   return (
-    <ShapeWrapper>
-      <Breadcrumbs />
-      <div className="w-full lg:py-20 py-10 px-[5%] lg:px-[10%] pb-5">
+    <div className="w-full bg-gray-100">
+      <div className="wrapper pt-5">
+        <Breadcrumbs />
         <>
           {data && !isLoading && (
             <div className="content">
@@ -61,7 +60,7 @@ const Organization = () => {
           {error && !isLoading && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
         </>
       </div>
-    </ShapeWrapper>
+    </div>
   );
 };
 

@@ -13,9 +13,11 @@ const Counter = () => {
   const { data } = useGetLandingCountersQuery(COUNTER_APP.CIVIC_SERVICE);
 
   return (
-    <div className="bg-yellow w-full sm:h-56 h-72 flex sm:flex-row flex-col items-center justify-center lg:gap-x-48 gap-x-28 gap-y-10 px-16">
-      <CounterItem value={data?.activeItems} type={COUNTER_TYPE.SERVICES}></CounterItem>
-      <CounterItem value={data?.ongsWithApplication} type={COUNTER_TYPE.NGOS}></CounterItem>
+    <div className="bg-yellow w-full">
+      <div className="wrapper flex sm:flex-row flex-col items-center justify-center lg:gap-x-48 gap-x-28 gap-y-10">
+        <CounterItem value={data?.activeItems} type={COUNTER_TYPE.SERVICES}></CounterItem>
+        <CounterItem value={data?.ongsWithApplication} type={COUNTER_TYPE.NGOS}></CounterItem>
+      </div>
     </div>
   );
 };

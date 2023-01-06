@@ -16,13 +16,12 @@ const ServiceItem = ({ service, onNavigate }: ServiceItemProps) => {
   return (
     <Card>
       <div className="flex flex-col gap-y-2 h-full">
-        <div className="aspect-square lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] bg-gray-150 sm:max-h-full max-h-[8rem]">
-          <img
-            className="bg-cover h-full w-full"
-            alt="service image"
-            src={service?.logo || p4g_logo}
-          ></img>
-        </div>
+        <div
+          style={{ backgroundImage: `url(${service?.logo})` }}
+          className={`aspect-square bg-contain bg-no-repeat bg-center lg:w-32 sm:w-24 w-full lg:min-w-[8rem] sm:min-w-[6rem] sm:max-h-full max-h-[8rem] ${
+            service.logo ? 'bg-transparent' : 'bg-gray-100'
+          }`}
+        ></div>
         <div className="flex flex-row items-center gap-x-1">
           <LocationMarkerIcon className="w-4"></LocationMarkerIcon>
           <p className="sm:text-sm lg:text-base text-xs">{service.location.name}</p>
@@ -31,7 +30,7 @@ const ServiceItem = ({ service, onNavigate }: ServiceItemProps) => {
           <p className="subtitle card-title-overflow sm:h-16 h-12">{service.name}</p>
           <p className="article card-text-overflow sm:h-28 h-24">{service.shortDescription}</p>
         </div>
-        <div className="flex pt-2">
+        <div className="flex pt-2 sm:h-16 h-8">
           <p>
             <span>{t('available', { ns: 'common' })}</span>&nbsp;
             <span>{formatDateDot(service.startDate)}</span> -{' '}
@@ -40,7 +39,7 @@ const ServiceItem = ({ service, onNavigate }: ServiceItemProps) => {
         </div>
         <div className="mt-4">
           <p className="font-titilliumBold text-gray-600">{t('card.access')}</p>
-          <div className="flex gap-4 py-4">
+          <div className="flex xl:gap-2 gap-1 py-4 flex-wrap md:h-24">
             {service.hasOnlineAccess && (
               <div className="flex gap-2 items-center">
                 <CheckCircleIcon className="w-5 h-5 text-green" />
