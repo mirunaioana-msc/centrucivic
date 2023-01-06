@@ -1,5 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import users from '../../../../assets/icons/users.svg';
+import { MENU_ROUTES_HREF } from '../../../../common/constants/Menu.constants';
 
 interface DomainProps {
   name: string;
@@ -7,8 +9,13 @@ interface DomainProps {
 }
 
 const Domain = ({ name, id }: DomainProps) => {
+  const navigate = useNavigate();
+
   return (
-    <a href={`/services?domains=${id}`} className="text-black">
+    <a
+      onClick={() => navigate(`${MENU_ROUTES_HREF.services}?domains=${id}`)}
+      className="text-black"
+    >
       <div className="bg-gray-100 hover:bg-yellow mx-auto max-w-2xl xs:aspect-square aspect-auto flex justify-center items-center flex-col gap-y-4 p-3 xs:h-auto h-full cursor-pointer">
         <img
           alt="domain image"
