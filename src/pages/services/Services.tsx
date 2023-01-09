@@ -34,7 +34,7 @@ const Services = () => {
   return (
     <section className="w-full">
       <ServiceSearch />
-      <div className="min-h-[30rem] bg-gray-100 w-full">
+      <div className="sm:min-h-[calc(100vh-30rem)] min-h-[40rem] bg-gray-100 w-full">
         {error && !isFetching ? (
           <ListError retry={refetch}>{t('errors.search')}</ListError>
         ) : (
