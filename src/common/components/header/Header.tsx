@@ -77,7 +77,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
               </button>
               <div className="flex lg:hidden items-center">
                 <button
-                  className="flex items-center gap-4 hover:bg-green-tab py-2 px-4 rounded-xl outline-none"
+                  className="flex items-center gap-4 hover:bg-green-tab rounded-xl outline-none"
                   onClick={() => openSlidingMenu(true)}
                 >
                   <MenuIcon className="w-5 h-5" />
