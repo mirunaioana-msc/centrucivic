@@ -49,7 +49,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
             </a>
           </div>
         </div>
-        <div className="w-full flex items-center">
+        <div className="w-full flex items-center sm:min-h-[5rem]">
           <div className="wrapper flex-row gap-4 py-2 sm:w-[90%] lg:max-w-screen-3xl">
             <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
               <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
@@ -70,7 +70,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
                 ))}
               </div>
               <button
-                className="yellow-button bg-black text-white lg:flex hidden menu-title hover:bg-black-800 w-fit ml-10"
+                className="yellow-button bg-black text-white lg:flex hidden menu-title hover:bg-black-800 w-[9rem] justify-center ml-10"
                 onClick={() => windowOpener(DONATE_URL)}
               >
                 {t('donate')}
