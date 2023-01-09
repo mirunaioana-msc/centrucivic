@@ -39,7 +39,7 @@ const ServiceItem = ({ service, onNavigate }: ServiceItemProps) => {
         </div>
         <div className="mt-4">
           <p className="font-titilliumBold text-gray-600">{t('card.access')}</p>
-          <div className="flex xl:gap-2 gap-1 py-4 flex-wrap md:h-24">
+          <div className="flex xl:gap-2 sm:gap-1 py-4 flex-wrap h-24 items-baseline">
             {service.hasOnlineAccess && (
               <div className="flex gap-2 items-center">
                 <CheckCircleIcon className="w-5 h-5 text-green" />
