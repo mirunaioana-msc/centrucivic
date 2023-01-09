@@ -75,7 +75,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className=" flex justify-between py-8 border-b-2">
+                    <div className="flex justify-between py-6 border-b-2">
                       <div className="flex items-center">
                         <img
                           height={'40px'}

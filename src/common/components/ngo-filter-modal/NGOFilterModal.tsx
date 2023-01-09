@@ -64,83 +64,81 @@ const NGOFilterModal = ({ onClose, onSubmit, form }: PracticeProgramFilterModalP
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative bg-white px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all h-full w-full">
-                <div className="relative w-full h-full">
-                  <div className="flex justify-between items-center">
-                    <img
-                      height={'40px'}
-                      width={'67px'}
-                      src={logo}
-                      alt="Code 4 Romania - ONG Hub"
-                      className="h-16"
+              <Dialog.Panel className="bg-white p-4 text-left shadow-xl transform transition-all min-h-full h-fit w-full flex flex-col gap-4">
+                <div className="flex justify-between items-center">
+                  <img
+                    height={'40px'}
+                    width={'67px'}
+                    src={logo}
+                    alt="Code 4 Romania - ONG Hub"
+                    className="h-16"
+                  />
+                  <button aria-label={t('common:close')} onClick={onClose}>
+                    <XIcon className="w-7 h-7" />
+                  </button>
+                </div>
+                <div className="h-1 bg-gray-200"></div>
+                <div className="flex flex-col w-full justify-between">
+                  <div className="flex flex-col w-full gap-4">
+                    <Controller
+                      key={ServiceSearchConfig.locationId.key}
+                      name={ServiceSearchConfig.locationId.key}
+                      rules={ServiceSearchConfig.locationId.rules}
+                      control={control}
+                      render={({ field: { onChange, value } }) => {
+                        return (
+                          <ServerSelect
+                            id="programs-search-location"
+                            value={value}
+                            isMulti={false}
+                            isClearable
+                            placeholder={ServiceSearchConfig.locationId.placeholder}
+                            onChange={onChange}
+                            loadOptions={loadOptionsLocationSearch}
+                            addOn={ServiceSearchConfig.locationId.addOn}
+                          />
+                        );
+                      }}
                     />
-                    <button aria-label={t('common:close')} onClick={onClose}>
-                      <XIcon className="w-7 h-7" />
-                    </button>
+                    <Controller
+                      key={ServiceSearchConfig.domains.key}
+                      name={ServiceSearchConfig.domains.key}
+                      rules={ServiceSearchConfig.domains.rules}
+                      control={control}
+                      render={({ field: { onChange, value } }) => {
+                        return (
+                          <MultiSelect
+                            id="create-organization-domains"
+                            value={value}
+                            isClearable
+                            isMulti={true}
+                            onChange={onChange}
+                            placeholder={ServiceSearchConfig.domains.config.placeholder}
+                            options={domains.map(mapItemToSelect)}
+                            icon={ServiceSearchConfig.domains.icon}
+                          />
+                        );
+                      }}
+                    />
                   </div>
-                  <div className="h-1 bg-gray-200 my-8"></div>
-                  <div className="flex  flex-col w-full justify-between">
-                    <div className="flex flex-col w-full gap-4">
-                      <Controller
-                        key={ServiceSearchConfig.locationId.key}
-                        name={ServiceSearchConfig.locationId.key}
-                        rules={ServiceSearchConfig.locationId.rules}
-                        control={control}
-                        render={({ field: { onChange, value } }) => {
-                          return (
-                            <ServerSelect
-                              id="programs-search-location"
-                              value={value}
-                              isMulti={false}
-                              isClearable
-                              placeholder={ServiceSearchConfig.locationId.placeholder}
-                              onChange={onChange}
-                              loadOptions={loadOptionsLocationSearch}
-                              addOn={ServiceSearchConfig.locationId.addOn}
-                            />
-                          );
-                        }}
-                      />
-                      <Controller
-                        key={ServiceSearchConfig.domains.key}
-                        name={ServiceSearchConfig.domains.key}
-                        rules={ServiceSearchConfig.domains.rules}
-                        control={control}
-                        render={({ field: { onChange, value } }) => {
-                          return (
-                            <MultiSelect
-                              id="create-organization-domains"
-                              value={value}
-                              isClearable
-                              isMulti={true}
-                              onChange={onChange}
-                              placeholder={ServiceSearchConfig.domains.config.placeholder}
-                              options={domains.map(mapItemToSelect)}
-                              icon={ServiceSearchConfig.domains.icon}
-                            />
-                          );
-                        }}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2 w-full absolute bottom-4">
-                      <button
-                        aria-label={t('filter_modal:apply')}
-                        type="button"
-                        className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
-                        onClick={handleSubmit(onApply)}
-                      >
-                        {t('filter_modal:apply')}
-                      </button>
-                      <button
-                        aria-label={t('filter_modal:reset')}
-                        type="button"
-                        className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
-                        onClick={onReset}
-                      >
-                        {t('filter_modal:reset')}
-                      </button>
-                    </div>
-                  </div>
+                </div>
+                <div className="flex flex-col gap-2 w-full mt-auto">
+                  <button
+                    aria-label={t('filter_modal:apply')}
+                    type="button"
+                    className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                    onClick={handleSubmit(onApply)}
+                  >
+                    {t('filter_modal:apply')}
+                  </button>
+                  <button
+                    aria-label={t('filter_modal:reset')}
+                    type="button"
+                    className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
+                    onClick={onReset}
+                  >
+                    {t('filter_modal:reset')}
+                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
