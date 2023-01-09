@@ -21,6 +21,7 @@ const OrganizationItem = ({ organization }: { organization: OrganizationFlat }) 
           <p className="article card-text-overflow sm:h-28 h-24">{organization?.description}</p>
         </div>
         <button
+          aria-label={t('action')}
           className="yellow-button w-full mt-auto"
           onClick={() => navigate(`${organization?.id}`)}
         >

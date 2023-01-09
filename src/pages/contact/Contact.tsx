@@ -108,7 +108,12 @@ const Contact = () => {
                 }}
               />
             </form>
-            <button type="button" className="yellow-button" onClick={handleSubmit(onSendMail)}>
+            <button
+              aria-label={t('send', { ns: 'common' })}
+              type="button"
+              className="yellow-button"
+              onClick={handleSubmit(onSendMail)}
+            >
               {t('send', { ns: 'common' })}
             </button>
           </div>

@@ -68,8 +68,14 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
               <Dialog.Panel className="relative bg-white px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all h-full w-full">
                 <div className="relative w-full h-full">
                   <div className="flex justify-between items-center">
-                    <img src={logo} alt="Code 4 Romania - ONG Hub" className="h-16" />
-                    <button onClick={onClose}>
+                    <img
+                      height={'40px'}
+                      width={'67px'}
+                      src={logo}
+                      alt="Code 4 Romania - ONG Hub"
+                      className="h-16"
+                    />
+                    <button aria-label={t('common:close')} onClick={onClose}>
                       <XIcon className="w-7 h-7" />
                     </button>
                   </div>
@@ -169,6 +175,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                     </div>
                     <div className="flex flex-col gap-2 w-full absolute bottom-4">
                       <button
+                        aria-label={t('filter_modal:apply')}
                         type="button"
                         className="flex bg-yellow w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={handleSubmit(onApply)}
@@ -176,6 +183,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                         {t('filter_modal:apply')}
                       </button>
                       <button
+                        aria-label={t('filter_modal:reset')}
                         type="button"
                         className="flex bg-gray-100 w-full rounded font-titilliumSemiBold text-xl items-center justify-center p-3"
                         onClick={onReset}

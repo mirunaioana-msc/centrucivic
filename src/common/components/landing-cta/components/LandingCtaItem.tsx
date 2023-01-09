@@ -17,12 +17,21 @@ const LandingCtaItem = (props: LandingCtaItemProps) => {
       <p className="text-base">
         {props.description}
         {props.anchorLinkText && (
-          <a href={process.env.REACT_APP_P4G_LINK} className="cursor-pointer text-black underline">
+          <a
+            aria-label={props.anchorLinkText}
+            href={process.env.REACT_APP_P4G_LINK}
+            className="cursor-pointer text-black underline"
+          >
             {props.anchorLinkText}
           </a>
         )}
       </p>
-      <button type="button" className={props.buttonClasses} onClick={props.onClick}>
+      <button
+        aria-label={props.buttonText}
+        type="button"
+        className={props.buttonClasses}
+        onClick={props.onClick}
+      >
         {props.buttonText}
       </button>
     </div>

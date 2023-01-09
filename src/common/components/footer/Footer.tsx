@@ -21,7 +21,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col md:items-end">
-          <img src={commitGlobalLogo} alt="Commit Global" className="w-32 pb-4" />
+          <img
+            width={'128px'}
+            height={'53px'}
+            src={commitGlobalLogo}
+            alt="Commit Global"
+            className="w-32 pb-4"
+          />
           <span className="footer-text">
             &#169; {new Date().getFullYear()} {t('copyright_commit')}
           </span>

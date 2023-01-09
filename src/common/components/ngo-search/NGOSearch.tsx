@@ -136,6 +136,7 @@ const NGOSearch = ({ showFilters }: NGOSearchProps) => {
             </div>
             {showFilters && (
               <button
+                aria-label={t('common:search.search_button')}
                 type="button"
                 className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
                 onClick={handleSubmit(search)}
@@ -214,6 +215,7 @@ const NGOSearch = ({ showFilters }: NGOSearchProps) => {
               />
             </div>
             <button
+              aria-label={t('common:search.search_button')}
               id="organizations-search__button__submit"
               type="button"
               className="text-sm sm:text-base text-yellow bg-black px-6 h-full sm:w-1/6 w-24 shadow-md hover:bg-black-800"

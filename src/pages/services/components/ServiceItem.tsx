@@ -60,7 +60,11 @@ const ServiceItem = ({ service, onNavigate }: ServiceItemProps) => {
             )}
           </div>
         </div>
-        <button className="yellow-button w-full mt-auto" onClick={onNavigate}>
+        <button
+          aria-label={t('card.details')}
+          className="yellow-button w-full mt-auto"
+          onClick={onNavigate}
+        >
           {t('card.details')}
         </button>
       </div>

@@ -14,6 +14,8 @@ const About = () => {
           <p className="body-text w-full">{t('civic_center.paragraph_1')}</p>
         </div>
         <img
+          width={'450px'}
+          height={'450px'}
           src={ccLogo}
           alt="Civic Center - logo"
           className="mx-auto md:order-2 order-1 md:h-auto h-16"

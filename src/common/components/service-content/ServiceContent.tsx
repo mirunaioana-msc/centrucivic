@@ -105,6 +105,7 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
             />
             <div className="flex gap-4 py-6">
               <button
+                aria-label={t('details.actions.open')}
                 className="yellow-button text-base"
                 onClick={() => windowOpener(service.onlineAccessLink)}
               >
