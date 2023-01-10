@@ -23,7 +23,7 @@ const DynamicOrganization = () => {
 const HomeBreadcrumb = () => {
   return (
     <span>
-      <HomeIcon className="w-5 h-5" />
+      <HomeIcon aria-label={i18n.t('menu:home')} className="w-5 h-5" />
     </span>
   );
 };
