@@ -139,7 +139,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   return (
     <div className="bg-yellow w-full items-center bg-search bg-no-repeat bg-cover bg-center">
       <div className="wrapper 2xl:w-[70%] lg:max-w-screen-lg">
-        <div className="flex flex-col w-full gap-2 text-center">
+        <div className="grid w-full gap-2 text-center">
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
           <p className="font-titillium sm:text-xl text-black sm:text-center text-left">
             {t('subtitle')}
@@ -148,7 +148,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             </a>
           </p>
         </div>
-        <div className="flex flex-col gap-4 w-full sm:items-center">
+        <div className="grid gap-4 w-full sm:items-center">
           <div className="flex w-full items-center h-14">
             <div className="sm:w-3/4 w-full">
               <Controller
