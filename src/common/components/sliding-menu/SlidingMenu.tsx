@@ -65,7 +65,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-[-100vw]"
               >
-                <Dialog.Panel className="pointer-events-auto h-full overflow-y-scroll w-full bg-white p-6 pt-0 flex flex-col">
+                <Dialog.Panel className="pointer-events-auto h-full overflow-y-scroll w-full bg-white p-6 flex flex-col gap-10">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-in-out duration-500"
@@ -75,31 +75,34 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="flex justify-between py-6 border-b-2">
-                      <div className="flex items-center">
-                        <img
-                          height={'40px'}
-                          width={'67px'}
-                          src={logo}
-                          alt="Code 4 Romania - ONG Hub"
-                          className="sm:h-full sm:w-full h-10"
-                        />
+                    <div className="flex flex-col gap-10">
+                      <div className="flex flex-row justify-between">
+                        <div className="flex items-center">
+                          <img
+                            height={'40px'}
+                            width={'67px'}
+                            src={logo}
+                            alt="Code 4 Romania - ONG Hub"
+                            className="sm:h-full sm:w-full h-10"
+                          />
+                        </div>
+                        <button
+                          aria-label={t('common:close')}
+                          type="button"
+                          className="rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+                          onClick={() => setSlidingMenuOpen(false)}
+                        >
+                          <XIcon className="w-6 h-6" />
+                          <span className="sr-only">Close panel</span>
+                        </button>
                       </div>
-                      <button
-                        aria-label={t('common:close')}
-                        type="button"
-                        className="rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
-                        onClick={() => setSlidingMenuOpen(false)}
-                      >
-                        <XIcon className="w-6 h-6" />
-                        <span className="sr-only">Close panel</span>
-                      </button>
+                      <div className="h-1 bg-gray-200"></div>
                     </div>
                   </Transition.Child>
                   <nav
                     className={classNames(
                       'w-full',
-                      'transition-width duration-300 ease-out pt-10 gap-12 font-titilliumBold  select-none flex flex-col',
+                      'transition-width duration-300 ease-out gap-12 font-titilliumBold  select-none flex flex-col',
                     )}
                     aria-label="Sidebar"
                   >
