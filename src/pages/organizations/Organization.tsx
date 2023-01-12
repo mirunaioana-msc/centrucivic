@@ -9,6 +9,7 @@ import OrganizationDetails from './components/OrganizationDetails';
 import ListError from '../../common/components/list-error/ListError';
 import Breadcrumbs from '../../common/components/breadcrumbs/Breadcrumbs';
 import { MENU_ROUTES_HREF } from '../../common/constants/Menu.constants';
+import { AxiosError } from 'axios';
 
 const Organization = () => {
   const { organizationId } = useParams();
@@ -57,7 +58,17 @@ const Organization = () => {
               />
             </div>
           )}
-          {error && !isLoading && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
+          {error && !isLoading && (
+            <ListError
+              retry={(error as AxiosError)?.response?.status === 404 ? undefined : refetch}
+            >
+              {t(
+                `details.errors.get${
+                  (error as AxiosError)?.response?.status === 404 ? '_404' : ''
+                }`,
+              )}
+            </ListError>
+          )}
         </>
       </div>
     </div>

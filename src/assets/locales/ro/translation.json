@@ -127,7 +127,8 @@
         }
       },
       "errors": {
-        "get": "Eroare la incarcarea serviciului"
+        "get": "Eroare la incarcarea serviciului",
+        "get_404": "Nu exista informatii despre acest serviciu."
       }
     },
     "card": {
@@ -160,7 +161,8 @@
       "social_media": "Social media",
       "programs_title": "Serviciile organizației",
       "errors": {
-        "get": "Eroare la incarcarea organizatiei"
+        "get": "Eroare la incarcarea organizatiei",
+        "get_404": "Nu exista informatii despre aceasta organizatie."
       }
     }
   },

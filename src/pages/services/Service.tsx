@@ -8,6 +8,7 @@ import CivicCenterServiceContent from '../../common/components/service-content/S
 import { useService } from '../../services/service/Services.queries';
 import ListError from '../../common/components/list-error/ListError';
 import Breadcrumbs from '../../common/components/breadcrumbs/Breadcrumbs';
+import { AxiosError } from 'axios';
 
 const Service = () => {
   const { t } = useTranslation('services');
@@ -20,7 +21,17 @@ const Service = () => {
         <Breadcrumbs />
         <>
           {isLoading && <Loading />}
-          {error && <ListError retry={refetch}>{t('details.errors.get')}</ListError>}
+          {error && (
+            <ListError
+              retry={(error as AxiosError)?.response?.status === 404 ? undefined : refetch}
+            >
+              {t(
+                `details.errors.get${
+                  (error as AxiosError)?.response?.status === 404 ? '_404' : ''
+                }`,
+              )}
+            </ListError>
+          )}
           {!isLoading && !error && (
             <>
               <Card>{data && <CivicCenterServiceContent service={data} />}</Card>
