@@ -79,12 +79,15 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                       <div className="flex flex-row justify-between">
                         <div className="flex items-center">
                           <img
+                            height={'40px'}
+                            width={'67px'}
                             src={logo}
                             alt="Code 4 Romania - ONG Hub"
                             className="sm:h-full sm:w-full h-10"
                           />
                         </div>
                         <button
+                          aria-label={t('common:close')}
                           type="button"
                           className="rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
                           onClick={() => setSlidingMenuOpen(false)}
@@ -105,6 +108,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                   >
                     {MENU_ROUTES.map((item) => (
                       <a
+                        aria-label={item.name}
                         key={item.name}
                         className={classNames(
                           'side-menu-title active:text-yellow-600',
@@ -118,6 +122,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                   </nav>
                   <div className="flex flex-col gap-2 items-center w-full mt-auto">
                     <button
+                      aria-label={t('donate')}
                       className="yellow-button flex w-full justify-center py-2 text-lg bg-black text-white hover:bg-black-800"
                       onClick={() => windowOpener(DONATE_URL)}
                     >
@@ -125,6 +130,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                     </button>
                     <span>{t('how')}</span>
                     <a
+                      aria-label={t('learn_more')}
                       className="text-blue font-bold hover:underline text-base"
                       href={CODE_4_URL}
                       target="_blank"

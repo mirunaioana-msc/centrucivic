@@ -126,7 +126,12 @@ const FeedbackForm = ({ serviceId }: { serviceId: string }) => {
                 }}
               />
             </form>
-            <button type="button" className="yellow-button" onClick={handleSubmit(onSendFeedback)}>
+            <button
+              aria-label={t('send', { ns: 'common' })}
+              type="button"
+              className="yellow-button"
+              onClick={handleSubmit(onSendFeedback)}
+            >
               {t('send', { ns: 'common' })}
             </button>
           </div>

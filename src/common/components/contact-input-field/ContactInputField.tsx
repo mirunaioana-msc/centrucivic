@@ -11,7 +11,7 @@ const ContactInputField = (props: {
   return (
     <div className="relative w-full">
       {props.config.label && (
-        <label htmlFor="email" className="article text-gray-700">
+        <label htmlFor={`${props.config.name}__input`} className="article text-gray-700">
           {props.config.label}
         </label>
       )}
@@ -35,7 +35,7 @@ const ContactInputField = (props: {
             defaultValue={props.config.defaultValue}
             aria-invalid={props.config.error ? 'true' : 'false'}
             disabled={props.disabled}
-            id={`${props.config.id}__input`}
+            id={`${props.config.name}__input`}
           />
         )}
         {props.config.error && (

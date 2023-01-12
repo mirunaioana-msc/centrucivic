@@ -64,8 +64,10 @@ const ChipSelection = ({
 
   return (
     <div>
-      <div className="form-item-label">{label}</div>
-      <div className="py-2 flex gap-x-2 gap-y-2 flex-wrap">
+      <label htmlFor="options__select" className="article text-gray-700">
+        {label}
+      </label>
+      <div id="options__select" className="py-2 flex gap-x-2 gap-y-2 flex-wrap">
         {values.map((item) => (
           <Chip
             key={item}

@@ -143,7 +143,11 @@ const ServiceSearch = (props: ServiceSearchProps) => {
           <p className="font-titilliumBold sm:text-4xl text-xl text-black">{t('title')}</p>
           <p className="font-titillium sm:text-xl text-black sm:text-center text-left">
             {t('subtitle')}
-            <a className="text-black underline cursor-pointer" href="/services">
+            <a
+              aria-label={t('subtitle_link')}
+              className="text-black underline cursor-pointer"
+              href="/services"
+            >
               {t('subtitle_link')}
             </a>
           </p>
@@ -174,6 +178,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               />
             </div>
             <button
+              aria-label={t('search.search_button', { ns: 'common' })}
               type="button"
               className="text-sm sm:text-base sm:hidden text-yellow bg-black px-4 flex items-center justify-center h-full shadow-md"
               onClick={handleSubmit(search)}
@@ -298,6 +303,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
             />
 
             <button
+              aria-label={t('search.search_button', { ns: 'common' })}
               id="services-search__button__submit"
               type="button"
               className="yellow-button text-sm sm:text-base w-full h-full shadow-md rounded-none"

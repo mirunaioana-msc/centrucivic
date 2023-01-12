@@ -61,6 +61,8 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
               <div className="flex flex-row gap-x-5">
                 {organization.facebook && (
                   <img
+                    width={'24px'}
+                    height={'24px'}
                     className="lg:w-6 w-4 hover:cursor-pointer"
                     alt="Facebook icon"
                     src={facebook_icon}
@@ -71,6 +73,8 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
                 )}
                 {organization.instagram && (
                   <img
+                    width={'24px'}
+                    height={'24px'}
                     className="lg:w-6 w-4 hover:cursor-pointer"
                     alt="Instagram icon"
                     src={instagram_icon}
@@ -81,6 +85,8 @@ const OrganizationDetails = ({ organization }: OrganizationProps) => {
                 )}
                 {organization.twitter && (
                   <img
+                    width={'24px'}
+                    height={'24px'}
                     className="lg:w-6 w-4 hover:cursor-pointer"
                     alt="Twitter icon"
                     src={twitter_icon}

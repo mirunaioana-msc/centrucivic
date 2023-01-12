@@ -37,13 +37,20 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
       <nav aria-label="Top">
         <div className="w-full bg-gray-50 sm:h-12 h-10 flex items-center">
           <div className="wrapper flex-row items-center sm:gap-4 gap-2 sm:py-2 py-0 sm:w-[90%] lg:max-w-screen-3xl">
-            <img src={commitGlobalLogo} alt="Commit Global" className="sm:h-full h-6" />
+            <img
+              width={'100px'}
+              height={'24px'}
+              src={commitGlobalLogo}
+              alt="Commit Global"
+              className="sm:h-full h-6"
+            />
             <span className="sm:text-base text-xxs">{t('commit_global_solution')}</span>
             <a
               className="text-blue font-bold hover:underline sm:text-base text-xxs"
               href={COMMIT_GLOBAL_URL}
               target="_blank"
               rel="noreferrer"
+              aria-label={t('learn_more')}
             >
               {t('learn_more')}
             </a>
@@ -52,7 +59,13 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
         <div className="w-full flex items-center sm:min-h-[5rem]">
           <div className="wrapper flex-row gap-4 py-2 sm:w-[90%] lg:max-w-screen-3xl">
             <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-              <img src={logo} alt="Code 4 Romania - ONG Hub" className="sm:h-full sm:w-full h-10" />
+              <img
+                width={'80px'}
+                height={'64px'}
+                src={logo}
+                alt="Code 4 Romania - ONG Hub"
+                className="sm:h-full sm:w-full h-10"
+              />
             </div>
             <div className="flex gap-4 items-center ml-auto">
               <div className="gap-6 hidden lg:flex">
@@ -64,12 +77,14 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
                     )}
                     key={route.id}
                     onClick={() => navigate(route.href)}
+                    aria-label={route.name}
                   >
                     {route.name}
                   </a>
                 ))}
               </div>
               <button
+                aria-label={t('donate')}
                 className="yellow-button bg-black text-white lg:flex hidden menu-title hover:bg-black-800 w-[9rem] justify-center ml-10"
                 onClick={() => windowOpener(DONATE_URL)}
               >
@@ -77,6 +92,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
               </button>
               <div className="flex lg:hidden items-center">
                 <button
+                  aria-label="Menu"
                   className="flex items-center gap-4 hover:bg-green-tab rounded-xl outline-none"
                   onClick={() => openSlidingMenu(true)}
                 >
