@@ -87,6 +87,12 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       props.onSearchCallback(
         `?${stringify(encodeQueryParams(SERVICES_QUERY_PARAMS, queryValues))}`,
       );
+
+    reset({
+      ...data,
+      start: data?.start || null,
+      end: data?.end || null,
+    });
   };
 
   const loadOptionsLocationSearch = async (searchWord: string) => {
@@ -259,7 +265,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               render={({ field: { onChange, value } }) => {
                 return (
                   <DatePicker
-                    defaultValue={value ? value : undefined}
+                    defaultValue={value || value === null ? value : undefined}
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.start.placeholder}
                   />
@@ -274,7 +280,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               render={({ field: { onChange, value } }) => {
                 return (
                   <DatePicker
-                    defaultValue={value ? value : undefined}
+                    defaultValue={value || value === null ? value : undefined}
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.end.placeholder}
                   />
