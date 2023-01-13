@@ -1,3 +1,4 @@
+import { formatISO9075 } from 'date-fns';
 import { CivicCenterQuery } from '../../common/interfaces/CivicCenterQuery.interface';
 import { PaginatedEntity } from '../../common/interfaces/PaginatedEntity.interface';
 import { IService } from '../../common/interfaces/Service.interface';
@@ -14,6 +15,8 @@ export const getServices = async ({
       limit: 25,
       page: pageParam,
       ...query,
+      start: query?.start ? formatISO9075(new Date(query?.start)) : undefined,
+      end: query?.end ? formatISO9075(new Date(query?.end)) : undefined,
     },
   }).then((res) => res.data);
 };
