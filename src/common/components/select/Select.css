@@ -76,6 +76,10 @@
   box-shadow: none !important;
 }
 
+.reactselect__value-container {
+  padding-right: 0px !important;
+}
+
 .reactselect__multi-value__remove {
   border-radius: 25px !important;
   background: white;
@@ -110,4 +114,8 @@
 .reactselect__menu > div > div:active {
   background-color: theme('colors.purple.500');
   color: white;
+}
+
+.reactselect__placeholder {
+  @apply truncate;
 }
