@@ -37,22 +37,23 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
       <nav aria-label="Top">
         <div className="w-full bg-gray-50 sm:h-12 h-10 flex items-center">
           <div className="wrapper flex-row items-center sm:gap-4 gap-2 sm:py-2 py-0 sm:w-[90%] lg:max-w-screen-3xl">
-            <img
-              width={'100px'}
-              height={'24px'}
-              src={commitGlobalLogo}
-              alt="Commit Global"
-              className="sm:h-full h-6"
-            />
-            <span className="sm:text-base text-xxs">{t('commit_global_solution')}</span>
             <a
-              className="text-blue font-bold hover:underline sm:text-base text-xxs"
+              className="text-black font-bold hover:underline sm:text-base text-xxs"
               href={COMMIT_GLOBAL_URL}
               target="_blank"
               rel="noreferrer"
               aria-label={t('learn_more')}
             >
-              {t('learn_more')}
+              <div className='flex gap-2'>
+                <img
+                  width={'100px'}
+                  height={'24px'}
+                  src={commitGlobalLogo}
+                  alt="Commit Global"
+                  className="sm:h-full h-6"
+                />
+                <span className="sm:text-base text-xxs text-black hover:underline">{t('commit_global_solution')}</span>
+              </div>
             </a>
           </div>
         </div>
