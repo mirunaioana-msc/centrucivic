@@ -64,7 +64,7 @@ const Header = ({ openSlidingMenu }: HeaderProps) => {
                 width={'80px'}
                 height={'64px'}
                 src={logo}
-                alt="Code 4 Romania - ONG Hub"
+                alt="Code 4 Romania - NGO Hub"
                 className="sm:h-full sm:w-full h-10"
               />
             </div>
