@@ -71,7 +71,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                     height={'40px'}
                     width={'67px'}
                     src={logo}
-                    alt="Code 4 Romania - ONG Hub"
+                    alt="Code 4 Romania - NGO Hub"
                     className="h-16"
                   />
                   <button aria-label={t('common:close')} onClick={onClose}>
