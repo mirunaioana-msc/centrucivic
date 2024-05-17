@@ -1,8 +1,8 @@
 {
   "common": {
-    "loading": "Se incarca...",
-    "no_results": "Nu exista rezultate pentru criteriile de cautare selectate",
-    "end_of_list": "Nu mai sunt date de afisat",
+    "loading": "Se încarcă...",
+    "no_results": "Nu există rezultate pentru criteriile de căutare selectate",
+    "end_of_list": "Nu mai sunt date de afișat",
     "send": "Trimite",
     "share": "Distribuie",
     "shared": "Link-ul a fost copiat",
@@ -15,25 +15,25 @@
       "search_button": "Caută",
       "config": {
         "search": {
-          "max": "Cautarea nu poate avea mai mult de 50 de caractere",
-          "min": "Cautarea nu poate avea mai putin de 3 caractere",
-          "placeholder": "Cauta un ONG sau un serviciu..."
+          "max": "Căutarea nu poate avea mai mult de 50 de caractere",
+          "min": "Căutarea nu poate avea mai putin de 3 caractere",
+          "placeholder": "Caută un ONG sau un serviciu..."
         },
         "location": {
-          "placeholder": "Toata Romania"
+          "placeholder": "Toată România"
         }
       }
     }
   },
   "menu": {
-    "home": "Acasa",
+    "home": "Acasă",
     "about": "Despre Centru Civic",
     "services": "Servicii",
     "organizations": "ONG-uri",
     "contact": "Contact"
   },
   "header": {
-    "commit_global_solution": "O solutie Commit Global.",
+    "commit_global_solution": "O soluție Commit Global.",
     "learn_more": "Află mai multe",
     "donate": "DONEAZĂ"
   },
@@ -64,10 +64,10 @@
       "ngos": "ONG-uri active pe platformă"
     },
     "cta": {
-      "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
+      "title_1": "Vrei să adaugi serviciile organizației tale?",
       "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în ONG Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
       "register": "Inscrie-te in ONG Hub",
-      "title_2": "Vrei sa te implici ca voluntar?",
+      "title_2": "Vrei să te implici ca voluntar?",
       "description_2": "Poți contacta ONG-urile din Centru Civic pentru a descoperi cum poți deveni voluntar. Dacă ești student, vezi programele de practică disponibile în sectorul non-profit pe ",
       "p4g_link": "Practice for Good.",
       "discover_ongs": "Descopera ONG-urile"
@@ -82,13 +82,13 @@
         "placeholder": "Facultate"
       },
       "start": {
-        "placeholder": "Data Inceput"
+        "placeholder": "Data Început"
       },
       "end": {
-        "placeholder": "Data Sfarsit"
+        "placeholder": "Data Sfârșit"
       },
       "age_categories": {
-        "placeholder": "Varsta"
+        "placeholder": "Vârstă"
       },
       "domain": {
         "placeholder": "Domeniu"
@@ -101,17 +101,17 @@
     "no_service": "Nu au fost găsite servicii.",
     "action": "Detalii",
     "errors": {
-      "search": "Eroare la incarcarea serviciilor"
+      "search": "Eroare la încărcarea serviciilor"
     },
     "details": {
       "actions": {
-        "open": "Acceseaza online"
+        "open": "Accesează online"
       },
-      "age_category": "Categorie de varsta",
+      "age_category": "Categorie de vârstă",
       "email": "E-mail",
       "phone": "Telefon",
       "address": "Adresa",
-      "period_starting_with": "Incepand din",
+      "period_starting_with": "Începând din",
       "access": {
         "online": {
           "title": "Online",
@@ -122,13 +122,13 @@
           "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
         },
         "physical": {
-          "title": "Prin prezentare la adresa",
+          "title": "Prin prezentare la adresă",
           "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
         }
       },
       "errors": {
-        "get": "Eroare la incarcarea serviciului",
-        "get_404": "Nu exista informatii despre acest serviciu."
+        "get": "Eroare la încărcarea serviciului",
+        "get_404": "Nu există informații despre acest serviciu."
       }
     },
     "card": {
@@ -136,7 +136,7 @@
       "access": "Cum poate fi accesat serviciul",
       "online": "Online",
       "email": "Email sau telefon",
-      "location": "La locatie",
+      "location": "La locație",
       "details": "Vezi mai mult"
     }
   },
@@ -144,8 +144,8 @@
     "title": "Caută organizații"
   },
   "filter_modal": {
-    "apply": "Aplica filtre",
-    "reset": "Reseteaza filtre"
+    "apply": "Aplică filtre",
+    "reset": "Resetează filtre"
   },
   "organizations": {
     "one_organization_title": "ONG",
@@ -153,7 +153,7 @@
     "no_organizations": "Nu au fost găsite ONG-uri",
     "action": "Vezi mai mult",
     "errors": {
-      "search": "Eroare la incarcarea ONG-urilor"
+      "search": "Eroare la încărcarea ONG-urilor"
     },
     "details": {
       "activity_domains": "Domenii activitate",
@@ -161,8 +161,8 @@
       "social_media": "Social media",
       "programs_title": "Serviciile organizației",
       "errors": {
-        "get": "Eroare la incarcarea organizatiei",
-        "get_404": "Nu exista informatii despre aceasta organizatie."
+        "get": "Eroare la încărcarea organizației",
+        "get_404": "Nu există informații despre aceasta organizației."
       }
     }
   },
@@ -217,24 +217,24 @@
         "label": "Nume și prenume"
       },
       "interaction_date": {
-        "required": "Data interactionarii este obligatorie",
-        "max": "Data interactionarii poate să aibă maxim 50 de caractere",
-        "label": "Cand ai interactionat cu serviciul?"
+        "required": "Data interacționării este obligatorie",
+        "max": "Data interacționării poate să aibă maxim 50 de caractere",
+        "label": "Când ai interacționat cu serviciul?"
       },
       "message": {
         "required": "Mesajul tău este obligatoriu",
         "max": "Mesajul tău poate să aibă maxim 500 de caractere",
-        "label": "Cum a fost interactiunea ta cu acest serviciu?",
-        "placeholder": "Scrie cateva detalii..."
+        "label": "Cum a fost interacțiunea ta cu acest serviciu?",
+        "placeholder": "Scrie câteva detalii..."
       },
       "rating": {
         "required": "Rating-ul este obligatoriu",
-        "label": "Acorda un rating acestui serviciu",
-        "helper": "1 - foarte slab, 2 - nesatisfacator, 3 - neutru, 4 - bun, 5 - foarte bun"
+        "label": "Acordă un rating acestui serviciu",
+        "helper": "1 - foarte slab, 2 - nesatisfăcător, 3 - neutru, 4 - bun, 5 - foarte bun"
       }
     },
-    "title": "Ai interactionat cu acest serviciu?",
-    "subtitle": "Ofera-ne un feedback cu privire la interactiunea ta cu acest serviciu",
+    "title": "Ai interacționat cu acest serviciu?",
+    "subtitle": "Oferă-ne un feedback cu privire la interacțiunea ta cu acest serviciu",
     "send_error": "Eroare la trimiterea feedback-ului"
   }
 }
