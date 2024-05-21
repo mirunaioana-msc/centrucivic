@@ -82,7 +82,7 @@ export default function SlidingMenu({ isOpen, setSlidingMenuOpen }: SlidingMenuP
                             height={'40px'}
                             width={'67px'}
                             src={logo}
-                            alt="Code 4 Romania - ONG Hub"
+                            alt="Code 4 Romania - NGO Hub"
                             className="sm:h-full sm:w-full h-10"
                           />
                         </div>
