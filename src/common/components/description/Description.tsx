@@ -17,14 +17,12 @@ const Description = ({ title, content, image, cta, isTextRight, className }: Des
   return (
     <div className="w-full">
       <div
-        className={`${
-          className ? className : ''
-        } grid md:grid-cols-2 grid-cols-1 gap-x-12 lg:gap-y-10 gap-y-5`}
+        className={`${className ? className : ''
+          } grid md:grid-cols-2 grid-cols-1 gap-x-12 lg:gap-y-10 gap-y-5`}
       >
         <div
-          className={`flex flex-col sm:gap-10 gap-5 ${
-            isTextRight ? 'order-2' : 'md:order-1 order-2'
-          }`}
+          className={`flex flex-col sm:gap-10 gap-5 ${isTextRight ? 'order-2' : 'md:order-1 order-2'
+            }`}
         >
           <p className="title text-center md:text-left">{title}</p>
           <p className="body-text w-full">{content}</p>
