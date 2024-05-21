@@ -63,6 +63,9 @@
       "services": "Servicii adăugate pe platformă",
       "ngos": "ONG-uri active pe platformă"
     },
+    "domains": {
+      "see_all": "Vezi toate serviciile"
+    },
     "cta": {
       "title_1": "Vrei sa adaugi serviciile organizatiei tale?",
       "description_1": "Pentru a putea prezenta serviciile organizației tale este necesar să ai un cont în NGO Hub, punctul unic de acces la toate serviciile digitale asigurate pro-bono pentru societatea civilă in România.",
