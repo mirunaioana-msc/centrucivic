@@ -13,6 +13,8 @@ import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 import { parse, stringify } from 'query-string';
 import ScrollToTop from '../scroll-to-top/ScrollToTop';
+import Policy from '../../pages/policy/Policy';
+import Terms from '../../pages/terms/Terms';
 
 const Router = () => {
   return (
@@ -56,6 +58,12 @@ const Router = () => {
 
             {/* About page */}
             <Route path={MENU_ROUTES_HREF.about} element={<About />}></Route>
+
+            {/* Terms page */}
+            <Route path={MENU_ROUTES_HREF.terms} element={<Terms />}></Route>
+
+            {/* Policy page */}
+            <Route path={MENU_ROUTES_HREF.policy} element={<Policy />}></Route>
           </Route>
 
           {/* Wild Card */}
