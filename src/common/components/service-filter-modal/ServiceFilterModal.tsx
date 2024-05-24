@@ -5,13 +5,16 @@ import { XIcon } from '@heroicons/react/solid';
 import { Controller, FieldValues, UseFormReturn } from 'react-hook-form';
 import ServerSelect from '../server-select/ServerSelect';
 import { mapItemToSelect } from '../../helpers/Nomenclature.helper';
-import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import DatePicker from '../date-picker/DatePicker';
 import MultiSelect from '../select/Select';
 import { useTranslation } from 'react-i18next';
 import { ServiceSearchConfig } from '../service-search/configs/ServiceSearch.config';
 import { getCities } from '../../../services/nomenclature/Nomenclature.service';
 import { mapCitiesToSelect } from '../../helpers/Format.helper';
+import {
+  useBeneficiariesQuery,
+  useServiceDomainsQuery,
+} from '../../../services/nomenclature/Nomeclature.queries';
 
 interface SearchFilterModalProps {
   onClose: () => void;
@@ -21,7 +24,8 @@ interface SearchFilterModalProps {
 
 const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) => {
   const { t } = useTranslation();
-  const { domains } = useNomenclature();
+  const { data: domains } = useServiceDomainsQuery();
+  const { data: beneficiaries } = useBeneficiariesQuery();
 
   const { handleSubmit, control, reset } = form;
 
@@ -115,7 +119,7 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                             isMulti={true}
                             onChange={onChange}
                             placeholder={ServiceSearchConfig.domains.config.placeholder}
-                            options={domains.map(mapItemToSelect)}
+                            options={domains?.map(mapItemToSelect) || []}
                             icon={ServiceSearchConfig.domains.icon}
                           />
                         );
@@ -152,21 +156,21 @@ const SearchFilterModal = ({ onClose, form, onSubmit }: SearchFilterModalProps) 
                       }}
                     />
                     <Controller
-                      key={ServiceSearchConfig.ageCategories.key}
-                      name={ServiceSearchConfig.ageCategories.key}
-                      rules={ServiceSearchConfig.ageCategories.rules}
+                      key={ServiceSearchConfig.beneficiaries.key}
+                      name={ServiceSearchConfig.beneficiaries.key}
+                      rules={ServiceSearchConfig.beneficiaries.rules}
                       control={control}
                       render={({ field: { onChange, value } }) => {
                         return (
                           <MultiSelect
-                            id="create-organization-ageCategories"
+                            id="create-organization-beneficiaries"
                             value={value}
                             isClearable
                             isMulti
                             onChange={onChange}
-                            placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
-                            options={ServiceSearchConfig.ageCategories.config.collection}
-                            icon={ServiceSearchConfig.ageCategories.icon}
+                            placeholder={ServiceSearchConfig.beneficiaries.config.placeholder}
+                            options={beneficiaries?.map(mapItemToSelect) || []}
+                            icon={ServiceSearchConfig.beneficiaries.icon}
                           />
                         );
                       }}

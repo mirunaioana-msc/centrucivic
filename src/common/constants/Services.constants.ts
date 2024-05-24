@@ -1,14 +1,9 @@
-import {
-  ArrayParam,
-  DateParam,
-  DelimitedNumericArrayParam,
-  NumberParam,
-  StringParam,
-} from 'use-query-params';
+import { DateParam, DelimitedNumericArrayParam, NumberParam, StringParam } from 'use-query-params';
 
 export const SERVICES_QUERY_PARAMS = {
   search: StringParam,
-  ageCategories: ArrayParam,
+  group: StringParam,
+  beneficiaries: DelimitedNumericArrayParam,
   locationId: NumberParam,
   start: DateParam,
   end: DateParam,

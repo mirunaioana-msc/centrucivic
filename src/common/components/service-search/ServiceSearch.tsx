@@ -7,18 +7,22 @@ import MultiSelect from '../select/Select';
 import ServerSelect from '../server-select/ServerSelect';
 import { ServiceSearchConfig } from './configs/ServiceSearch.config';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
-import { useNomenclature } from '../../../store/nomenclatures/Nomenclatures.selectors';
 import { ISelectData, mapItemToSelect } from '../../helpers/Nomenclature.helper';
 import { useTranslation } from 'react-i18next';
 import {
+  useBeneficiariesQuery,
   useDomainsQuery,
   useFacultiesQuery,
+  useServiceDomainsQuery,
 } from '../../../services/nomenclature/Nomeclature.queries';
 import ServiceFilterModal from '../service-filter-modal/ServiceFilterModal';
 import { SERVICES_QUERY_PARAMS } from '../../constants/Services.constants';
 import { useQueryParams, encodeQueryParams } from 'use-query-params';
-import { getCities, getDomains } from '../../../services/nomenclature/Nomenclature.service';
-import { AgeCategories } from '../../enums/AgeCategory.enum';
+import {
+  getBeneficiaries,
+  getCities,
+  getServiceDomains,
+} from '../../../services/nomenclature/Nomenclature.service';
 import { countFilters } from '../../helpers/Filters.helpers';
 import { stringify } from 'query-string';
 import { mapCitiesToSelect } from '../../helpers/Format.helper';
@@ -34,7 +38,8 @@ const ServiceSearch = (props: ServiceSearchProps) => {
   const [filtersCount, setFiltersCount] = useState<number>(0);
 
   // nomenclature
-  const { domains } = useNomenclature();
+  const { data: domains } = useServiceDomainsQuery();
+  const { data: beneficiaries } = useBeneficiariesQuery();
 
   // query params state
   const [query, setQuery] = useQueryParams(SERVICES_QUERY_PARAMS);
@@ -61,19 +66,19 @@ const ServiceSearch = (props: ServiceSearchProps) => {
       const filters = await initFilters();
       reset({ ...filters });
     })();
-  }, []);
+  }, [domains, beneficiaries]);
 
   const search = (data: any) => {
     // 1. map query values
     const selectedDomains = data?.domains?.map((domain: ISelectData) => domain.value);
-    const selectedAgeCategories = data?.ageCategories?.map(
-      (category: ISelectData) => category.value,
+    const selectedBeneficiaries = data?.beneficiaries?.map(
+      (beneficiary: ISelectData) => beneficiary.value,
     );
     const queryValues = {
       search: data?.search?.trim() || undefined,
       locationId: data?.locationId?.value || undefined,
       domains: selectedDomains?.length > 0 ? selectedDomains : undefined,
-      ageCategories: selectedAgeCategories?.length > 0 ? selectedAgeCategories : undefined,
+      beneficiaries: selectedBeneficiaries?.length > 0 ? selectedBeneficiaries : undefined,
       start: data?.start || undefined,
       end: data?.end || undefined,
     };
@@ -104,12 +109,13 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     const {
       locationId,
       domains: queryDomains,
-      ageCategories: queryAgeCategories,
+      beneficiaries: queryBeneficiaries,
+      group,
       ...otherQueryParams
     } = query;
 
     // init should get me the correct values for
-    let selectedLocationId, selectedCategories, selectedDomains;
+    let selectedLocationId, selectedDomains, selectedBeneficiaries;
 
     // 1. city
     if (locationId) {
@@ -118,18 +124,29 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     }
 
     // 2. categories
-    if (queryAgeCategories && queryAgeCategories?.length > 0) {
-      selectedCategories = AgeCategories.filter((category) =>
-        queryAgeCategories.includes(category.value),
-      );
+    if (queryBeneficiaries && queryBeneficiaries?.length > 0) {
+      const allBeneficiaries = await getBeneficiaries();
+      selectedBeneficiaries = allBeneficiaries
+        .filter((beneficiary: { id: number; name: string }) =>
+          queryBeneficiaries?.includes(beneficiary.id),
+        )
+        .map(mapItemToSelect);
     }
 
     // 3. domains
     if (queryDomains && queryDomains?.length > 0) {
-      const allDomains = await getDomains();
+      const allDomains = await getServiceDomains();
       selectedDomains = allDomains
         .filter((domain: { id: number; name: string }) => queryDomains?.includes(domain.id))
         .map(mapItemToSelect);
+    }
+
+    if (group && domains) {
+      const groupedDomains = domains
+        ?.filter((domain: any) => domain.group === query.group)
+        .map(mapItemToSelect);
+
+      selectedDomains = [...(selectedDomains ? selectedDomains : []), ...groupedDomains];
     }
 
     setFiltersCount(countFilters(query));
@@ -137,7 +154,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
     return {
       locationId: selectedLocationId,
       domains: selectedDomains,
-      ageCategories: selectedCategories,
+      beneficiaries: selectedBeneficiaries,
       ...otherQueryParams,
     };
   };
@@ -251,7 +268,7 @@ const ServiceSearch = (props: ServiceSearchProps) => {
                     isMulti={true}
                     onChange={onChange}
                     placeholder={ServiceSearchConfig.domains.config.placeholder}
-                    options={domains.map(mapItemToSelect)}
+                    options={domains?.map(mapItemToSelect) || []}
                     icon={ServiceSearchConfig.domains.icon}
                   />
                 );
@@ -288,21 +305,21 @@ const ServiceSearch = (props: ServiceSearchProps) => {
               }}
             />
             <Controller
-              key={ServiceSearchConfig.ageCategories.key}
-              name={ServiceSearchConfig.ageCategories.key}
-              rules={ServiceSearchConfig.ageCategories.rules}
+              key={ServiceSearchConfig.beneficiaries.key}
+              name={ServiceSearchConfig.beneficiaries.key}
+              rules={ServiceSearchConfig.beneficiaries.rules}
               control={control}
               render={({ field: { onChange, value } }) => {
                 return (
                   <MultiSelect
-                    id="search-services-ageCategories"
+                    id="search-services-beneficiaries"
                     value={value}
                     isClearable
                     isMulti={true}
                     onChange={onChange}
-                    placeholder={ServiceSearchConfig.ageCategories.config.placeholder}
-                    options={ServiceSearchConfig.ageCategories.config.collection}
-                    icon={ServiceSearchConfig.ageCategories.icon}
+                    placeholder={ServiceSearchConfig.beneficiaries.config.placeholder}
+                    options={beneficiaries?.map(mapItemToSelect) || []}
+                    icon={ServiceSearchConfig.beneficiaries.icon}
                   />
                 );
               }}
