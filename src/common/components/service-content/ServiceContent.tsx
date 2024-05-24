@@ -3,7 +3,7 @@ import { CheckIcon, LocationMarkerIcon, ShareIcon } from '@heroicons/react/solid
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import { useTranslation } from 'react-i18next';
 import { IService } from '../../interfaces/Service.interface';
-import { calculatePeriod, formatAgeCategories, dataToCsv } from '../../helpers/CivicCenter.helper';
+import { calculatePeriod, formatBeneficiaries, dataToCsv } from '../../helpers/CivicCenter.helper';
 import copy from 'copy-to-clipboard';
 import { windowOpener } from '../../helpers/Navigation.helper';
 
@@ -86,8 +86,8 @@ const CivicCenterServiceContent = ({ service }: CivicCenterServiceContentProps) 
             value={calculatePeriod(service)}
           />
           <CivicCenterAccessDetailsRow
-            label={t('details.age_category')}
-            value={formatAgeCategories(service)}
+            label={t('details.beneficiaries')}
+            value={formatBeneficiaries(service)}
           />
           <CivicCenterAccessDetailsRow
             label={t('domains', { ns: 'common' })}

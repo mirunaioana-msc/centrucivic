@@ -1,4 +1,3 @@
-import { AgeCategory } from '../enums/AgeCategory.enum';
 import { City } from './City.interface';
 import { Domain } from './Domain.interface';
 
@@ -11,7 +10,7 @@ export interface IService {
   endDate: Date | null;
   location: City;
   domains: Domain[];
-  ageCategories: AgeCategory[];
+  beneficiaries: Domain[];
 
   // Online
   hasOnlineAccess: boolean;
