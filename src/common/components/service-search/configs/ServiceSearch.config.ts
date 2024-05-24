@@ -5,7 +5,6 @@ import {
   ViewBoardsIcon,
 } from '@heroicons/react/outline';
 import i18n from '../../../configs/i18n';
-import { AgeCategories } from '../../../enums/AgeCategory.enum';
 import IconAddon from '../../icon-addon/IconAddon';
 
 export const ServiceSearchConfig: Record<string, any> = {
@@ -37,12 +36,11 @@ export const ServiceSearchConfig: Record<string, any> = {
     rules: {},
     placeholder: i18n.t('service_search:config.end.placeholder'),
   },
-  ageCategories: {
-    key: 'ageCategories',
+  beneficiaries: {
+    key: 'beneficiaries',
     rules: {},
     config: {
-      collection: [...AgeCategories],
-      placeholder: i18n.t('service_search:config.age_categories.placeholder'),
+      placeholder: i18n.t('service_search:config.beneficiaries.placeholder'),
     },
     icon: UserGroupIcon,
   },

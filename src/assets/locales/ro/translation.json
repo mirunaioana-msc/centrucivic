@@ -90,8 +90,8 @@
       "end": {
         "placeholder": "Data Sfârșit"
       },
-      "age_categories": {
-        "placeholder": "Vârstă"
+      "beneficiaries": {
+        "placeholder": "Beneficiari"
       },
       "domain": {
         "placeholder": "Domeniu"
@@ -110,7 +110,7 @@
       "actions": {
         "open": "Accesează online"
       },
-      "age_category": "Categorie de vârstă",
+      "beneficiaries": "Beneficiari",
       "email": "E-mail",
       "phone": "Telefon",
       "address": "Adresa",

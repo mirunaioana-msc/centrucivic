@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 import ServiceSearch from '../../common/components/service-search/ServiceSearch';
@@ -14,14 +14,30 @@ import { mapPagesToItems } from '../../common/helpers/Format.helper';
 import VirtuosoHeader from '../../common/components/virtuoso-header/VirtuosoHeader';
 import { useNavigate } from 'react-router-dom';
 import { MENU_ROUTES_HREF } from '../../common/constants/Menu.constants';
+import { useServiceDomainsQuery } from '../../services/nomenclature/Nomeclature.queries';
 
 const Services = () => {
   const { t } = useTranslation('services');
   const navigate = useNavigate();
   const [query] = useQueryParams(SERVICES_QUERY_PARAMS);
 
+  const { data: serviceDomains } = useServiceDomainsQuery();
+
+  const domainsIds = useMemo(() => {
+    if (!serviceDomains || !query.group) {
+      return [];
+    }
+
+    return serviceDomains
+      .filter((domain: any) => domain.group === query.group)
+      .map((d: any) => d.id);
+  }, [query, serviceDomains]);
+
   const { data, isFetching, fetchNextPage, hasNextPage, error, refetch } =
-    userCivicCenterServicesInfiniteQuery(query as CivicCenterQuery);
+    userCivicCenterServicesInfiniteQuery({
+      ...query,
+      ...(query.group ? { domains: domainsIds } : {}),
+    } as CivicCenterQuery);
 
   const loadMore = () => {
     if (!isFetching && hasNextPage) fetchNextPage();

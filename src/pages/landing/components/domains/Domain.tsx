@@ -4,15 +4,17 @@ import { MENU_ROUTES_HREF } from '../../../../common/constants/Menu.constants';
 
 interface DomainProps {
   name: string;
-  id: number;
+  skip?: boolean;
 }
 
-const Domain = ({ name, id }: DomainProps) => {
+const Domain = ({ name, skip }: DomainProps) => {
   return (
     <a
       aria-label={name}
       href={
-        id === -1 ? `/${MENU_ROUTES_HREF.services}` : `/${MENU_ROUTES_HREF.services}?domains=${id}`
+        skip
+          ? `/${MENU_ROUTES_HREF.services}`
+          : `/${MENU_ROUTES_HREF.services}?group=${encodeURIComponent(name)}`
       }
       className="text-black"
     >

@@ -1,10 +1,11 @@
-import { AgeCategory } from '../enums/AgeCategory.enum';
+import { Domain } from 'domain';
 
 export interface CivicCenterQuery {
   search?: string;
+  group?: string;
   end?: string;
   start?: string;
-  ageCategories?: AgeCategory[];
+  beneficiaries?: Domain[];
   domains?: number[];
   locationId?: number;
 }
