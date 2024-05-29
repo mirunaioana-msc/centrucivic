@@ -200,9 +200,8 @@
   "about": {
     "civic_center": {
       "title": "Despre Centru Civic",
-      "paragraph_1": "Centru Civic își propune să devină locul în care, printr-o căutare simplă, fiecare cetățean poate avea acces la informații relevante despre toate serviciile sociale furnizate de organizațiile non guvernamentale.",
-      "paragraph_2": "Platforma este concepută pentru a prelua automat informații despre fiecare organizație din contul acesteia de NGO Hub, dar permite organizațiilor să introducă manual serviciile specifice oferite.",
-      "paragraph_3": ""
+      "paragraph_1": "Centru Civic își propune să devină locul în care, printr-o căutare simplă, fiecare cetățean poate avea acces la informații relevante despre toate serviciile furnizate de organizațiile non guvernamentale. Platforma este concepută pentru a prelua automat informații despre fiecare organizație din contul acesteia de NGO Hub, dar permite organizațiilor să introducă manual serviciile specifice oferite.",
+      "paragraph_2": "",
     },
     "ong_hub": {
       "title": "Despre NGO Hub",
